@@ -25,7 +25,9 @@
 #import "QRScanViewController.h"
 #import "UIView+QREasyFrame.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import <Masonry.h>
+#import "HelpViewController.h"
+#import "ManualInputViewController.h"
 
 
 
@@ -94,7 +96,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UIButton * helpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [helpBtn setTitle:@"help" forState:UIControlStateNormal];
+    [helpBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.view addSubview:helpBtn];
+    [helpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(70));
+        make.right.equalTo(self.view.mas_right);
+        make.height.equalTo(@(30));
+        make.top.equalTo(self.view.mas_top).offset(20);
+    }];
+    [helpBtn addTarget:self action:@selector(helpBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton * manualBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [manualBtn setTitle:@"手动输入" forState:UIControlStateNormal];
+    [manualBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.view addSubview:manualBtn];
+    [manualBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(270));
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.height.equalTo(@(40));
+        make.bottom.equalTo(self.view.mas_bottom).offset(-80);
+    }];
+    [manualBtn addTarget:self action:@selector(manualBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     self.view.backgroundColor = [UIColor blackColor];
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height - 64;
@@ -544,4 +571,16 @@
     return _activityView;
 }
 
+#pragma mark - <helpBtn点击>
+-(void)helpBtnClick:(UIButton *)btn
+{
+    HelpViewController *helpVC = [[HelpViewController alloc]init];
+    [self.navigationController pushViewController:helpVC  animated:YES];
+}
+
+-(void)manualBtnClick:(UIButton *)btn
+{
+    ManualInputViewController * manualVC = [[ManualInputViewController alloc]initWithNibName:@"ManualInputViewController" bundle:nil ];
+   [self.navigationController pushViewController:manualVC animated:YES];
+}
 @end

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */; };
+		3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD001F949233002D59A7 /* ManualInputViewController.m */; };
+		3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD041F94931C002D59A7 /* ManualInputViewController.xib */; };
+		3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD071F9496B1002D59A7 /* BindPhoneNumberController.m */; };
+		3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD091F9496CA002D59A7 /* BindPhoneNumberController.xib */; };
+		3D7CCD0E1F949895002D59A7 /* SetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD0C1F949895002D59A7 /* SetPasswordController.m */; };
+		3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD0D1F949895002D59A7 /* SetPasswordController.xib */; };
+		3D7CCD131F9499CF002D59A7 /* SetDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD111F9499CF002D59A7 /* SetDetailsController.m */; };
+		3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD121F9499CF002D59A7 /* SetDetailsController.xib */; };
 		3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */; };
 		3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18461F7B53DC00ADC124 /* CommonCtr.m */; };
 		3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD183C1F7B53DC00ADC124 /* AddressCell.m */; };
@@ -57,6 +66,20 @@
 
 /* Begin PBXFileReference section */
 		05E19051C8CF18A421A0503A /* Pods-GuoAnGSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoAnGSApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp.release.xcconfig"; sourceTree = "<group>"; };
+		3D7CCCFC1F948BB0002D59A7 /* HelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		3D7CCCFF1F949233002D59A7 /* ManualInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManualInputViewController.h; sourceTree = "<group>"; };
+		3D7CCD001F949233002D59A7 /* ManualInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManualInputViewController.m; sourceTree = "<group>"; };
+		3D7CCD041F94931C002D59A7 /* ManualInputViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManualInputViewController.xib; sourceTree = "<group>"; };
+		3D7CCD061F9496B1002D59A7 /* BindPhoneNumberController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneNumberController.h; sourceTree = "<group>"; };
+		3D7CCD071F9496B1002D59A7 /* BindPhoneNumberController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneNumberController.m; sourceTree = "<group>"; };
+		3D7CCD091F9496CA002D59A7 /* BindPhoneNumberController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindPhoneNumberController.xib; sourceTree = "<group>"; };
+		3D7CCD0B1F949895002D59A7 /* SetPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetPasswordController.h; sourceTree = "<group>"; };
+		3D7CCD0C1F949895002D59A7 /* SetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetPasswordController.m; sourceTree = "<group>"; };
+		3D7CCD0D1F949895002D59A7 /* SetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetPasswordController.xib; sourceTree = "<group>"; };
+		3D7CCD101F9499CF002D59A7 /* SetDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetDetailsController.h; sourceTree = "<group>"; };
+		3D7CCD111F9499CF002D59A7 /* SetDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetDetailsController.m; sourceTree = "<group>"; };
+		3D7CCD121F9499CF002D59A7 /* SetDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetDetailsController.xib; sourceTree = "<group>"; };
 		3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+QREasyFrame.h"; sourceTree = "<group>"; };
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
@@ -213,6 +236,8 @@
 				3DBB210A1F8F4D7A008B1B87 /* AddressInfoModel.m */,
 				3DBB21071F8F4CDB008B1B87 /* RegVC.h */,
 				3DBB21061F8F4CDB008B1B87 /* RegVC.m */,
+				3D7CCCFC1F948BB0002D59A7 /* HelpViewController.h */,
+				3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */,
 				3DBB21031F8F4CBC008B1B87 /* ChooseAddressVC.h */,
 				3DBB21041F8F4CBC008B1B87 /* ChooseAddressVC.m */,
 				3DBB21001F8F4C6C008B1B87 /* FindVC.h */,
@@ -227,6 +252,18 @@
 				3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */,
 				3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */,
 				3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */,
+				3D7CCCFF1F949233002D59A7 /* ManualInputViewController.h */,
+				3D7CCD001F949233002D59A7 /* ManualInputViewController.m */,
+				3D7CCD0B1F949895002D59A7 /* SetPasswordController.h */,
+				3D7CCD0C1F949895002D59A7 /* SetPasswordController.m */,
+				3D7CCD0D1F949895002D59A7 /* SetPasswordController.xib */,
+				3D7CCD101F9499CF002D59A7 /* SetDetailsController.h */,
+				3D7CCD111F9499CF002D59A7 /* SetDetailsController.m */,
+				3D7CCD121F9499CF002D59A7 /* SetDetailsController.xib */,
+				3D7CCD061F9496B1002D59A7 /* BindPhoneNumberController.h */,
+				3D7CCD071F9496B1002D59A7 /* BindPhoneNumberController.m */,
+				3D7CCD091F9496CA002D59A7 /* BindPhoneNumberController.xib */,
+				3D7CCD041F94931C002D59A7 /* ManualInputViewController.xib */,
 				3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */,
 				3DB8D9F81F94583A0076B7D3 /* UIView+QREasyFrame.m */,
 			);
@@ -604,7 +641,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */,
+				3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */,
+				3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */,
 				3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */,
+				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
+				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +725,7 @@
 				3DBB21021F8F4C6C008B1B87 /* FindVC.m in Sources */,
 				3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */,
 				3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */,
+				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,
 				3DAAD2FB1F7B76D200C91E5C /* AddressViewController.m in Sources */,
 				3DAAD2FC1F7B76D200C91E5C /* AlertStateView.m in Sources */,
@@ -694,7 +736,10 @@
 				3DBB210E1F8F4D9C008B1B87 /* PwconCell.m in Sources */,
 				3DAAD2FF1F7B76D200C91E5C /* CustomTextField.m in Sources */,
 				3DAAD3001F7B76D200C91E5C /* HJSTKToastView.m in Sources */,
+				3D7CCD131F9499CF002D59A7 /* SetDetailsController.m in Sources */,
 				3DAAD3011F7B76D200C91E5C /* LoadReturnModel.m in Sources */,
+				3D7CCD0E1F949895002D59A7 /* SetPasswordController.m in Sources */,
+				3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */,
 				3DAAD3021F7B76D200C91E5C /* LYNetworkManager.m in Sources */,
 				3DAAD3031F7B76D200C91E5C /* PlayExceptionTip.m in Sources */,
 				3DAAD3041F7B76D200C91E5C /* ReturnModel.m in Sources */,
@@ -708,6 +753,7 @@
 				3DBB21081F8F4CDC008B1B87 /* RegVC.m in Sources */,
 				3DDD18311F7B53A400ADC124 /* main.m in Sources */,
 				3DDD18231F7B53A400ADC124 /* AppDelegate.m in Sources */,
+				3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */,
 				3DE2149A1F7B70A90076FCD6 /* ControlViewController.m in Sources */,
 				3DBB211D1F8F4E6D008B1B87 /* My_ReuseCllTableViewCell.m in Sources */,
 				3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */,
@@ -843,7 +889,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FCHGECVTXF;
-				INFOPLIST_FILE = /Users/rgx/Desktop/GuoAnGSApp/GuoAnGSApp/Other/Info.plist;
+				INFOPLIST_FILE = /Users/rgx/Desktop/GAGSAppzhengshi/GuoAnGSApp/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -858,7 +904,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FCHGECVTXF;
-				INFOPLIST_FILE = /Users/rgx/Desktop/GuoAnGSApp/GuoAnGSApp/Other/Info.plist;
+				INFOPLIST_FILE = /Users/rgx/Desktop/GAGSAppzhengshi/GuoAnGSApp/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
