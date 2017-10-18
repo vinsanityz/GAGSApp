@@ -8,12 +8,12 @@
 
 #import "LoadOnVC.h"
 
-#import "FindVC.h"  //忘记密码
+//#import "FindVC.h"  //忘记密码
 //#import "JPUSHService.h"
 
 #import "MyTabbarViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
-#import "ChooseAddressVC.h"
+//#import "ChooseAddressVC.h"
 #import "QRScanViewController.h"
 
 @interface LoadOnVC ()<UITextFieldDelegate>
@@ -107,9 +107,9 @@
 
 #pragma mark - <忘记密码Btn响应方法>
 - (void)forgetPwdAction{
-    FindVC *find = [[FindVC alloc] init];
-    find.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:find animated:YES];
+//    FindVC *find = [[FindVC alloc] init];
+//    find.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:find animated:YES];
 }
 
 

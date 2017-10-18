@@ -32,11 +32,5 @@
 		<key>title</key>
 		<string>应用中心</string>
 	</dict>
-	<dict>
-		<key>name</key>
-		<string>My</string>
-		<key>title</key>
-		<string>我的</string>
-	</dict>
 </array>
 </plist>
