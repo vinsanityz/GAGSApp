@@ -11,6 +11,12 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoadOnVC.h"
 
+
+//Lite版本
+
+//Full版本
+#import <Hyphenate/Hyphenate.h>
+#import <EaseUI.h>
 @interface AppDelegate ()
 
 @end
@@ -19,6 +25,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //huanxinsdk
+    //AppKey:注册的AppKey，详细见下面注释。
+    //apnsCertName:推送证书名（不需要加后缀），详细见下面注释。
+    EMOptions *options = [EMOptions optionsWithAppkey:@"1105171018178041#zhaochengzhudemobyga"];
+//    options.apnsCertName = @"istore_dev";
+    [[EMClient sharedClient] initializeSDKWithOptions:options];
     
     /* 打开调试日志 */
     [[UMSocialManager defaultManager] openLog:YES];
@@ -38,6 +50,21 @@
     
     [self.window makeKeyAndVisible];
     NSLog(@"123");
+    EMError *error = [[EMClient sharedClient] registerWithUsername:@"zh123123aoc123ddaahengzhu" password:@"1"];
+    if (error==nil) {
+        NSLog(@"注册成功");
+    }
+    [[EMClient sharedClient] loginWithUsername:@"zh123123aoc123ddaahengzhu"
+                                      password:@"1"
+                                    completion:^(NSString *aUsername, EMError *aError) {
+                                        if (!aError) {
+                                            NSLog(@"登录成功");
+                                        } else {
+                                            NSLog(@"登录失败");
+                                        }
+                                    }];
+
+    
     return YES;
 }
 
@@ -106,15 +133,20 @@
 }
 
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
 
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+// APP进入后台
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
 }
+
+// APP将要从后台返回
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
+}
+
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

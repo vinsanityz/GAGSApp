@@ -47,6 +47,12 @@
 		3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */; };
 		3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */; };
 		3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F81F94583A0076B7D3 /* UIView+QREasyFrame.m */; };
+		3DB93C6B1F974CC700AA90B2 /* ChatGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C6A1F974CC700AA90B2 /* ChatGroupController.m */; };
+		3DB93C6E1F98836700AA90B2 /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C6D1F98836700AA90B2 /* HeaderCell.m */; };
+		3DB93C711F98859000AA90B2 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C6F1F98858F00AA90B2 /* CommonTableViewCell.m */; };
+		3DB93C741F99964C00AA90B2 /* FamilyMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C731F99964C00AA90B2 /* FamilyMembersController.m */; };
+		3DB93C781F999D1200AA90B2 /* MembersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C761F999D1200AA90B2 /* MembersTableViewCell.m */; };
+		3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB93C771F999D1200AA90B2 /* MembersTableViewCell.xib */; };
 		3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18411F7B53DC00ADC124 /* AlertStateView.xib */; };
 		3DBB21261F8F53DB008B1B87 /* LoadOnVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FC1F8F4B99008B1B87 /* LoadOnVC.xib */; };
 		3DDD18231F7B53A400ADC124 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18221F7B53A400ADC124 /* AppDelegate.m */; };
@@ -59,6 +65,7 @@
 		3DE214A01F7B70C60076FCD6 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2149F1F7B70C60076FCD6 /* MovieViewController.m */; };
 		3DE214A31F7B70D10076FCD6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A21F7B70D10076FCD6 /* MyViewController.m */; };
 		3DE214A61F7B70DE0076FCD6 /* STBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A51F7B70DE0076FCD6 /* STBViewController.m */; };
+		3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */; };
 		6DCAEF00024144BF370DDF5B /* libPods-GuoAnGSApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +107,17 @@
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
 		3DB8D9F81F94583A0076B7D3 /* UIView+QREasyFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+QREasyFrame.m"; sourceTree = "<group>"; };
+		3DB93C691F974CC700AA90B2 /* ChatGroupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatGroupController.h; sourceTree = "<group>"; };
+		3DB93C6A1F974CC700AA90B2 /* ChatGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatGroupController.m; sourceTree = "<group>"; };
+		3DB93C6C1F98836700AA90B2 /* HeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
+		3DB93C6D1F98836700AA90B2 /* HeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
+		3DB93C6F1F98858F00AA90B2 /* CommonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
+		3DB93C701F98859000AA90B2 /* CommonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
+		3DB93C721F99964C00AA90B2 /* FamilyMembersController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyMembersController.h; sourceTree = "<group>"; };
+		3DB93C731F99964C00AA90B2 /* FamilyMembersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyMembersController.m; sourceTree = "<group>"; };
+		3DB93C751F999D1200AA90B2 /* MembersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersTableViewCell.h; sourceTree = "<group>"; };
+		3DB93C761F999D1200AA90B2 /* MembersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersTableViewCell.m; sourceTree = "<group>"; };
+		3DB93C771F999D1200AA90B2 /* MembersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembersTableViewCell.xib; sourceTree = "<group>"; };
 		3DBB20FC1F8F4B99008B1B87 /* LoadOnVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadOnVC.xib; sourceTree = "<group>"; };
 		3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadOnVC.m; sourceTree = "<group>"; };
 		3DBB20FE1F8F4B9A008B1B87 /* LoadOnVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadOnVC.h; sourceTree = "<group>"; };
@@ -164,6 +182,8 @@
 		3DE214AE1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		3DE214AF1F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		3DEFAFF11F97196900D7DC5D /* zczdemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zczdemoViewController.h; sourceTree = "<group>"; };
+		3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zczdemoViewController.m; sourceTree = "<group>"; };
 		DD23D2332ED4C04FEE58E36C /* Pods-GuoAnGSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoAnGSApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuoAnGSApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -197,6 +217,8 @@
 				3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */,
 				3DBB20FE1F8F4B9A008B1B87 /* LoadOnVC.h */,
 				3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */,
+				3DEFAFF11F97196900D7DC5D /* zczdemoViewController.h */,
+				3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */,
 				3DBB20FC1F8F4B99008B1B87 /* LoadOnVC.xib */,
 				3D7CCCFF1F949233002D59A7 /* ManualInputViewController.h */,
 				3D7CCD001F949233002D59A7 /* ManualInputViewController.m */,
@@ -507,6 +529,10 @@
 			children = (
 				3DE214A11F7B70D10076FCD6 /* MyViewController.h */,
 				3DE214A21F7B70D10076FCD6 /* MyViewController.m */,
+				3DB93C691F974CC700AA90B2 /* ChatGroupController.h */,
+				3DB93C6A1F974CC700AA90B2 /* ChatGroupController.m */,
+				3DB93C721F99964C00AA90B2 /* FamilyMembersController.h */,
+				3DB93C731F99964C00AA90B2 /* FamilyMembersController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -521,6 +547,13 @@
 		3DE2148E1F7B60D60076FCD6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3DB93C701F98859000AA90B2 /* CommonTableViewCell.h */,
+				3DB93C6F1F98858F00AA90B2 /* CommonTableViewCell.m */,
+				3DB93C6C1F98836700AA90B2 /* HeaderCell.h */,
+				3DB93C6D1F98836700AA90B2 /* HeaderCell.m */,
+				3DB93C751F999D1200AA90B2 /* MembersTableViewCell.h */,
+				3DB93C761F999D1200AA90B2 /* MembersTableViewCell.m */,
+				3DB93C771F999D1200AA90B2 /* MembersTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -685,6 +718,7 @@
 				3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */,
 				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
+				3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +732,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp-resources.sh",
+				"${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina/SinaSDK/WeiboSDK.bundle",
@@ -718,9 +755,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp-frameworks.sh",
+				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.4r1/HyphenateFullSDK/Hyphenate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyphenate.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -765,8 +805,10 @@
 				3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */,
 				3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */,
+				3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */,
 				3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */,
 				3D6CB2F81F959ABB00B326FC /* EPGRightTableViewCell.m in Sources */,
+				3DB93C6E1F98836700AA90B2 /* HeaderCell.m in Sources */,
 				3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */,
 				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,
@@ -781,6 +823,7 @@
 				3DAAD3011F7B76D200C91E5C /* LoadReturnModel.m in Sources */,
 				3D7CCD0E1F949895002D59A7 /* SetPasswordController.m in Sources */,
 				3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */,
+				3DB93C711F98859000AA90B2 /* CommonTableViewCell.m in Sources */,
 				3DAAD3021F7B76D200C91E5C /* LYNetworkManager.m in Sources */,
 				3DAAD3031F7B76D200C91E5C /* PlayExceptionTip.m in Sources */,
 				3DAAD3041F7B76D200C91E5C /* ReturnModel.m in Sources */,
@@ -790,10 +833,13 @@
 				3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */,
 				3DE2149D1F7B70B80076FCD6 /* EPGViewController.m in Sources */,
 				3DE214A01F7B70C60076FCD6 /* MovieViewController.m in Sources */,
+				3DB93C741F99964C00AA90B2 /* FamilyMembersController.m in Sources */,
 				3DDD18311F7B53A400ADC124 /* main.m in Sources */,
 				3DDD18231F7B53A400ADC124 /* AppDelegate.m in Sources */,
+				3DB93C6B1F974CC700AA90B2 /* ChatGroupController.m in Sources */,
 				3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */,
 				3DE2149A1F7B70A90076FCD6 /* ControlViewController.m in Sources */,
+				3DB93C781F999D1200AA90B2 /* MembersTableViewCell.m in Sources */,
 				3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */,
 				3DE214A61F7B70DE0076FCD6 /* STBViewController.m in Sources */,
 				3DE214A31F7B70D10076FCD6 /* MyViewController.m in Sources */,

@@ -7,6 +7,13 @@ pod 'MBProgressHUD', '~> 0.9.2'
 pod 'AutoCoding', '~> 2.2.2'
 
 
+#Lite版本
+
+#Full版本
+pod 'Hyphenate'
+pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+
+
  # U-Share SDK UI模块（分享面板，建议添加）
     pod ‘UMengUShare/UI’
 

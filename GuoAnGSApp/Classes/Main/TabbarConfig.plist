@@ -28,9 +28,9 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Center</string>
+		<string>My</string>
 		<key>title</key>
-		<string>应用中心</string>
+		<string>我的</string>
 	</dict>
 </array>
 </plist>

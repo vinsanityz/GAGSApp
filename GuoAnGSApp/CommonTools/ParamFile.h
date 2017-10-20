@@ -443,7 +443,7 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 #define MY_SectionArrayFirst  @[@"消费记录",@"预约记录",@"收藏记录",@"播放记录"]
 //#define MY_SectionArraySecond @[@"离线缓存",@"城市选择",@"关于",@"设置"]
 //#define MY_SectionArraySecond @[@"城市选择",@"关于",@"设置"]
-#define MY_SectionArraySecond @[@"关于",@"设置"]
+#define MY_SectionArraySecond @[@"家庭成员",@"历史记录",@"我的预约",@"我的收藏",@"我的设备",@"产品订购",@"设置",@"账号绑定"]
 
 #define MY_PictureNameFirst  @[@"my_con",@"my_orders",@"my_collection",@"my_play"]
 //#define MY_PictureNameSecond @[@"my_cache",@"my_city",@"my_about",@"my_set"]

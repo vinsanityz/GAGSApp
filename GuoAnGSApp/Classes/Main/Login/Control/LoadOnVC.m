@@ -16,6 +16,15 @@
 //#import "ChooseAddressVC.h"
 #import "QRScanViewController.h"
 
+//Lite版本
+
+//Full版本
+#import <Hyphenate/Hyphenate.h>
+//#import <EaseUI.h>
+#import "zczdemoViewController.h"
+
+
+
 @interface LoadOnVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *accountView;
@@ -110,6 +119,8 @@
 //    FindVC *find = [[FindVC alloc] init];
 //    find.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:find animated:YES];
+    zczdemoViewController * zcz = [[zczdemoViewController alloc]initWithConversationChatter:@"8001" conversationType:EMConversationTypeChat];
+    [self.navigationController pushViewController:zcz animated:YES];
 }
 
 
@@ -278,10 +289,10 @@
 }
 
 - (IBAction)registButtonClick:(UIButton *)sender {
-//     ChooseAddressVC *cityVc = [[ChooseAddressVC alloc]init];
-//    [self.navigationController pushViewController:cityVc animated:YES];
+
     QRScanViewController * scanVC = [[QRScanViewController alloc]init];
     [self.navigationController pushViewController:scanVC animated:YES];
+    
 }
 
 
