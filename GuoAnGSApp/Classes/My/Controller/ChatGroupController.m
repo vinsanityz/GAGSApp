@@ -8,47 +8,46 @@
 
 #import "ChatGroupController.h"
 
-@interface ChatGroupController ()
+#import "FamilyMembersController.h"
 
+@interface ChatGroupController ()
+@property(nonatomic,strong)EMGroup *group;
 @end
 
 @implementation ChatGroupController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //获取成员数组
+    __weak typeof(self) weakSelf = self;
+    [[EMClient sharedClient].groupManager getGroupSpecificationFromServerWithId:@"30320499949569" completion:^(EMGroup *aGroup, EMError *aError) {
+        weakSelf.group = aGroup;
+        self.navigationItem.title = [NSString stringWithFormat:@"家庭成员(%ld)",1];
+        if (aError) {
+            NSLog(@"error-----%@",aError.errorDescription);
+        }
+    }];
+        
+    
+    
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"testBtn" forState:UIControlStateNormal];
+    [btn setTitle:@"成员" forState:UIControlStateNormal];
     
     [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     btn.frame = CGRectMake(0, 0, 80, 80);
-    [self.view addSubview:btn];
+    
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(void)btnClick:(UIButton *)btn
 {
-    ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
-//   self.hidesBottomBarWhenPushed = YES;
-    chat.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:chat animated:YES];
-  
-    
-    
+    FamilyMembersController * familyVC = [[FamilyMembersController alloc]init];
+    familyVC.hidesBottomBarWhenPushed = YES;
+    familyVC.dataArray = @[self.group.owner];
+    [self.navigationController pushViewController:familyVC animated:YES];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

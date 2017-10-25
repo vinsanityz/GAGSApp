@@ -1,5 +1,5 @@
 //
-//  FamilyMembersController.h
+//  SettingTableViewController.h
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/10/20.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FamilyMembersController : UIViewController
-@property(nonatomic,strong)NSArray * dataArray;
+@interface SettingTableViewController : UITableViewController
+
 @end

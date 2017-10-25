@@ -302,7 +302,7 @@ NSString * const ID = @"cycleCell";
     [self setupPageControl];
     [self.mainView reloadData];
     
-    if (imagePathsGroup.count) {
+    if (imagePathsGroup.count==0) {
         [self.backgroundImageView removeFromSuperview];
     } else {
         if (self.backgroundImageView && !self.backgroundImageView.superview) {

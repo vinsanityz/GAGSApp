@@ -9,6 +9,7 @@
 #import "MyViewController.h"
 #import "ChatGroupController.h"
 #import "FamilyMembersController.h"
+#import "SettingTableViewController.h"
 
 #import <Hyphenate/Hyphenate.h>
 #import <EaseUI.h>
@@ -234,19 +235,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==1) {
-//        ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
-//        //   self.hidesBottomBarWhenPushed = YES;
-//        chat.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:chat animated:YES];
-        FamilyMembersController * familyVC = [[FamilyMembersController alloc]init];
-        familyVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:familyVC animated:YES];
+        ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
+        //   self.hidesBottomBarWhenPushed = YES;
+        chat.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:chat animated:YES];
+       
     }
     if (indexPath.section==0) {
-                ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
-                //   self.hidesBottomBarWhenPushed = YES;
-                chat.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:chat animated:YES];}
+                }
+    if (indexPath.section==7) {
+        SettingTableViewController * settingVC = [[SettingTableViewController alloc]init];
+        settingVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:settingVC animated:YES];
     
+    }
 }
 @end

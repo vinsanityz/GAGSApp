@@ -50,8 +50,9 @@
 
 -(void)setUpCycleScrollView
 {
-    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 114, [UIScreen mainScreen].bounds.size.width, 240) delegate:self placeholderImage:nil];
+    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 114, [UIScreen mainScreen].bounds.size.width, 240) delegate:self placeholderImage:[UIImage imageNamed:@"loginpic"]];
     _cycleScrollView.delegate = self;
+  
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     _cycleScrollView.currentPageDotColor = [UIColor orangeColor];
     _cycleScrollView.pageDotColor = [UIColor whiteColor];
