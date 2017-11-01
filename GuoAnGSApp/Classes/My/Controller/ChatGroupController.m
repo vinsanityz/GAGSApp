@@ -16,6 +16,9 @@
 
 @implementation ChatGroupController
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //获取成员数组

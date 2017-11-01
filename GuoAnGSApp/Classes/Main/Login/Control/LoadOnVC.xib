@@ -211,7 +211,7 @@
                 <constraint firstItem="UwC-TC-Iy7" firstAttribute="top" secondItem="OaJ-LQ-Bps" secondAttribute="bottom" constant="15" id="mJg-Oc-Dhz"/>
                 <constraint firstAttribute="trailing" secondItem="2Zg-bk-TZw" secondAttribute="trailing" id="xFG-Ml-blG"/>
             </constraints>
-            <point key="canvasLocation" x="395.5" y="238.5"/>
+            <point key="canvasLocation" x="48" y="166"/>
         </view>
     </objects>
     <resources>

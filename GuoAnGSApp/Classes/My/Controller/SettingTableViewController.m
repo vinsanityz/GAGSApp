@@ -10,17 +10,29 @@
 #import "SettingTableViewController.h"
 #import "ParamFile.h"
 
-@interface SettingTableViewController ()
-
+@interface SettingTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView * tableView;
 @end
 
 @implementation SettingTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height)];
+    self.tableView = tableView;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc]init];
     self.tableView.backgroundColor = [UIColor grayColor];
     self.tableView.scrollEnabled = NO;
+    [self.view addSubview:self.tableView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     
 }
 

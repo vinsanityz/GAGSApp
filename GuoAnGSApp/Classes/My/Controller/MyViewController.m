@@ -11,13 +11,12 @@
 #import "FamilyMembersController.h"
 #import "SettingTableViewController.h"
 
-#import <Hyphenate/Hyphenate.h>
+#import <Hyphenate/Hyphenate.h>//及时通讯
 #import <EaseUI.h>
 
 #import "CommonTableViewCell.h"
 #import "HeaderCell.h"
-@interface MyViewController ()<EMGroupManagerDelegate,UITableViewDataSource,UITableViewDelegate>
-
+@interface MyViewController ()<EMGroupManagerDelegate,EMClientDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -27,57 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[EMClient sharedClient].groupManager addDelegate:self delegateQueue:nil];
-    
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"talk" forState:UIControlStateNormal];
-    
-    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    btn.frame = CGRectMake(100, 100, 80, 80);
-    [self.view addSubview:btn];
-    [btn addTarget:self action:@selector(btnClick1:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
-    
+//    [[EMClient sharedClient].groupManager addDelegate:self delegateQueue:nil];
+//    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
     self.showLeft = NO;
-    
+    //设置主TableVIew
     [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[HeaderCell class] forCellReuseIdentifier:@"cellHeader"];
-    [self.tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"cell"];
-    
+    //监听颜色与字体的改变
+    [self addObserverForFontAndColor];
+}
+
+-(void)addObserverForFontAndColor
+{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorPersonChange) name:ColorNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChangeTextColorActionTwo:) name:FontNoti object:nil];
 }
--(void)btnClick1:(UIButton *)btn
-{
-//    EMError *error = nil;
-//    EMGroupOptions *setting = [[EMGroupOptions alloc] init];
-//    setting.maxUsersCount = 500;
-//    setting.style = EMGroupStylePublicOpenJoin;// 创建不同类型的群组，这里需要才传入不同的类型
-//    EMGroup *group = [[EMClient sharedClient].groupManager createGroupWithSubject:@"群组名称" description:@"群组描述" invitees:nil message:@"邀请您加入群组" setting:setting error:&error];
-//    if(!error){
-//        //30320499949569
-//        NSLog(@"创建成功 -- %@",group);
-//    }
-//    NSLog(@"%@",group.groupId);
-    ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
-    [[EMClient sharedClient].groupManager applyJoinPublicGroup:@"30320499949569" message:@"iwantin" error:nil];
-    
-    EMError *error = nil;
-    EMGroup *group = [[EMClient sharedClient].groupManager getGroupSpecificationFromServerWithId:@"30320499949569" error:&error];
-    NSLog(@"%@",group.owner);
-    
-    [self.navigationController pushViewController:chat animated:YES];
-}
-
-
-
-
-
-
-
 
 -(UITableView *)tableView {
     if (!_tableView) {
@@ -89,44 +51,36 @@
         _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
         //隐藏竖直方向的滑动条
         _tableView.showsVerticalScrollIndicator = NO;
+        [self.tableView registerClass:[HeaderCell class] forCellReuseIdentifier:@"cellHeader"];
+        [self.tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableView;
 }
-
-
-
-
-
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 
 - (void)handleChangeTextColorActionTwo:(NSNotificationCenter *)notification {
     [self.tableView reloadData];
 }
 
-
 -(void)colorPersonChange{
     [self.tableView reloadData];
     self.tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
-    
 }
 
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
-}
-
+//-(void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.tableView reloadData];
+//}
 
 #pragma mark - UITableViewDataSource -
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-        return 1;
-   
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{    
+    return 1;
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [MY_SectionArraySecond count]+1;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
@@ -161,13 +115,7 @@
     }
 }
 
-
 #pragma mark - UITableViewDelegate -
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [MY_SectionArraySecond count]+1;
-}
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return 80;
@@ -176,36 +124,6 @@
     }
 }
 
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == 0) {
-//        MessageVC *message = [[MessageVC alloc] init];
-//        message.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:message animated:YES];
-//    }else{
-//        switch (indexPath.row) {
-//            case 0:
-//            {
-//                AboutVC *about = [[AboutVC alloc] init];
-//                about.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:about animated:YES];
-//                break;
-//            }
-//            case 1:
-//            {
-//                SetVC *set = [[SetVC alloc] init];
-//                set.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:set animated:YES];
-//                break;
-//            }
-//            default:
-//                break;
-//        }
-//    }
-//}
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 1.0;
@@ -213,18 +131,14 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView * vi = [[UIView alloc]init];
-    return vi;
+    UIView * view = [[UIView alloc]init];
+    return view;
 }
-
-
-
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 1.0;
 }
-
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
@@ -235,19 +149,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==1) {
+        //根据房间号初始化聊天控制器
         ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
         //   self.hidesBottomBarWhenPushed = YES;
         chat.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:chat animated:YES];
-       
     }
-    if (indexPath.section==0) {
-                }
     if (indexPath.section==7) {
         SettingTableViewController * settingVC = [[SettingTableViewController alloc]init];
         settingVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:settingVC animated:YES];
-    
     }
 }
+
 @end

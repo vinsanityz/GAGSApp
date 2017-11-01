@@ -7,23 +7,10 @@
 //
 
 #import "LoadOnVC.h"
-
-//#import "FindVC.h"  //忘记密码
 //#import "JPUSHService.h"
-
 #import "MyTabbarViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
-//#import "ChooseAddressVC.h"
-#import "QRScanViewController.h"
-
-//Lite版本
-
-//Full版本
-#import <Hyphenate/Hyphenate.h>
-//#import <EaseUI.h>
-#import "zczdemoViewController.h"
-
-
+#import "QRScanViewController.h" //二维码
 
 @interface LoadOnVC ()<UITextFieldDelegate>
 
@@ -40,27 +27,24 @@
 
 @end
 
-
 @implementation LoadOnVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleMessage = @"登录";
     self.showLeft = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self configLoadVCUI];
     //轻点view取消所有编辑
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignLoadOnTextFieldAction)];
     [self.view addGestureRecognizer:tap];
 }
 
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
 }
-
 
 #pragma mark - <重写子类返回>
 //注：重写子类返回相应方法，返回到注册，登录按钮界面
@@ -73,56 +57,55 @@
 -(void)configLoadVCUI
 {
     [_backSuperView removeFromSuperview];
-    self.accountView.backgroundColor = cellColor;
-    self.pwdView.backgroundColor = cellColor;
+    
+    //登陆Label与点击手势
     self.loadBtn.backgroundColor = HIGHLIGHTED_COLOR;
     self.loadBtn.textColor= WHTIE_NORMAL;
     self.loadBtn.font = FontSize(normal);
     self.loadBtn.userInteractionEnabled = YES;
-    //登陆点击手势
     UITapGestureRecognizer *loadTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loadBtnAction)];
     [self.loadBtn addGestureRecognizer:loadTap];
-    //忘记按钮与点击手势
+   
+    //忘记Label与点击手势
     self.forgetButton.textColor = mainColor;
     self.forgetButton.backgroundColor = bgColor;
     self.forgetButton.userInteractionEnabled = YES;
     UITapGestureRecognizer *fogetTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forgetPwdAction)];
     [self.forgetButton addGestureRecognizer:fogetTap];
-    //用户名输入框
+   
+    //账号相关的View
+    self.accountLabel.textColor = mainColor;
+    self.accountLabel.font = FontSize(normal);
+    self.accountView.backgroundColor = cellColor;
+    //账号输入框
     _userAccountTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:Tip_AccountWrite attributes:@{NSForegroundColorAttributeName:secColor}];
     _userAccountTextField.textColor = mainColor;
     _userAccountTextField.font = FontSize(normal);
     _userAccountTextField.delegate = self;
+  
+    //密码相关的View
+    self.pwdLable.textColor = mainColor;
+    self.pwdLable.font = FontSize(normal);
+    self.pwdView.backgroundColor = cellColor;
     //密码输入框
     _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:Tip_PasswordLoadWrite attributes:@{NSForegroundColorAttributeName:secColor}];
     _passwordTextField.textColor = mainColor;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.font = FontSize(normal);
     _passwordTextField.delegate = self;
-    
-    self.accountLabel.textColor = mainColor;
-    self.accountLabel.font = FontSize(normal);
-    self.pwdLable.textColor = mainColor;
-    self.pwdLable.font = FontSize(normal);
 }
 
-
-#pragma mark - <轻拍响应方法>
+#pragma mark - <点击VIew退出所有编辑状态>
 -(void)resignLoadOnTextFieldAction
 {
     [self.view endEditing:YES];
 }
 
-
-#pragma mark - <忘记密码Btn响应方法>
-- (void)forgetPwdAction{
-//    FindVC *find = [[FindVC alloc] init];
-//    find.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:find animated:YES];
-    zczdemoViewController * zcz = [[zczdemoViewController alloc]initWithConversationChatter:@"8001" conversationType:EMConversationTypeChat];
-    [self.navigationController pushViewController:zcz animated:YES];
+#pragma mark - <忘记密码Label响应方法>
+- (void)forgetPwdAction
+{
+    NSLog(@"点击了重置密码");
 }
-
 
 #pragma mark - <立即登录Btn响应方法>
 - (void)loadBtnAction {
@@ -145,10 +128,8 @@
 //    }
  }
 
-
 #pragma mark - <登录网络请求>
--(void)requestLoadOnNetWorkingPhoneNoOrUserName:(NSString *)phoneNoOrUserName
-                                    password:(NSString *)password {
+-(void)requestLoadOnNetWorkingPhoneNoOrUserName:(NSString *)phoneNoOrUserName password:(NSString *)password {
     [self showMBProgressHud];
     NSDictionary *param;
     if ([self isPureInt:self.userAccountTextField.text]) {
@@ -252,7 +233,6 @@
     return YES;
 }
 
-
 #pragma mark - <第三方登陆>
 - (IBAction)quickLoginButtonClick:(UIButton *)btn {
     UMSocialPlatformType currentPlatformType;
@@ -288,12 +268,10 @@
     }];
 }
 
-- (IBAction)registButtonClick:(UIButton *)sender {
-
+- (IBAction)registButtonClick:(UIButton *)sender
+{
     QRScanViewController * scanVC = [[QRScanViewController alloc]init];
     [self.navigationController pushViewController:scanVC animated:YES];
-    
 }
-
 
 @end
