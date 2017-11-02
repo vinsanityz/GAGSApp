@@ -14,6 +14,14 @@
     return [[[NSBundle mainBundle]loadNibNamed:@"STBButtonView" owner:nil options:nil] lastObject] ;
     
 }
+- (IBAction)subBtnClick:(UIButton *)btn
+{
+    if ([self.delegate respondsToSelector:@selector(didClickSTBButtonViewBtn:)]&&self.delegate!=nil) {
+        
+        [self.delegate didClickSTBButtonViewBtn:btn];
+    }
+    
+}
 
 
 @end

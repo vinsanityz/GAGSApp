@@ -7,16 +7,15 @@
 //
 
 #import "MyViewController.h"
-#import "ChatGroupController.h"
+
 #import "FamilyMembersController.h"
 #import "SettingTableViewController.h"
 
-#import <Hyphenate/Hyphenate.h>//及时通讯
-#import <EaseUI.h>
+
 
 #import "CommonTableViewCell.h"
 #import "HeaderCell.h"
-@interface MyViewController ()<EMGroupManagerDelegate,EMClientDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface MyViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -149,11 +148,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==1) {
-        //根据房间号初始化聊天控制器
-        ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
-        //   self.hidesBottomBarWhenPushed = YES;
-        chat.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:chat animated:YES];
+     
+        FamilyMembersController * familyVC = [[FamilyMembersController alloc]init];
+        familyVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:familyVC animated:YES];
     }
     if (indexPath.section==7) {
         SettingTableViewController * settingVC = [[SettingTableViewController alloc]init];

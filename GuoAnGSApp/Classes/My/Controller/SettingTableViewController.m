@@ -32,24 +32,21 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return DataArray.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 1;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
     return 15;
 }
 
@@ -78,11 +75,9 @@
     }
     cell.accessoryView = swi;
     [swi addTarget:self action:@selector(switchBtnClick:) forControlEvents:UIControlEventValueChanged];
-    
     swi.tag = indexPath.section;
     return cell;
 }
-
 
 -(void)switchBtnClick:(UISwitch *)swi
 {
@@ -105,8 +100,6 @@
             break;
     }
     kPermanent_SET_BOOL(!swi.isOn,keyStr);
-    
 }
-
 
 @end

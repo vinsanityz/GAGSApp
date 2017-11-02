@@ -16,16 +16,13 @@
 
 @implementation ChatGroupController
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     //获取成员数组
     __weak typeof(self) weakSelf = self;
     [[EMClient sharedClient].groupManager getGroupSpecificationFromServerWithId:@"30320499949569" completion:^(EMGroup *aGroup, EMError *aError) {
         weakSelf.group = aGroup;
-        self.navigationItem.title = [NSString stringWithFormat:@"家庭成员(%ld)",1];
+        self.navigationItem.title = [NSString stringWithFormat:@"家庭成员(%d)",1];
         if (aError) {
             NSLog(@"error-----%@",aError.errorDescription);
         }

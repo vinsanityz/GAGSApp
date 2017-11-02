@@ -6,6 +6,8 @@
 //  Copyright © 2017年 zcz. All rights reserved.
 //
 
+
+
 #import "AppDelegate.h"
 #import "MyTabbarViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
@@ -47,6 +49,11 @@
     LoadOnVC * login = [[LoadOnVC alloc]init];
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:login];
     self.window.rootViewController = nav;
+    
+    
+
+    
+    
     
     [self.window makeKeyAndVisible];
     NSLog(@"123");

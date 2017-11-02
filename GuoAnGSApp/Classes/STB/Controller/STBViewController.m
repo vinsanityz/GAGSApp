@@ -9,11 +9,14 @@
 #import "STBViewController.h"
 #import "STBTopView.h"
 #import "STBButtonView.h"
+#import "WeiShareController.h"
 
+#import <Hyphenate/Hyphenate.h>//及时通讯
+#import "ChatGroupController.h"
 #define UIScreenWidth [UIScreen mainScreen].bounds.size.width
 #define UIScreenHeight [UIScreen mainScreen].bounds.size.height
 
-@interface STBViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface STBViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,STBButtonViewDelegate>
 @property(nonatomic,weak)UIScrollView * scrolView;
 @property(nonatomic,weak)UIView * totalView;
 @property(nonatomic,strong)UICollectionView * collectionView;
@@ -103,7 +106,7 @@
 }
 -(void)setUpButtonView
 {
-    UIView * ButtonView =  [STBButtonView show];
+    STBButtonView * ButtonView =  [STBButtonView show];
     [self.totalView addSubview:ButtonView];
     [ButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.totalView.mas_top).offset(280);
@@ -111,6 +114,7 @@
         make.right.equalTo(self.totalView.mas_right);
         make.height.equalTo(@150);
     }];
+    ButtonView.delegate = self;
     
 }
 
@@ -175,6 +179,23 @@
     view.backgroundColor = [UIColor redColor];
     
     return view;}
+
+#pragma mark - <STBButtonViewDelegate>
+-(void)didClickSTBButtonViewBtn:(UIButton *)btn
+{
+    if (btn.tag==1301) {
+        WeiShareController * vc = [[WeiShareController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (btn.tag==1305) {
+        //根据房间号初始化聊天控制器
+        ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
+        //   self.hidesBottomBarWhenPushed = YES;
+        chat.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:chat animated:YES];
+    }
+    
+    
+}
 
 
 @end
