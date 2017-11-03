@@ -16,6 +16,8 @@
 		3D1CFB681F9F1F4900D88608 /* STBButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CFB671F9F1F4900D88608 /* STBButtonView.m */; };
 		3D1CFB6D1F9F23C400D88608 /* STBButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1CFB6C1F9F23C400D88608 /* STBButtonView.xib */; };
 		3D2C05281F99D41100AAE921 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C05271F99D41100AAE921 /* SettingTableViewController.m */; };
+		3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C70B41FAC108B00C662F5 /* ScreenShotController.m */; };
+		3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */; };
 		3D5893651F95E64E00B2AA85 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */; };
 		3D5893661F95E64E00B2AA85 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935A1F95E61F00B2AA85 /* TAAnimatedDotView.m */; };
 		3D5893671F95E64E00B2AA85 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935C1F95E61F00B2AA85 /* TADotView.m */; };
@@ -95,6 +97,9 @@
 		3D1CFB6C1F9F23C400D88608 /* STBButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = STBButtonView.xib; sourceTree = "<group>"; };
 		3D2C05261F99D41100AAE921 /* SettingTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
 		3D2C05271F99D41100AAE921 /* SettingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		3D2C70B31FAC108B00C662F5 /* ScreenShotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShotController.h; sourceTree = "<group>"; };
+		3D2C70B41FAC108B00C662F5 /* ScreenShotController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShotController.m; sourceTree = "<group>"; };
+		3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenShotController.xib; sourceTree = "<group>"; };
 		3D5893571F95E61F00B2AA85 /* TAAbstractDotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		3D5893591F95E61F00B2AA85 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -617,6 +622,9 @@
 				3DB93C6A1F974CC700AA90B2 /* ChatGroupController.m */,
 				3D0E5C4A1FAAFA7E00CC8828 /* ChoosePhotoController.h */,
 				3D0E5C4B1FAAFA7E00CC8828 /* ChoosePhotoController.m */,
+				3D2C70B31FAC108B00C662F5 /* ScreenShotController.h */,
+				3D2C70B41FAC108B00C662F5 /* ScreenShotController.m */,
+				3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -761,6 +769,7 @@
 				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
 				3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */,
+				3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +786,7 @@
 				"${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina/SinaSDK/WeiboSDK.bundle",
@@ -845,6 +855,7 @@
 				3D1CFB601F9EEA1600D88608 /* GroupDetailsTableViewController.m in Sources */,
 				3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */,
 				3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */,
+				3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */,
 				3D0E5C481FAAC22400CC8828 /* WeiShareController.m in Sources */,
 				3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */,
 				3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */,

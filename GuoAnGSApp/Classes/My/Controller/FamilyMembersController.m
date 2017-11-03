@@ -12,6 +12,7 @@
 
 @interface FamilyMembersController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,weak)UITableView * membersTableView;
+@property(nonatomic,weak)UIView *tipsView ;
 @end
 
 @implementation FamilyMembersController
@@ -24,6 +25,15 @@
 }
 -(void)setUpTipsView
 {
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"X" forState:UIControlStateNormal];
+    
+    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    btn.frame = CGRectMake(280, 0, 80, 30);
+    
+    [btn addTarget:self action:@selector(rightBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     UIView * view = [[UIView alloc]init];
     [self.view addSubview:view];
     view.backgroundColor = [UIColor greenColor];
@@ -33,7 +43,8 @@
         make.right.equalTo(self.view.mas_right);
         make.height.equalTo(@30);
     }];
-    
+    [view addSubview:btn];
+    self.tipsView = view;
 }
 -(void)setUpMembersTableView
 {
@@ -43,7 +54,7 @@
         make.top.equalTo(self.view.mas_top).offset(64+30);
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
-        make.height.equalTo(@300);
+        make.height.equalTo(@600);
     }];
     membersTableView.delegate = self;
     membersTableView.dataSource = self;
@@ -62,5 +73,19 @@
 {
     MembersTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"memberSTableViewCell"];
     return cell;
+}
+
+-(void)rightBtnClick:(UIButton * )btn
+{
+    [self.tipsView removeFromSuperview];
+    [self.membersTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(64);
+    }];
+    
+    //更新约束
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
 }
 @end

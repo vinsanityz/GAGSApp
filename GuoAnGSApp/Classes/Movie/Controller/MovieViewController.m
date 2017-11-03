@@ -13,6 +13,7 @@
 @interface MovieViewController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,strong)SDCycleScrollView * cycleScrollView;
 @property(nonatomic,strong)UICollectionView * collectionView;
+@property(nonatomic,strong)UIScrollView * backScrollView;
 @end
 
 @implementation MovieViewController
@@ -20,10 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpHeaderView];
-    [self setUpCycleScrollView];
-    [self setUpCollectionView];
+    [self setUpBackGroundScrollVIew];
+ 
 }
 
+-(void)setUpBackGroundScrollVIew
+{
+    UIScrollView * bgScroll  = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+50,  [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-114-46)];
+    [self.view addSubview:bgScroll];
+    bgScroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 1200);
+    _backScrollView = bgScroll;
+    [self setUpCycleScrollView];
+    [self setUpCollectionView];
+    
+}
 
 -(void)setUpHeaderView
 {
@@ -50,14 +61,14 @@
 
 -(void)setUpCycleScrollView
 {
-    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 114, [UIScreen mainScreen].bounds.size.width, 240) delegate:self placeholderImage:[UIImage imageNamed:@"loginpic"]];
+    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 240) delegate:self placeholderImage:[UIImage imageNamed:@"loginpic"]];
     _cycleScrollView.delegate = self;
   
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     _cycleScrollView.currentPageDotColor = [UIColor orangeColor];
     _cycleScrollView.pageDotColor = [UIColor whiteColor];
     _cycleScrollView.titleLabelBackgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.cycleScrollView];
+    [self.backScrollView addSubview:self.cycleScrollView];
     self.cycleScrollView.autoScrollTimeInterval = 1.0;
     //注：标题数组元素个数必须和图片数组元素个数标识一致
     NSURL * url1 = @"123";
@@ -86,14 +97,15 @@
 //    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
    
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 355, [UIScreen mainScreen ].bounds.size.width, [UIScreen mainScreen ].bounds.size.height-355  ) collectionViewLayout:layout]; _collectionView.backgroundColor = [UIColor blueColor];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 250, [UIScreen mainScreen ].bounds.size.width, [UIScreen mainScreen ].bounds.size.height*2  ) collectionViewLayout:layout]; _collectionView.backgroundColor = [UIColor blueColor];
     _collectionView.dataSource = self; _collectionView.delegate = self;
     
+    _collectionView.scrollEnabled = NO;
 //    [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
    [ self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    [self.view addSubview:_collectionView];// 注册collectionView头部的view，需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"]; // 注册collectionview底部的view,需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionFooterReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"]; }
+    [self.backScrollView addSubview:_collectionView];// 注册collectionView头部的view，需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"]; // 注册collectionview底部的view,需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionFooterReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"]; }
    
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

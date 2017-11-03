@@ -7,7 +7,7 @@
 //
 
 #import "ChoosePhotoController.h"
-#import <Photos/Photos.h>
+
 
 @interface ChoosePhotoController ()
 
@@ -54,6 +54,7 @@
 ////        }
 //}
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

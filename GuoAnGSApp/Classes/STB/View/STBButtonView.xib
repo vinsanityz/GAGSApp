@@ -59,6 +59,9 @@
                     <rect key="frame" x="28" y="84" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="家庭相册"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="subBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="86y-NK-cI5"/>
                     </connections>
