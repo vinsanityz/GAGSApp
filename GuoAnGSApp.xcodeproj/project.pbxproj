@@ -36,6 +36,9 @@
 		3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD0D1F949895002D59A7 /* SetPasswordController.xib */; };
 		3D7CCD131F9499CF002D59A7 /* SetDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD111F9499CF002D59A7 /* SetDetailsController.m */; };
 		3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD121F9499CF002D59A7 /* SetDetailsController.xib */; };
+		3D8B12C21FB035DD00473D79 /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B12C11FB035DD00473D79 /* SearchController.m */; };
+		3D8B12C61FB160FE00473D79 /* SearchResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B12C41FB0424F00473D79 /* SearchResultsTableViewCell.m */; };
+		3D8B12C71FB1A6C800473D79 /* SearchResultsTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B12C31FB0424F00473D79 /* SearchResultsTableViewCell.xib */; };
 		3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */; };
 		3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18461F7B53DC00ADC124 /* CommonCtr.m */; };
 		3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD183C1F7B53DC00ADC124 /* AddressCell.m */; };
@@ -132,6 +135,11 @@
 		3D7CCD101F9499CF002D59A7 /* SetDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetDetailsController.h; sourceTree = "<group>"; };
 		3D7CCD111F9499CF002D59A7 /* SetDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetDetailsController.m; sourceTree = "<group>"; };
 		3D7CCD121F9499CF002D59A7 /* SetDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetDetailsController.xib; sourceTree = "<group>"; };
+		3D8B12C01FB035DD00473D79 /* SearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchController.h; sourceTree = "<group>"; };
+		3D8B12C11FB035DD00473D79 /* SearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
+		3D8B12C31FB0424F00473D79 /* SearchResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsTableViewCell.xib; sourceTree = "<group>"; };
+		3D8B12C41FB0424F00473D79 /* SearchResultsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewCell.m; sourceTree = "<group>"; };
+		3D8B12C51FB0424F00473D79 /* SearchResultsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewCell.h; sourceTree = "<group>"; };
 		3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+QREasyFrame.h"; sourceTree = "<group>"; };
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
@@ -525,6 +533,8 @@
 			children = (
 				3DE2149E1F7B70C60076FCD6 /* MovieViewController.h */,
 				3DE2149F1F7B70C60076FCD6 /* MovieViewController.m */,
+				3D8B12C01FB035DD00473D79 /* SearchController.h */,
+				3D8B12C11FB035DD00473D79 /* SearchController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -539,6 +549,9 @@
 		3DE2148A1F7B60D60076FCD6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3D8B12C51FB0424F00473D79 /* SearchResultsTableViewCell.h */,
+				3D8B12C41FB0424F00473D79 /* SearchResultsTableViewCell.m */,
+				3D8B12C31FB0424F00473D79 /* SearchResultsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -844,6 +857,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D8B12C71FB1A6C800473D79 /* SearchResultsTableViewCell.xib in Sources */,
+				3D8B12C61FB160FE00473D79 /* SearchResultsTableViewCell.m in Sources */,
 				3D5893651F95E64E00B2AA85 /* TAAbstractDotView.m in Sources */,
 				3D5893661F95E64E00B2AA85 /* TAAnimatedDotView.m in Sources */,
 				3D5893671F95E64E00B2AA85 /* TADotView.m in Sources */,
@@ -872,6 +887,7 @@
 				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,
 				3DAAD2FB1F7B76D200C91E5C /* AddressViewController.m in Sources */,
+				3D8B12C21FB035DD00473D79 /* SearchController.m in Sources */,
 				3DAAD2FC1F7B76D200C91E5C /* AlertStateView.m in Sources */,
 				3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */,
 				3DAAD2FD1F7B76D200C91E5C /* AreaObject.m in Sources */,

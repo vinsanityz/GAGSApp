@@ -10,6 +10,8 @@
 #import "MovieViewController.h"
 #import "SDCycleScrollView.h"
 
+#import "SearchController.h"
+
 @interface MovieViewController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,strong)SDCycleScrollView * cycleScrollView;
 @property(nonatomic,strong)UICollectionView * collectionView;
@@ -22,7 +24,18 @@
     [super viewDidLoad];
     [self setUpHeaderView];
     [self setUpBackGroundScrollVIew];
+
+    [self setTitle:@"movie"];
+    [self setNavRightWithStr:@"search"];
+    
  
+}
+-(void)btnClick:(UIButton *)btn
+{
+    SearchController * vc = [[SearchController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed =YES;
+    
 }
 
 -(void)setUpBackGroundScrollVIew
@@ -54,10 +67,7 @@
     }
     [self.view addSubview:headerV];
 }
--(void)btnClick:(UIButton *)btn
-{
-    NSLog(@"header click");
-}
+
 
 -(void)setUpCycleScrollView
 {
@@ -134,7 +144,9 @@
     view.backgroundColor = [UIColor redColor];
     
     return view;}
-    
+
+
+
    
 //点击图片回调
 //- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
