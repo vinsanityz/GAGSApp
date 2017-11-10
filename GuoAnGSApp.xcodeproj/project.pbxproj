@@ -39,6 +39,10 @@
 		3D8B12C21FB035DD00473D79 /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B12C11FB035DD00473D79 /* SearchController.m */; };
 		3D8B12C61FB160FE00473D79 /* SearchResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B12C41FB0424F00473D79 /* SearchResultsTableViewCell.m */; };
 		3D8B12C71FB1A6C800473D79 /* SearchResultsTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3D8B12C31FB0424F00473D79 /* SearchResultsTableViewCell.xib */; };
+		3DA2E5291FB3F38100BF51B3 /* HistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2E5271FB3F38100BF51B3 /* HistoryCollectionViewCell.m */; };
+		3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2E5281FB3F38100BF51B3 /* HistoryCollectionViewCell.xib */; };
+		3DA2E52E1FB4340A00BF51B3 /* HistoryCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */; };
+		3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */; };
 		3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */; };
 		3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18461F7B53DC00ADC124 /* CommonCtr.m */; };
 		3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD183C1F7B53DC00ADC124 /* AddressCell.m */; };
@@ -140,6 +144,12 @@
 		3D8B12C31FB0424F00473D79 /* SearchResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsTableViewCell.xib; sourceTree = "<group>"; };
 		3D8B12C41FB0424F00473D79 /* SearchResultsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewCell.m; sourceTree = "<group>"; };
 		3D8B12C51FB0424F00473D79 /* SearchResultsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewCell.h; sourceTree = "<group>"; };
+		3DA2E5261FB3F38100BF51B3 /* HistoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCollectionViewCell.h; sourceTree = "<group>"; };
+		3DA2E5271FB3F38100BF51B3 /* HistoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryCollectionViewCell.m; sourceTree = "<group>"; };
+		3DA2E5281FB3F38100BF51B3 /* HistoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		3DA2E52B1FB4340A00BF51B3 /* HistoryCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCollectionReusableView.h; sourceTree = "<group>"; };
+		3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryCollectionReusableView.m; sourceTree = "<group>"; };
+		3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCollectionReusableView.xib; sourceTree = "<group>"; };
 		3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+QREasyFrame.h"; sourceTree = "<group>"; };
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
@@ -552,6 +562,12 @@
 				3D8B12C51FB0424F00473D79 /* SearchResultsTableViewCell.h */,
 				3D8B12C41FB0424F00473D79 /* SearchResultsTableViewCell.m */,
 				3D8B12C31FB0424F00473D79 /* SearchResultsTableViewCell.xib */,
+				3DA2E5261FB3F38100BF51B3 /* HistoryCollectionViewCell.h */,
+				3DA2E5271FB3F38100BF51B3 /* HistoryCollectionViewCell.m */,
+				3DA2E5281FB3F38100BF51B3 /* HistoryCollectionViewCell.xib */,
+				3DA2E52B1FB4340A00BF51B3 /* HistoryCollectionReusableView.h */,
+				3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */,
+				3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -775,12 +791,14 @@
 				3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */,
 				3D0E5C491FAAC22400CC8828 /* WeiShareController.xib in Resources */,
 				3D1CFB6D1F9F23C400D88608 /* STBButtonView.xib in Resources */,
+				3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */,
 				3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */,
 				3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */,
 				3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */,
 				3D1CFB651F9F19FE00D88608 /* STBTopView.xib in Resources */,
 				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
+				3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */,
 				3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */,
 				3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */,
 			);
@@ -870,6 +888,7 @@
 				3D1CFB601F9EEA1600D88608 /* GroupDetailsTableViewController.m in Sources */,
 				3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */,
 				3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */,
+				3DA2E5291FB3F38100BF51B3 /* HistoryCollectionViewCell.m in Sources */,
 				3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */,
 				3D0E5C481FAAC22400CC8828 /* WeiShareController.m in Sources */,
 				3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */,
@@ -915,6 +934,7 @@
 				3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */,
 				3DE2149A1F7B70A90076FCD6 /* ControlViewController.m in Sources */,
 				3DB93C781F999D1200AA90B2 /* MembersTableViewCell.m in Sources */,
+				3DA2E52E1FB4340A00BF51B3 /* HistoryCollectionReusableView.m in Sources */,
 				3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */,
 				3DE214A61F7B70DE0076FCD6 /* STBViewController.m in Sources */,
 				3DE214A31F7B70D10076FCD6 /* MyViewController.m in Sources */,

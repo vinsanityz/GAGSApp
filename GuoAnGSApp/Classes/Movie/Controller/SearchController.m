@@ -8,25 +8,31 @@
 
 #import "SearchController.h"
 #import "SearchResultsTableViewCell.h"
+#import "HistoryCollectionViewCell.h"
+#import "HistoryCollectionReusableView.h"
 
 static NSString * const reuseIdentifierForSearch =@"searchResults";
-static NSString * const reuseIdentifiseForCommon = @"commonCell";
-@interface SearchController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+
+@interface SearchController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,HistoryCollectionReusableViewDelegate>
 {
     NSInteger nShowPage;
     UIButton *moreBtn;
 }
-@property (nonatomic,strong) NSMutableArray *dataSource;//数据源
+//TableView数据源
+@property (nonatomic,strong) NSMutableArray *dataSource;
 @property (nonatomic,strong) UITextField *textFieldSearch;
+//显示搜索后的数据
 @property (nonatomic, nonnull,strong) UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray *dataList;//历史记录
+//历史记录数组
+@property (nonatomic,strong) NSMutableArray *dataList;
 /** 保存搜索按钮点击状态
  *  NO :代表历史记录页
  *  YES :代表搜索页
  */
 @property (nonatomic, assign) BOOL searchBtnClicked;
+//搜索记录
 @property(nonatomic,strong)UICollectionView * collectionView;
-@property(nonatomic,weak)UIView * redview;
+
 @end
 
 @implementation SearchController
@@ -50,6 +56,8 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
+            [self.tableView registerNib:[UINib nibWithNibName:@"SearchResultsTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierForSearch];
+        self.tableView.hidden=YES;
     }
     return _tableView;
 }
@@ -57,21 +65,14 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    //设置nav上的View
     [self createSearchNaviUI];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseIdentifiseForCommon];
-    [self.tableView registerNib:[UINib nibWithNibName:@"SearchResultsTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierForSearch];
+    //添加搜索结果的TableView
     [_backSuperView addSubview:self.tableView];
-    self.tableView.hidden=YES;
-    //读取历史记录
+    //读取搜索记录数组
     [self readSearchDataList];
+    //设置搜索记录的collectionView
     [self setUpCollectionView];
-//    [self createFooter];q
-//    UIViewController * vc = [[UIViewController alloc]init];
-//    vc.view.backgroundColor = [UIColor redColor];
-//    [self addChildViewController:vc];
-//    [self.view addSubview:vc.view];
-//    self.redview = vc.view;
 }
 
 //没用
@@ -103,8 +104,6 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
     }
     //获取文件路径中的数据存放到数组中
     self.dataList = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:arrayPath]];
-   
-    //self.dataList = [self readFileFromEay:arrayPath];
     NSLog(@"%lu--%@",(unsigned long)self.dataList.count,self.dataList);
 }
 
@@ -112,13 +111,13 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
 #pragma mark - <加载更多按钮响应方法>
 -(void)handleMoreSearchBtnAction
 {
-    
     [self requestSearchNetWorking:self.textFieldSearch.text currentPage:++nShowPage];
 }
 
 #pragma mark - <导航条布局>
 -(void)createSearchNaviUI
 {
+    //返回按钮
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(15, 10, 15, 24);
     [backBtn setBackgroundImage:[UIImage imageNamed:@"返回键"] forState:UIControlStateNormal];
@@ -126,6 +125,7 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     self.navigationItem.leftBarButtonItem = backItem;
     
+    //搜索按钮
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     searchBtn.frame = CGRectMake(ScreenSizeWidth-50-15, 5, 50, 34);
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
@@ -133,7 +133,7 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
     [searchBtn addTarget:self action:@selector(handleSearchClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *searchBtnItem = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
     
-    
+    //搜索框
     self.textFieldSearch = [[UITextField alloc] initWithFrame:CGRectMake(backBtn.frame.origin.x + backBtn.frame.size.width + 15 , 5, ScreenSizeWidth-searchBtn.frame.size.width - 30-backBtn.frame.size.width-30, 34)];
     _textFieldSearch.borderStyle = UITextBorderStyleRoundedRect;
     _textFieldSearch.placeholder = @"请输入视频";
@@ -184,117 +184,68 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
 #pragma mark - <UITableViewDataSource>
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ((![self judgeIsEmptyWithString:self.textFieldSearch.text]) && (![self isBlankString:self.textFieldSearch.text])) {
         if (self.dataSource.count >= 15) {
             tableView.tableFooterView.hidden = NO;
         }
-        return self.dataSource.count;
-        
-    }else{
-        //1216 DeleteCache
-        tableView.tableFooterView.hidden = YES;
-        return self.dataList.count ;
-    }
+        return 10;
 }
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    if ((![self judgeIsEmptyWithString:self.textFieldSearch.text]) && (![self isBlankString:self.textFieldSearch.text]) ) {
         SearchResultsTableViewCell *srtvc=(SearchResultsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifierForSearch forIndexPath:indexPath];
-//        _model = self.dataSource[indexPath.row];
-//        [srtvc configSearchCellWithModel:_model];
-        cell=srtvc;
-        //1216
-        //[moreBtn setTitle:@"加载更多" forState:UIControlStateNormal];
-        
-    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifiseForCommon forIndexPath:indexPath];
-        cell.textLabel.textColor = [single.colorDic objectForKey:FONT_MAIN_COLOR];
-        cell.textLabel.font = [UIFont systemFontOfSize:normal];
-        [cell.textLabel setText:self.dataList[indexPath.row]];
-        //1216
-        //[moreBtn setTitle:@"清空记录" forState:UIControlStateNormal];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
-    return cell;
     
+    srtvc.selectionStyle = UITableViewCellSelectionStyleNone;
+    srtvc.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
+    return srtvc;
 }
-
 
 #pragma mark - <UITableViewDelegate>
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((![self judgeIsEmptyWithString:self.textFieldSearch.text]) && (![self isBlankString:self.textFieldSearch.text])) {
-        NSLog(@"number:%zd,%zd",self.dataSource.count,(long)indexPath.row);
         return SearchCellHigh;
-    }else{
-        return LiveCellHeigh;
-    }
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 60)];
-    UILabel * historylabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
-    historylabel.text = @"搜索历史";
-    historylabel.textColor = [UIColor redColor];
-    
-    [view addSubview:historylabel];
-    
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"清除历史记录" forState:UIControlStateNormal];
-    
-    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    btn.frame = CGRectMake(150, 0, 80, 60);
-    [view addSubview:btn];
-    [btn addTarget:self action:@selector(zczbtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    return view;
-}
-
--(void)zczbtnClick:(UIButton *)btn
-{
-    NSString *arrayPath = [self returnDocumentPath:@"historyArrayPath.plist"];
-    
-    [[NSMutableArray array]writeToFile:arrayPath atomically:YES];
-    self.dataList = nil;
-    [self.tableView reloadData];
-    //获取文件路径中的数据存放到数组中
-    
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{ if (self.dataList.count==0) {
-    return  0;
-}
-    return 70;
-}
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 60)];
+//    UILabel * historylabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
+//    historylabel.text = @"搜索历史";
+//    historylabel.textColor = [UIColor redColor];
+//
+//    [view addSubview:historylabel];
+//
+//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btn setTitle:@"清除历史记录" forState:UIControlStateNormal];
+//
+//    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//    [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+//    btn.frame = CGRectMake(150, 0, 80, 60);
+//    [view addSubview:btn];
+//    [btn addTarget:self action:@selector(zczbtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    return view;
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.searchBtnClicked) {
-        
-//        //进入详情播放页
-//        VideoDetailViewController *video = [[VideoDetailViewController alloc] init];
-//        _model = self.dataSource[indexPath.row];
-//        video.programIdStr = _model.programId;
-//        video.nameStr = _model.programName;
-//        video.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:video animated:YES];
-    } else {
-        
-        self.textFieldSearch.text = self.dataList[indexPath.row];
-        //        if (self.dataSource.count) {
-        //            [self.dataSource removeAllObjects];
-        //        }
-        nShowPage = 1;
-        [self requestSearchNetWorking:self.dataList[indexPath.row] currentPage:nShowPage];
-    }
+//    if (self.searchBtnClicked) {
+//
+////        //进入详情播放页
+////        VideoDetailViewController *video = [[VideoDetailViewController alloc] init];
+////        _model = self.dataSource[indexPath.row];
+////        video.programIdStr = _model.programId;
+////        video.nameStr = _model.programName;
+////        video.hidesBottomBarWhenPushed = YES;
+////        [self.navigationController pushViewController:video animated:YES];
+//    } else {
+    
+//        self.textFieldSearch.text = self.dataList[indexPath.row];
+//        //        if (self.dataSource.count) {
+//        //            [self.dataSource removeAllObjects];
+//        //        }
+//        nShowPage = 1;
+//        [self requestSearchNetWorking:self.dataList[indexPath.row] currentPage:nShowPage];
+//    }
 }
-
-
 
 #pragma mark - <根据关键字查询信息--网络请求>
 -(void)requestSearchNetWorking:(NSString *)searchKey currentPage:(NSInteger)currentPage
@@ -337,15 +288,16 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
 }
 
 #pragma mark - <监听文字更改对应的响应方法>
-//当textFiled无内容时，tableView改为显示历史记录。
+//当textFiled无内容时，改为显示历史记录。
 - (void)textFieldTextDidChanged:(NSNotification *)sender
 {
     UITextField *textField = sender.object;
     if ([self judgeIsEmptyWithString:textField.text] == YES) {
-        self.searchBtnClicked = NO;
-        [self.tableView reloadData];
+//        self.searchBtnClicked = NO;
+//        [self.tableView reloadData];
         self.collectionView.hidden =NO;
         self.tableView.hidden = YES;
+        [self.collectionView reloadData];
     }
 }
 
@@ -377,7 +329,7 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
         }
     }
     //不存在相同的，移除最后一个，把新的放在最前面
-        if (self.dataList.count == 5) {
+        if (self.dataList.count == 10) {
             [self.dataList removeObjectAtIndex:self.dataList.count - 1];
         }
         [self.dataList insertObject:self.textFieldSearch.text atIndex:0];
@@ -419,30 +371,30 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
     return NO;
 }
 
--(void)setUpCollectionView{
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+-(void)setUpCollectionView
+{
+    UICollectionViewFlowLayout *layout =
+    [[UICollectionViewFlowLayout alloc] init];
     // 定义大小
     layout.itemSize = CGSizeMake(self.view.frame.size.width/2-2, 35);
-    // 设置最小行间距
+    // 设置最小行、列间距
     layout.minimumLineSpacing = 1;
-    
-    // 设置垂直间距
-//    layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    
     layout.minimumInteritemSpacing = 1;
+    // 设置垂直间距
+    // layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
     // 设置滚动方向（默认垂直滚动）
-    //    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    
-    
+    // layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen ].bounds.size.width, [UIScreen mainScreen ].bounds.size.height ) collectionViewLayout:layout]; _collectionView.backgroundColor = [UIColor blueColor];
     
     _collectionView.dataSource = self; _collectionView.delegate = self;
     
     _collectionView.scrollEnabled = YES;
     //    [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
-    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+//    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"HistoryCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [_collectionView registerNib:[UINib nibWithNibName:@"HistoryCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"Historycell"];
     
-    [ self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+//    [[ self.collectionView registerNib:[UINib nibWithNibName:@"HistoryCollectionViewCell" bundle:nil]] forCellWithReuseIdentifier:@"Historycell"];
     [_backSuperView addSubview:_collectionView];// 注册collectionView头部的view，需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"]; // 注册collectionview底部的view,需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionFooterReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"]; }
     
 }
@@ -460,22 +412,20 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor yellowColor];
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    label.textColor = [UIColor redColor];
+    HistoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Historycell" forIndexPath:indexPath];
+
     
-    [cell.contentView addSubview:label];
+    
     if (indexPath.section==0) {
         if (indexPath.row<self.dataList.count) {
-            label.text = self.dataList[indexPath.row];
-            cell.hidden=NO;
+            cell.cellLabel.text = (NSString *)self.dataList[indexPath.item];
+            
             return cell;
         }
-        cell.hidden = YES;
+        cell.cellLabel.text=nil;
         return cell;
     }else{
-        label.text = @"kaikaixinxin";
+       cell.cellLabel.text = @"kaikaixinxin";
     }
     return cell;
 }
@@ -488,19 +438,37 @@ static NSString * const reuseIdentifiseForCommon = @"commonCell";
 //sectionHeader
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    HistoryCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+    view.delegate = self;
     if (indexPath.section==0) {
-    [btn setTitle:@"搜索历史" forState:UIControlStateNormal];
-    }else{
-    [btn setTitle:@"热门搜索" forState:UIControlStateNormal];
-    }
-    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    btn.frame = CGRectMake(0, 0, 200, 20);
-    [view addSubview:btn];
-    view.backgroundColor = [UIColor redColor];
+        view.nameLabel.text = @"历史记录";
+      
+        view.cleanButton.hidden=NO;
     
-    return view;}
+    }else{
+ view.nameLabel.text = @"热门搜索";
+        view.cleanButton.hidden=YES;
+    }
+    return view;
+    }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{ NSString * str;
+    if (indexPath.section==0&&indexPath.row<self.dataList.count) {
+         str = self.dataList[indexPath.row];
+    }else if (indexPath.section==1){
+         str = @"kaikixinxin";
+    }
+    self.textFieldSearch.text = str;
+    [self handleSearchClick];
+}
+
+
+- (void)HistoryCollectionReusableViewCleanButtonClick
+{
+        NSString *arrayPath = [self returnDocumentPath:@"historyArrayPath.plist"];
+        [[NSMutableArray array]writeToFile:arrayPath atomically:YES];
+        self.dataList = [NSMutableArray array];
+        [self.collectionView reloadData];
+}
 @end
