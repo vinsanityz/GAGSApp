@@ -8,6 +8,8 @@ pod 'AutoCoding', '~> 2.2.2'
 
 pod 'TZImagePickerController'
 
+pod 'YYText'
+
 #Lite版本
 
 #Full版本

@@ -11,9 +11,10 @@
 #import "HistoryCollectionViewCell.h"
 #import "HistoryCollectionReusableView.h"
 
+
 static NSString * const reuseIdentifierForSearch =@"searchResults";
 
-@interface SearchController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,HistoryCollectionReusableViewDelegate>
+@interface SearchController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,HistoryCollectionReusableViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     NSInteger nShowPage;
     UIButton *moreBtn;
@@ -55,6 +56,7 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        _tableView.allowsSelection = NO;
         _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
             [self.tableView registerNib:[UINib nibWithNibName:@"SearchResultsTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierForSearch];
         self.tableView.hidden=YES;
@@ -64,7 +66,7 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     //设置nav上的View
     [self createSearchNaviUI];
     //添加搜索结果的TableView
@@ -119,11 +121,22 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
 {
     //返回按钮
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(15, 10, 15, 24);
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"返回键"] forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(0, 0, 40 , 40);
+//    [backBtn setBackgroundImage:[UIImage imageNamed:@"返回键"] forState:UIControlStateNormal];
+    backBtn.backgroundColor = [UIColor greenColor];
+//    [backBtn setTitle:@"<<" forState:UIControlStateNormal];
+//    backBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     [backBtn addTarget:self action:@selector(searchBackAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    self.navigationItem.leftBarButtonItem = backItem;
+    UIView * vc = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [vc addSubview:backBtn];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    
+    space.width = -20;  //偏移距离  -向左偏移, +向右偏移
+    self.navigationItem.leftBarButtonItems = @[space, [[UIBarButtonItem alloc] initWithCustomView:vc]];
+    
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+//
+//    self.navigationItem.leftBarButtonItem = backItem;
     
     //搜索按钮
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -384,11 +397,11 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
     // layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
     // 设置滚动方向（默认垂直滚动）
     // layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen ].bounds.size.width, [UIScreen mainScreen ].bounds.size.height ) collectionViewLayout:layout]; _collectionView.backgroundColor = [UIColor blueColor];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen ].bounds.size.width, [UIScreen mainScreen ].bounds.size.height ) collectionViewLayout:layout]; _collectionView.backgroundColor = [UIColor blueColor];
     
     _collectionView.dataSource = self; _collectionView.delegate = self;
     
-    _collectionView.scrollEnabled = YES;
+    _collectionView.scrollEnabled = NO;
     //    [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
 //    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"HistoryCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
@@ -396,10 +409,9 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
     
 //    [[ self.collectionView registerNib:[UINib nibWithNibName:@"HistoryCollectionViewCell" bundle:nil]] forCellWithReuseIdentifier:@"Historycell"];
     [_backSuperView addSubview:_collectionView];// 注册collectionView头部的view，需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"]; // 注册collectionview底部的view,需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionFooterReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"]; }
-    
 }
 
-
+#pragma mark - <UICollectionViewDataSource>
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 2;
@@ -413,9 +425,6 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HistoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Historycell" forIndexPath:indexPath];
-
-    
-    
     if (indexPath.section==0) {
         if (indexPath.row<self.dataList.count) {
             cell.cellLabel.text = (NSString *)self.dataList[indexPath.item];
@@ -430,21 +439,14 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
     return cell;
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(self.view.bounds.size.width, 50);
-}
-
-//sectionHeader
+//sectionHeader的布局
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     HistoryCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:@"header" forIndexPath:indexPath];
     view.delegate = self;
     if (indexPath.section==0) {
         view.nameLabel.text = @"历史记录";
-      
         view.cleanButton.hidden=NO;
-    
     }else{
  view.nameLabel.text = @"热门搜索";
         view.cleanButton.hidden=YES;
@@ -452,18 +454,31 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
     return view;
     }
 
+#pragma mark - <UICollectionViewDelegateFlowLayout>
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(self.view.bounds.size.width, 50);
+}
+
+#pragma mark - <UICollectionViewDelegate>
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{ NSString * str;
-    if (indexPath.section==0&&indexPath.row<self.dataList.count) {
+{
+    NSString * str;
+if(indexPath.section==0&&indexPath.row<self.dataList.count)
+{
          str = self.dataList[indexPath.row];
-    }else if (indexPath.section==1){
+    }else if (indexPath.section==1)
+    {
          str = @"kaikixinxin";
+    }else
+    {
+        return;
     }
     self.textFieldSearch.text = str;
     [self handleSearchClick];
 }
 
-
+#pragma mark - <点击清除历史记录HistoryCollectionReusableViewDelegate>
 - (void)HistoryCollectionReusableViewCleanButtonClick
 {
         NSString *arrayPath = [self returnDocumentPath:@"historyArrayPath.plist"];

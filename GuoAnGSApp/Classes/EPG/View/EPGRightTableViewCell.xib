@@ -36,13 +36,19 @@
                         <rect key="frame" x="8" y="0.0" width="98" height="63"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vu8-b8-pOh" customClass="ZCZLabel">
+                        <rect key="frame" x="139" y="14" width="74" height="46"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="LabelView" destination="vu8-b8-pOh" id="FZL-xd-YLG"/>
                 <outlet property="titleLabel" destination="d2x-op-Vmu" id="KHr-Qp-Fdj"/>
             </connections>
-            <point key="canvasLocation" x="-41" y="27"/>
+            <point key="canvasLocation" x="-75" y="8.5"/>
         </tableViewCell>
     </objects>
     <resources>

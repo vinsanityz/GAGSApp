@@ -67,10 +67,67 @@
 {
     return 9;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  200;
+    
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EPGRightTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"EPGRightTableViewCell" forIndexPath:indexPath ];
+//    cell.LabelView = [ZCZLabel showWithTitle:@"adsfhsjlfhdsjklfhldsflflhahl老实交代划分了的接口放到数据库绿肥红瘦类库的方式肯定放三德科技理发师勒紧裤带发货速度接口方式了接口后来看是点击返回了说地方"];
+
+    
+    
+    cell.LabelView.font = [UIFont systemFontOfSize:13    ];
+    cell.LabelView.textColor = [UIColor redColor];
+    cell.LabelView.textAlignment = 0;
+    cell.LabelView.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.LabelView.numberOfLines = 0;
+    cell.LabelView.text = @"12hxccg？jxzh、gc时间。啊好的☺，123123煎、ace熬好多。奥术大师，多啥口，袋巴士，控件的123122hxccg？jxzh、gc时间。啊好的☺，123123煎、ace熬好多。奥术大师，多啥口，袋巴士，控件的123122hxccg？jxzh、gc时间。啊好的☺，123123煎、ace熬好多。奥术大师，多啥口，袋巴士，控件的123122hxccg？jxzh、gc时间。啊好的☺，123123煎、ace熬好多。奥术大师，多啥口，袋巴士，控件的123123";
+
+    
+    
+
+    
+    
+    NSAttributedString *text = [[NSAttributedString alloc]initWithString:cell.LabelView.text];
+    
+    NSStringDrawingOptions options = NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) options:options context:nil];
+    NSLog(@"size:%@", NSStringFromCGSize(rect.size));
+    
+    CGSize size = CGSizeMake(240, CGFLOAT_MAX);
+    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:size text:text];
+    layout.textBoundingRect; // get bounding rect
+    layout.textBoundingSize;
+    NSLog(@"size:%@", NSStringFromCGSize(layout.textBoundingSize));
+    cell.LabelView.frame =layout.textBoundingRect;
+//    NSAttributedString *st =
+    
+//    CGSize maxSize = CGSizeMake(74, MAXFLOAT);
+//    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:maxSize text:st];
+//    cell.LabelView.textLayout = layout;
+//    CGFloat introHeight = layout.textBoundingSize.height;
+//
+//    cell.LabelView.frame = CGRectMake(0, 0, maxSize.width, introHeight);
+    
+//    cell.LabelView.width = maxSize.width;
+//    cell.LabelView.frame.size. = introHeight + 50;
+//    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"skjhjkxccxvhzljkcxvh"];
+//
+//    // 2. 为文本设置属性
+//    text.yy_font = [UIFont boldSystemFontOfSize:13];
+//    text.yy_color = [UIColor blueColor];
+//    [text yy_setColor:[UIColor redColor] range:NSMakeRange(0, 4)];
+//    text.yy_lineSpacing = 10;
+//
+//    // 3. 赋值到 YYLabel 或 YYTextView
+//
+//    //    label.attributedString = text;
+//    label.attributedText = text;
+    
+    
     cell.titleLabel.text = self.str;
     return cell;
 }

@@ -18,6 +18,7 @@
 		3D2C05281F99D41100AAE921 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C05271F99D41100AAE921 /* SettingTableViewController.m */; };
 		3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C70B41FAC108B00C662F5 /* ScreenShotController.m */; };
 		3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */; };
+		3D353DD01FB56AC500B33A0B /* ZCZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D353DCF1FB56AC500B33A0B /* ZCZLabel.m */; };
 		3D5893651F95E64E00B2AA85 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */; };
 		3D5893661F95E64E00B2AA85 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935A1F95E61F00B2AA85 /* TAAnimatedDotView.m */; };
 		3D5893671F95E64E00B2AA85 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935C1F95E61F00B2AA85 /* TADotView.m */; };
@@ -107,6 +108,8 @@
 		3D2C70B31FAC108B00C662F5 /* ScreenShotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShotController.h; sourceTree = "<group>"; };
 		3D2C70B41FAC108B00C662F5 /* ScreenShotController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShotController.m; sourceTree = "<group>"; };
 		3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenShotController.xib; sourceTree = "<group>"; };
+		3D353DCE1FB56AC500B33A0B /* ZCZLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZLabel.h; sourceTree = "<group>"; };
+		3D353DCF1FB56AC500B33A0B /* ZCZLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZLabel.m; sourceTree = "<group>"; };
 		3D5893571F95E61F00B2AA85 /* TAAbstractDotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		3D5893591F95E61F00B2AA85 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				3D6CB2F51F959ABB00B326FC /* EPGRightTableViewCell.h */,
 				3D6CB2F61F959ABB00B326FC /* EPGRightTableViewCell.m */,
 				3D6CB2F71F959ABB00B326FC /* EPGRightTableViewCell.xib */,
+				3D353DCE1FB56AC500B33A0B /* ZCZLabel.h */,
+				3D353DCF1FB56AC500B33A0B /* ZCZLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -839,7 +844,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp-frameworks.sh",
-				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.4r1/HyphenateFullSDK/Hyphenate.framework",
+				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.6/HyphenateFullSDK/Hyphenate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -935,6 +940,7 @@
 				3DE2149A1F7B70A90076FCD6 /* ControlViewController.m in Sources */,
 				3DB93C781F999D1200AA90B2 /* MembersTableViewCell.m in Sources */,
 				3DA2E52E1FB4340A00BF51B3 /* HistoryCollectionReusableView.m in Sources */,
+				3D353DD01FB56AC500B33A0B /* ZCZLabel.m in Sources */,
 				3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */,
 				3DE214A61F7B70DE0076FCD6 /* STBViewController.m in Sources */,
 				3DE214A31F7B70D10076FCD6 /* MyViewController.m in Sources */,
@@ -1003,7 +1009,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1052,7 +1058,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

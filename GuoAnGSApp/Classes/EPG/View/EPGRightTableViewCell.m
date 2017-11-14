@@ -7,12 +7,15 @@
 //
 
 #import "EPGRightTableViewCell.h"
-
+#import <YYText/YYText.h>
+#import <Masonry.h>
 @implementation EPGRightTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
