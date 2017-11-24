@@ -19,7 +19,9 @@
     [super viewDidLoad];
     [self makeMyTabbar];
     
+    
 }
+
 
 //创建tabBar
 - (void) makeMyTabbar

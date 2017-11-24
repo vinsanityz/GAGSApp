@@ -12,6 +12,7 @@
 #import "MyTabbarViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoadOnVC.h"
+#import "BasicViewController.h"
 
 
 //Lite版本
@@ -44,11 +45,11 @@
     
     [self confitUShareSettings];
     
-    MyTabbarViewController * tb = [[MyTabbarViewController alloc]init];
+    BasicViewController * basicVC = [[BasicViewController alloc]init];
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     LoadOnVC * login = [[LoadOnVC alloc]init];
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:login];
-    self.window.rootViewController = nav;
+    self.window.rootViewController = basicVC;
     
     
 

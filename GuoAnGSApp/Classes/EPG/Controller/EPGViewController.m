@@ -58,9 +58,6 @@
     [self.view addSubview:tableV];
     tableV.rowHeight = 79;
     [self.rightTableView registerNib:[UINib nibWithNibName:@"EPGRightTableViewCell" bundle:nil] forCellReuseIdentifier:@"EPGRightTableViewCell"];
-    
-    
-    
 }
 
 -(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

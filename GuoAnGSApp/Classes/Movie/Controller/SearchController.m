@@ -192,8 +192,6 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
     }
 }
 
-
-
 #pragma mark - <UITableViewDataSource>
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

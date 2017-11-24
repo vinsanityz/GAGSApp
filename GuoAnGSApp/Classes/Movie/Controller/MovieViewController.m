@@ -68,7 +68,6 @@
     [self.view addSubview:headerV];
 }
 
-
 -(void)setUpCycleScrollView
 {
     self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 240) delegate:self placeholderImage:[UIImage imageNamed:@"loginpic"]];
@@ -82,57 +81,57 @@
     self.cycleScrollView.autoScrollTimeInterval = 1.0;
     //注：标题数组元素个数必须和图片数组元素个数标识一致
     NSURL * url1 = @"123";
-    
     self.cycleScrollView.imageURLStringsGroup = @[url1,url1,url1];
     self.cycleScrollView.titlesGroup = @[@"1",@"2",@"3"];
-
-    
 }
 
-
-
-
--(void)setUpCollectionView{
+-(void)setUpCollectionView
+{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 定义大小
     layout.itemSize = CGSizeMake(110    , 110);
     // 设置最小行间距
     layout.minimumLineSpacing = 1;
-    
     // 设置垂直间距
        layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-//    dlna协议了解
-    layout.minimumInteritemSpacing = 10;
+       layout.minimumInteritemSpacing = 10;
     // 设置滚动方向（默认垂直滚动）
 //    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    
-   
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 250, [UIScreen mainScreen ].bounds.size.width, [UIScreen mainScreen ].bounds.size.height*2  ) collectionViewLayout:layout]; _collectionView.backgroundColor = [UIColor blueColor];
-    _collectionView.dataSource = self; _collectionView.delegate = self;
-    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 250, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height*2)collectionViewLayout:layout];
+    _collectionView.backgroundColor = [UIColor blueColor];
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
     _collectionView.scrollEnabled = NO;
 //    [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
    [ self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.backScrollView addSubview:_collectionView];// 注册collectionView头部的view，需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"]; // 注册collectionview底部的view,需要注意的是这里的view需要继承自UICollectionReusableView [self.collectionView registerNib:[UINib nibWithNibName:@"WWCollectionFooterReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"]; }
-   
 }
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 5;
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 3;
 }
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath { UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath]; cell.backgroundColor = [UIColor yellowColor];
-    
-    return cell; }
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+   UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor yellowColor];
+    return cell;
+}
 
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(self.view.bounds.size.width, 40); }
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(self.view.bounds.size.width, 40);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
     UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:@"header" forIndexPath:indexPath];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"testBtn" forState:UIControlStateNormal];
@@ -142,11 +141,8 @@
     btn.frame = CGRectMake(0, 0, 200, 20);
     [view addSubview:btn];
     view.backgroundColor = [UIColor redColor];
-    
-    return view;}
-
-
-
+    return view;
+}
    
 //点击图片回调
 //- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index

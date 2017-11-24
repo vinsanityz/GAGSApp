@@ -8,7 +8,11 @@ pod 'AutoCoding', '~> 2.2.2'
 
 pod 'TZImagePickerController'
 
+#计算文本高度
 pod 'YYText'
+
+#图片视频处理
+pod 'GPUImage'
 
 #Lite版本
 

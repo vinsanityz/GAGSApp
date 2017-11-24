@@ -44,6 +44,12 @@
 		3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2E5281FB3F38100BF51B3 /* HistoryCollectionViewCell.xib */; };
 		3DA2E52E1FB4340A00BF51B3 /* HistoryCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */; };
 		3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */; };
+		3DA722141FC3D0DA000DD9E3 /* FiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA722121FC3D0DA000DD9E3 /* FiltersController.m */; };
+		3DA722191FC3D4AE000DD9E3 /* FilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA722171FC3D4AE000DD9E3 /* FilterCollectionViewCell.m */; };
+		3DA7221A1FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA722181FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib */; };
+		3DA7221D1FC665B2000DD9E3 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7221C1FC665B2000DD9E3 /* BasicViewController.m */; };
+		3DAA7BC21FBD76E6005FB4EE /* ProcessImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */; };
+		3DAA7BC31FBD76E6005FB4EE /* ProcessImageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */; };
 		3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */; };
 		3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18461F7B53DC00ADC124 /* CommonCtr.m */; };
 		3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD183C1F7B53DC00ADC124 /* AddressCell.m */; };
@@ -153,6 +159,16 @@
 		3DA2E52B1FB4340A00BF51B3 /* HistoryCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCollectionReusableView.h; sourceTree = "<group>"; };
 		3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryCollectionReusableView.m; sourceTree = "<group>"; };
 		3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCollectionReusableView.xib; sourceTree = "<group>"; };
+		3DA722111FC3D0DA000DD9E3 /* FiltersController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersController.h; sourceTree = "<group>"; };
+		3DA722121FC3D0DA000DD9E3 /* FiltersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersController.m; sourceTree = "<group>"; };
+		3DA722161FC3D4AE000DD9E3 /* FilterCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCollectionViewCell.h; sourceTree = "<group>"; };
+		3DA722171FC3D4AE000DD9E3 /* FilterCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCollectionViewCell.m; sourceTree = "<group>"; };
+		3DA722181FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		3DA7221B1FC665B2000DD9E3 /* BasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
+		3DA7221C1FC665B2000DD9E3 /* BasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
+		3DAA7BBF1FBD76E6005FB4EE /* ProcessImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessImageController.h; sourceTree = "<group>"; };
+		3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessImageController.m; sourceTree = "<group>"; };
+		3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProcessImageController.xib; sourceTree = "<group>"; };
 		3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+QREasyFrame.h"; sourceTree = "<group>"; };
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
@@ -368,6 +384,8 @@
 				3D5893511F95D12800B2AA85 /* Login */,
 				3DDD18211F7B53A400ADC124 /* AppDelegate.h */,
 				3DDD18221F7B53A400ADC124 /* AppDelegate.m */,
+				3DA7221B1FC665B2000DD9E3 /* BasicViewController.h */,
+				3DA7221C1FC665B2000DD9E3 /* BasicViewController.m */,
 				3DDD18381F7B53D200ADC124 /* MyTabbarViewController.h */,
 				3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */,
 				3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */,
@@ -477,6 +495,11 @@
 			children = (
 				3DE214981F7B70A90076FCD6 /* ControlViewController.h */,
 				3DE214991F7B70A90076FCD6 /* ControlViewController.m */,
+				3DAA7BBF1FBD76E6005FB4EE /* ProcessImageController.h */,
+				3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */,
+				3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */,
+				3DA722111FC3D0DA000DD9E3 /* FiltersController.h */,
+				3DA722121FC3D0DA000DD9E3 /* FiltersController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -491,6 +514,9 @@
 		3DE214821F7B60D60076FCD6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3DA722161FC3D4AE000DD9E3 /* FilterCollectionViewCell.h */,
+				3DA722171FC3D4AE000DD9E3 /* FilterCollectionViewCell.m */,
+				3DA722181FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -796,11 +822,13 @@
 				3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */,
 				3D0E5C491FAAC22400CC8828 /* WeiShareController.xib in Resources */,
 				3D1CFB6D1F9F23C400D88608 /* STBButtonView.xib in Resources */,
+				3DAA7BC31FBD76E6005FB4EE /* ProcessImageController.xib in Resources */,
 				3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */,
 				3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */,
 				3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */,
 				3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */,
 				3D1CFB651F9F19FE00D88608 /* STBTopView.xib in Resources */,
+				3DA7221A1FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib in Resources */,
 				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
 				3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */,
@@ -820,6 +848,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp-resources.sh",
 				"${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
@@ -893,6 +926,7 @@
 				3D1CFB601F9EEA1600D88608 /* GroupDetailsTableViewController.m in Sources */,
 				3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */,
 				3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */,
+				3DA7221D1FC665B2000DD9E3 /* BasicViewController.m in Sources */,
 				3DA2E5291FB3F38100BF51B3 /* HistoryCollectionViewCell.m in Sources */,
 				3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */,
 				3D0E5C481FAAC22400CC8828 /* WeiShareController.m in Sources */,
@@ -907,6 +941,7 @@
 				3D2C05281F99D41100AAE921 /* SettingTableViewController.m in Sources */,
 				3D1CFB631F9F19E500D88608 /* STBTopView.m in Sources */,
 				3DB93C6E1F98836700AA90B2 /* HeaderCell.m in Sources */,
+				3DA722191FC3D4AE000DD9E3 /* FilterCollectionViewCell.m in Sources */,
 				3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */,
 				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,
@@ -917,9 +952,11 @@
 				3DAAD2FD1F7B76D200C91E5C /* AreaObject.m in Sources */,
 				3DAAD2FE1F7B76D200C91E5C /* CSReachability.m in Sources */,
 				3DAAD2FF1F7B76D200C91E5C /* CustomTextField.m in Sources */,
+				3DAA7BC21FBD76E6005FB4EE /* ProcessImageController.m in Sources */,
 				3DAAD3001F7B76D200C91E5C /* HJSTKToastView.m in Sources */,
 				3D7CCD131F9499CF002D59A7 /* SetDetailsController.m in Sources */,
 				3DAAD3011F7B76D200C91E5C /* LoadReturnModel.m in Sources */,
+				3DA722141FC3D0DA000DD9E3 /* FiltersController.m in Sources */,
 				3D7CCD0E1F949895002D59A7 /* SetPasswordController.m in Sources */,
 				3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */,
 				3DB93C711F98859000AA90B2 /* CommonTableViewCell.m in Sources */,

@@ -8,6 +8,9 @@
 
 #import "ControlViewController.h"
 
+#import <GPUImage.h>
+#import "ProcessImageController.h"
+
 @interface ControlViewController ()
 
 @end
@@ -16,6 +19,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController pushViewController:[[ProcessImageController alloc]init] animated:YES];
+//    UIImage *inputImage = [UIImage imageNamed:@"loginpic"];
+//
+//    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:inputImage];
+//    GPUImageSepiaFilter *stillImageFilter = [[GPUImageSepiaFilter alloc] init];
+//
+//    [stillImageSource addTarget:stillImageFilter];
+//    [stillImageFilter useNextFrameForImageCapture];
+//    [stillImageSource processImage];
+//
+//    UIImage *currentFilteredVideoFrame = [stillImageFilter imageFromCurrentFramebuffer];
+//    UIImageView * v = [[UIImageView alloc]initWithImage:currentFilteredVideoFrame];
+    UIImage *inputImage = [UIImage imageNamed:@"loginpic"];
+    
+    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:inputImage];
+    GPUImageBrightnessFilter *stillImageFilter = [[GPUImageBrightnessFilter alloc] init];
+    
+    [stillImageSource addTarget:stillImageFilter];
+    [stillImageFilter useNextFrameForImageCapture];
+    [stillImageSource processImage];
+    
+    UIImage *currentFilteredVideoFrame = [stillImageFilter imageFromCurrentFramebuffer];
+    UIImageView * v = [[UIImageView alloc]initWithImage:currentFilteredVideoFrame];
+    
+    
+//    GPUImageBrightnessFilter
+    
+    [self.view addSubview:v];
     // Do any additional setup after loading the view.
 }
 
