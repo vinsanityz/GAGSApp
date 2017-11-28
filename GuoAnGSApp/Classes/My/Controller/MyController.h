@@ -1,5 +1,5 @@
 //
-//  EPGViewController.h
+//  MyController.h
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
@@ -8,6 +8,6 @@
 
 #import "CommonCtr.h"
 
-@interface EPGViewController : CommonCtr
+@interface MyController : CommonCtr
 
 @end

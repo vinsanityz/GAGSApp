@@ -1,5 +1,5 @@
 //
-//  MovieViewController.m
+//  VODController.m
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
@@ -7,18 +7,18 @@
 //
 #define HeaderArray @[@"精选",@"免费",@"电影",@"电视剧",@"纪录片",@"综艺",@"动漫"]
 
-#import "MovieViewController.h"
+#import "VODController.h"
 #import "SDCycleScrollView.h"
 
 #import "SearchController.h"
 
-@interface MovieViewController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface VODController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,strong)SDCycleScrollView * cycleScrollView;
 @property(nonatomic,strong)UICollectionView * collectionView;
 @property(nonatomic,strong)UIScrollView * backScrollView;
 @end
 
-@implementation MovieViewController
+@implementation VODController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

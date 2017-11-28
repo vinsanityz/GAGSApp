@@ -1,12 +1,12 @@
 //
-//  STBViewController.m
+//  MyBoxController.m
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
 //  Copyright © 2017年 zcz. All rights reserved.
 //
 
-#import "STBViewController.h"
+#import "MyBoxController.h"
 #import "STBTopView.h"
 #import "STBButtonView.h"
 #import "WeiShareController.h"
@@ -17,13 +17,13 @@
 #define UIScreenWidth [UIScreen mainScreen].bounds.size.width
 #define UIScreenHeight [UIScreen mainScreen].bounds.size.height
 
-@interface STBViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,STBButtonViewDelegate,TZImagePickerControllerDelegate>
+@interface MyBoxController ()<UICollectionViewDelegate,UICollectionViewDataSource,STBButtonViewDelegate,TZImagePickerControllerDelegate>
 @property(nonatomic,weak)UIScrollView * scrolView;
 @property(nonatomic,weak)UIView * totalView;
 @property(nonatomic,strong)UICollectionView * collectionView;
 @end
 
-@implementation STBViewController
+@implementation MyBoxController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

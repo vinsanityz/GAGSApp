@@ -1,21 +1,21 @@
 //
-//  ControlViewController.m
+//  MyAppController.m
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
 //  Copyright © 2017年 zcz. All rights reserved.
 //
 
-#import "ControlViewController.h"
+#import "MyAppController.h"
 
 #import <GPUImage.h>
 #import "ProcessImageController.h"
 
-@interface ControlViewController ()
+@interface MyAppController ()
 
 @end
 
-@implementation ControlViewController
+@implementation MyAppController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -6,6 +6,8 @@ pod 'SDWebImage', '~>3.7'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'AutoCoding', '~> 2.2.2'
 
+pod 'MJRefresh'
+
 pod 'TZImagePickerController'
 
 #计算文本高度

@@ -1,26 +1,26 @@
 //
-//  MyViewController.m
+//  MyController.m
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
 //  Copyright © 2017年 zcz. All rights reserved.
 //
 
-#import "MyViewController.h"
+#import "MyController.h"
 
 #import "FamilyMembersController.h"
 #import "SettingTableViewController.h"
-
+#import <MJRefresh.h>
 
 
 #import "CommonTableViewCell.h"
 #import "HeaderCell.h"
-@interface MyViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @end
 
-@implementation MyViewController
+@implementation MyController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,10 +52,34 @@
         _tableView.showsVerticalScrollIndicator = NO;
         [self.tableView registerClass:[HeaderCell class] forCellReuseIdentifier:@"cellHeader"];
         [self.tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"cell"];
+        
+        self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^ {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.tableView.header endRefreshing];
+            });
+        }];
+        
+       
+        
+        //        //设置动画图像的普通状态
+//        [header setImages:@[[UIImage imageNamed:@"loginpic"]] forState: MJRefreshStateIdle];
+//        //设置动画图像的拉动状态（松开后立即进入刷新状态）
+//        [header setImages:@[[UIImage imageNamed:@"loginpic"]] forState: MJRefreshStatePulling];
+//        //设置动画图像的刷新状态
+//        [header setImages:@[[UIImage imageNamed:@"loginpic"]]  forState: MJRefreshStateRefreshing];
+//        //设置标题
+//        self.tableView.mj_header = header;
+        
+        
     }
     return _tableView;
 }
 
+-(void)loadNewData
+{
+    NSLog(@"refresh!!!!!!");
+    
+}
 - (void)handleChangeTextColorActionTwo:(NSNotificationCenter *)notification {
     [self.tableView reloadData];
 }

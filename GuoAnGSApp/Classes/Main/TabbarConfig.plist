@@ -4,25 +4,25 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>STB</string>
+		<string>MyBox</string>
 		<key>title</key>
 		<string>机顶盒</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Movie</string>
+		<string>VOD</string>
 		<key>title</key>
 		<string>点播视频</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Control</string>
+		<string>MyApp</string>
 		<key>title</key>
-		<string>遥控器</string>
+		<string>应用</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>EPG</string>
+		<string>Live</string>
 		<key>title</key>
 		<string>直播</string>
 	</dict>

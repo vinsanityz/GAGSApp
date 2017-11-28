@@ -1,5 +1,5 @@
 //
-//  ControlViewController.h
+//  LiveController.h
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
@@ -8,6 +8,6 @@
 
 #import "CommonCtr.h"
 
-@interface ControlViewController : CommonCtr
+@interface LiveController : CommonCtr
 
 @end

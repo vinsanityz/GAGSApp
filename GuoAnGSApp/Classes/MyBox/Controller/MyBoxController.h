@@ -1,5 +1,5 @@
 //
-//  STBViewController.h
+//  MyBoxController.h
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
@@ -8,6 +8,6 @@
 
 #import "CommonCtr.h"
 
-@interface STBViewController : CommonCtr
+@interface MyBoxController : CommonCtr
 
 @end

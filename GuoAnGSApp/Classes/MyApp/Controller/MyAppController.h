@@ -1,5 +1,5 @@
 //
-//  MyViewController.h
+//  MyAppController.h
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
@@ -8,6 +8,6 @@
 
 #import "CommonCtr.h"
 
-@interface MyViewController : CommonCtr
+@interface MyAppController : CommonCtr
 
 @end

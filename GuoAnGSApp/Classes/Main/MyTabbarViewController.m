@@ -35,7 +35,7 @@
         //获取字典中的键值
         NSString *className = [obj objectForKey:@"name"];
         //将类名转化为对应的类
-        className = [className stringByAppendingString:@"ViewController"];
+        className = [className stringByAppendingString:@"Controller"];
         Class class = NSClassFromString(className);
         if (!class) {
             *stop = YES;

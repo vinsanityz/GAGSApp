@@ -1,5 +1,5 @@
 //
-//  MovieViewController.h
+//  VODController.h
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
@@ -8,6 +8,6 @@
 
 #import "CommonCtr.h"
 
-@interface MovieViewController : CommonCtr
+@interface VODController : CommonCtr
 
 @end

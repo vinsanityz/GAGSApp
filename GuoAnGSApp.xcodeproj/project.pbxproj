@@ -85,11 +85,11 @@
 		3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD182C1F7B53A400ADC124 /* LaunchScreen.storyboard */; };
 		3DDD18311F7B53A400ADC124 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18301F7B53A400ADC124 /* main.m */; };
 		3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214961F7B70850076FCD6 /* CenterViewController.m */; };
-		3DE2149A1F7B70A90076FCD6 /* ControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214991F7B70A90076FCD6 /* ControlViewController.m */; };
-		3DE2149D1F7B70B80076FCD6 /* EPGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2149C1F7B70B80076FCD6 /* EPGViewController.m */; };
-		3DE214A01F7B70C60076FCD6 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2149F1F7B70C60076FCD6 /* MovieViewController.m */; };
-		3DE214A31F7B70D10076FCD6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A21F7B70D10076FCD6 /* MyViewController.m */; };
-		3DE214A61F7B70DE0076FCD6 /* STBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A51F7B70DE0076FCD6 /* STBViewController.m */; };
+		3DE2149A1F7B70A90076FCD6 /* MyAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214991F7B70A90076FCD6 /* MyAppController.m */; };
+		3DE2149D1F7B70B80076FCD6 /* LiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2149C1F7B70B80076FCD6 /* LiveController.m */; };
+		3DE214A01F7B70C60076FCD6 /* VODController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2149F1F7B70C60076FCD6 /* VODController.m */; };
+		3DE214A31F7B70D10076FCD6 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A21F7B70D10076FCD6 /* MyController.m */; };
+		3DE214A61F7B70DE0076FCD6 /* MyBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A51F7B70DE0076FCD6 /* MyBoxController.m */; };
 		3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */; };
 		6DCAEF00024144BF370DDF5B /* libPods-GuoAnGSApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */; };
 /* End PBXBuildFile section */
@@ -231,16 +231,16 @@
 		3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TabbarConfig.plist; sourceTree = "<group>"; };
 		3DE214951F7B70850076FCD6 /* CenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
 		3DE214961F7B70850076FCD6 /* CenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
-		3DE214981F7B70A90076FCD6 /* ControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlViewController.h; sourceTree = "<group>"; };
-		3DE214991F7B70A90076FCD6 /* ControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlViewController.m; sourceTree = "<group>"; };
-		3DE2149B1F7B70B80076FCD6 /* EPGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPGViewController.h; sourceTree = "<group>"; };
-		3DE2149C1F7B70B80076FCD6 /* EPGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPGViewController.m; sourceTree = "<group>"; };
-		3DE2149E1F7B70C60076FCD6 /* MovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
-		3DE2149F1F7B70C60076FCD6 /* MovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
-		3DE214A11F7B70D10076FCD6 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		3DE214A21F7B70D10076FCD6 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
-		3DE214A41F7B70DE0076FCD6 /* STBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STBViewController.h; sourceTree = "<group>"; };
-		3DE214A51F7B70DE0076FCD6 /* STBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STBViewController.m; sourceTree = "<group>"; };
+		3DE214981F7B70A90076FCD6 /* MyAppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAppController.h; sourceTree = "<group>"; };
+		3DE214991F7B70A90076FCD6 /* MyAppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppController.m; sourceTree = "<group>"; };
+		3DE2149B1F7B70B80076FCD6 /* LiveController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveController.h; sourceTree = "<group>"; };
+		3DE2149C1F7B70B80076FCD6 /* LiveController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveController.m; sourceTree = "<group>"; };
+		3DE2149E1F7B70C60076FCD6 /* VODController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VODController.h; sourceTree = "<group>"; };
+		3DE2149F1F7B70C60076FCD6 /* VODController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VODController.m; sourceTree = "<group>"; };
+		3DE214A11F7B70D10076FCD6 /* MyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
+		3DE214A21F7B70D10076FCD6 /* MyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
+		3DE214A41F7B70DE0076FCD6 /* MyBoxController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBoxController.h; sourceTree = "<group>"; };
+		3DE214A51F7B70DE0076FCD6 /* MyBoxController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBoxController.m; sourceTree = "<group>"; };
 		3DE214A91F7B71C90076FCD6 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3DE214AA1F7B71C90076FCD6 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3DE214AC1F7B71C90076FCD6 /* SVPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
@@ -405,8 +405,8 @@
 				3DDD18411F7B53DC00ADC124 /* AlertStateView.xib */,
 				3DDD18421F7B53DC00ADC124 /* area.plist */,
 				3DDD18431F7B53DC00ADC124 /* AreaObject.h */,
-				3DDD18441F7B53DC00ADC124 /* AreaObject.m */,
 				3DDD18451F7B53DC00ADC124 /* CommonCtr.h */,
+				3DDD18441F7B53DC00ADC124 /* AreaObject.m */,
 				3DDD18461F7B53DC00ADC124 /* CommonCtr.m */,
 				3DDD18471F7B53DC00ADC124 /* CSReachability.h */,
 				3DDD18481F7B53DC00ADC124 /* CSReachability.m */,
@@ -438,11 +438,11 @@
 			children = (
 				3DDD18371F7B53D200ADC124 /* Main */,
 				3DE2147B1F7B60D60076FCD6 /* Center */,
-				3DE2147F1F7B60D60076FCD6 /* Control */,
-				3DE214831F7B60D60076FCD6 /* EPG */,
-				3DE214871F7B60D60076FCD6 /* Movie */,
+				3DE214901F7B60D60076FCD6 /* MyBox */,
+				3DE214871F7B60D60076FCD6 /* VOD */,
+				3DE2147F1F7B60D60076FCD6 /* MyApp */,
+				3DE214831F7B60D60076FCD6 /* Live */,
 				3DE2148B1F7B60D60076FCD6 /* My */,
-				3DE214901F7B60D60076FCD6 /* STB */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -480,21 +480,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3DE2147F1F7B60D60076FCD6 /* Control */ = {
+		3DE2147F1F7B60D60076FCD6 /* MyApp */ = {
 			isa = PBXGroup;
 			children = (
 				3DE214801F7B60D60076FCD6 /* Controller */,
 				3DE214811F7B60D60076FCD6 /* Model */,
 				3DE214821F7B60D60076FCD6 /* View */,
 			);
-			path = Control;
+			path = MyApp;
 			sourceTree = "<group>";
 		};
 		3DE214801F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DE214981F7B70A90076FCD6 /* ControlViewController.h */,
-				3DE214991F7B70A90076FCD6 /* ControlViewController.m */,
+				3DE214981F7B70A90076FCD6 /* MyAppController.h */,
+				3DE214991F7B70A90076FCD6 /* MyAppController.m */,
 				3DAA7BBF1FBD76E6005FB4EE /* ProcessImageController.h */,
 				3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */,
 				3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */,
@@ -521,21 +521,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3DE214831F7B60D60076FCD6 /* EPG */ = {
+		3DE214831F7B60D60076FCD6 /* Live */ = {
 			isa = PBXGroup;
 			children = (
 				3DE214841F7B60D60076FCD6 /* Controller */,
 				3DE214851F7B60D60076FCD6 /* Model */,
 				3DE214861F7B60D60076FCD6 /* View */,
 			);
-			path = EPG;
+			path = Live;
 			sourceTree = "<group>";
 		};
 		3DE214841F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DE2149B1F7B70B80076FCD6 /* EPGViewController.h */,
-				3DE2149C1F7B70B80076FCD6 /* EPGViewController.m */,
+				3DE2149B1F7B70B80076FCD6 /* LiveController.h */,
+				3DE2149C1F7B70B80076FCD6 /* LiveController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -559,21 +559,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3DE214871F7B60D60076FCD6 /* Movie */ = {
+		3DE214871F7B60D60076FCD6 /* VOD */ = {
 			isa = PBXGroup;
 			children = (
 				3DE214881F7B60D60076FCD6 /* Controller */,
 				3DE214891F7B60D60076FCD6 /* Model */,
 				3DE2148A1F7B60D60076FCD6 /* View */,
 			);
-			path = Movie;
+			path = VOD;
 			sourceTree = "<group>";
 		};
 		3DE214881F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DE2149E1F7B70C60076FCD6 /* MovieViewController.h */,
-				3DE2149F1F7B70C60076FCD6 /* MovieViewController.m */,
+				3DE2149E1F7B70C60076FCD6 /* VODController.h */,
+				3DE2149F1F7B70C60076FCD6 /* VODController.m */,
 				3D8B12C01FB035DD00473D79 /* SearchController.h */,
 				3D8B12C11FB035DD00473D79 /* SearchController.m */,
 			);
@@ -616,8 +616,8 @@
 		3DE2148C1F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DE214A11F7B70D10076FCD6 /* MyViewController.h */,
-				3DE214A21F7B70D10076FCD6 /* MyViewController.m */,
+				3DE214A11F7B70D10076FCD6 /* MyController.h */,
+				3DE214A21F7B70D10076FCD6 /* MyController.m */,
 				3D2C05261F99D41100AAE921 /* SettingTableViewController.h */,
 				3D2C05271F99D41100AAE921 /* SettingTableViewController.m */,
 				3D1CFB5E1F9EEA1600D88608 /* GroupDetailsTableViewController.h */,
@@ -660,21 +660,21 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		3DE214901F7B60D60076FCD6 /* STB */ = {
+		3DE214901F7B60D60076FCD6 /* MyBox */ = {
 			isa = PBXGroup;
 			children = (
 				3DE214911F7B60D60076FCD6 /* Controller */,
 				3DE214921F7B60D60076FCD6 /* Model */,
 				3DE214931F7B60D60076FCD6 /* View */,
 			);
-			path = STB;
+			path = MyBox;
 			sourceTree = "<group>";
 		};
 		3DE214911F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DE214A41F7B70DE0076FCD6 /* STBViewController.h */,
-				3DE214A51F7B70DE0076FCD6 /* STBViewController.m */,
+				3DE214A41F7B70DE0076FCD6 /* MyBoxController.h */,
+				3DE214A51F7B70DE0076FCD6 /* MyBoxController.m */,
 				3D0E5C451FAAC22400CC8828 /* WeiShareController.h */,
 				3D0E5C461FAAC22400CC8828 /* WeiShareController.m */,
 				3D0E5C471FAAC22400CC8828 /* WeiShareController.xib */,
@@ -967,20 +967,20 @@
 				3DAAD3061F7B76D200C91E5C /* ZHPickView.m in Sources */,
 				3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */,
 				3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */,
-				3DE2149D1F7B70B80076FCD6 /* EPGViewController.m in Sources */,
-				3DE214A01F7B70C60076FCD6 /* MovieViewController.m in Sources */,
+				3DE2149D1F7B70B80076FCD6 /* LiveController.m in Sources */,
+				3DE214A01F7B70C60076FCD6 /* VODController.m in Sources */,
 				3DB93C741F99964C00AA90B2 /* FamilyMembersController.m in Sources */,
 				3DDD18311F7B53A400ADC124 /* main.m in Sources */,
 				3DDD18231F7B53A400ADC124 /* AppDelegate.m in Sources */,
 				3DB93C6B1F974CC700AA90B2 /* ChatGroupController.m in Sources */,
 				3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */,
-				3DE2149A1F7B70A90076FCD6 /* ControlViewController.m in Sources */,
+				3DE2149A1F7B70A90076FCD6 /* MyAppController.m in Sources */,
 				3DB93C781F999D1200AA90B2 /* MembersTableViewCell.m in Sources */,
 				3DA2E52E1FB4340A00BF51B3 /* HistoryCollectionReusableView.m in Sources */,
 				3D353DD01FB56AC500B33A0B /* ZCZLabel.m in Sources */,
 				3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */,
-				3DE214A61F7B70DE0076FCD6 /* STBViewController.m in Sources */,
-				3DE214A31F7B70D10076FCD6 /* MyViewController.m in Sources */,
+				3DE214A61F7B70DE0076FCD6 /* MyBoxController.m in Sources */,
+				3DE214A31F7B70D10076FCD6 /* MyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

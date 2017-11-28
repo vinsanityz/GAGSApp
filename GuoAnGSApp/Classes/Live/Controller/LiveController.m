@@ -1,22 +1,22 @@
 //
-//  EPGViewController.m
+//  LiveController.m
 //  GuoAnGSApp
 //
 //  Created by zhaochengzhu on 2017/9/27.
 //  Copyright © 2017年 zcz. All rights reserved.
 //
 
-#import "EPGViewController.h"
+#import "LiveController.h"
 #import "EPGRightTableViewCell.h"
 
-@interface EPGViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LiveController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSArray * leftViewArray;
 @property(nonatomic,strong)UITableView * rightTableView;
 @property(nonatomic,copy)NSString * str;
 @property(nonatomic,weak)UIButton * selBtn;
 @end
 
-@implementation EPGViewController
+@implementation LiveController
 
 
 - (void)viewDidLoad {
