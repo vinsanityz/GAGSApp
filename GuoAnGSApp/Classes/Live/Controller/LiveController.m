@@ -8,6 +8,7 @@
 
 #import "LiveController.h"
 #import "EPGRightTableViewCell.h"
+#import "ZCZMoviePlayerController.h"
 
 @interface LiveController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSArray * leftViewArray;
@@ -21,6 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    ZCZMoviePlayerController * zcz = [[ZCZMoviePlayerController alloc]init];
+    [self.navigationController pushViewController:zcz animated:YES];
+    
     self.leftViewArray = @[@"1",@"2",@"3"];
     
     self.titleMessage = @"直播";

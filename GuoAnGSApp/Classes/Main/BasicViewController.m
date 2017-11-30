@@ -294,6 +294,10 @@
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if (self.MyTabBarVC.selectedViewController.childViewControllers.count>1) {
+        return NO;
+    }
+    
     if ([gestureRecognizer locationInView:self.MyTabBarVCView].x<100||[gestureRecognizer locationInView:self.MyTabBarVCView].x>375-40) {
         return YES;
     }
