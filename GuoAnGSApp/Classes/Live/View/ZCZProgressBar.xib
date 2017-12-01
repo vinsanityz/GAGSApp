@@ -17,39 +17,47 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBR-OQ-H2e">
-                    <rect key="frame" x="267" y="107" width="89" height="34"/>
+                    <rect key="frame" x="267" y="62" width="89" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqk-Mu-38c">
-                    <rect key="frame" x="16" y="107" width="90" height="28"/>
+                    <rect key="frame" x="16" y="62" width="90" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FkV-7U-wPF" userLabel="backgroundView">
-                    <rect key="frame" x="66" y="75" width="240" height="2"/>
+                    <rect key="frame" x="66" y="30" width="240" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTJ-uK-uHr" userLabel="bufferView">
-                    <rect key="frame" x="66" y="75" width="40" height="2"/>
+                    <rect key="frame" x="66" y="30" width="40" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFu-9V-ebg" userLabel="progressView">
-                    <rect key="frame" x="66" y="75" width="1" height="2"/>
+                    <rect key="frame" x="66" y="30" width="1" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="0.036645021540000003" blue="0.1135372535" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vG2-7Z-YGD" customClass="ZCZProgressBarButton">
-                    <rect key="frame" x="45" y="60" width="38" height="37"/>
+                    <rect key="frame" x="45" y="15" width="38" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmX-o2-niZ">
+                    <rect key="frame" x="142" y="60" width="68" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="pause"/>
+                    <connections>
+                        <action selector="playOrPauseBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="YdK-GJ-XK3"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -58,6 +66,7 @@
                 <outlet property="backgroundView" destination="FkV-7U-wPF" id="9g5-ZY-jwH"/>
                 <outlet property="bufferView" destination="iTJ-uK-uHr" id="N0t-bs-xVC"/>
                 <outlet property="leftTimeLabel" destination="Mqk-Mu-38c" id="NJp-7v-1uo"/>
+                <outlet property="playOrPauseBtn" destination="pmX-o2-niZ" id="PC3-pZ-xdO"/>
                 <outlet property="progressBarButton" destination="vG2-7Z-YGD" id="6JG-7x-47F"/>
                 <outlet property="progressView" destination="IFu-9V-ebg" id="trJ-8T-tkU"/>
                 <outlet property="rightTimeLabel" destination="vBR-OQ-H2e" id="FSI-bM-pjt"/>

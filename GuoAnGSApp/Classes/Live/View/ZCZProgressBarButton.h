@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @protocol ZCZProgressBarButtonDelegate <NSObject>
-
-- (void)ZCZProgressBarButtonMoved:(CGFloat)buttonX;//协议方法
+/** 拖拽滑块持续调用此方法 */
+- (void)ZCZProgressBarButtonMoved:(CGFloat)buttonX;
+/** 结束拖拽滑块调用此方法 */
 - (void)ZCZProgressBarButtonMovedEnd;
 @end
-
 
 @interface ZCZProgressBarButton : UIView
 @property (nonatomic, weak) id<ZCZProgressBarButtonDelegate> delegate;

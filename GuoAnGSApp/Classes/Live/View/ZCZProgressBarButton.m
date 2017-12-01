@@ -35,13 +35,11 @@
     CGRect frame =self.frame;
     frame.origin.x = p.x-frame.size.width/2;
     self.frame = frame;
-    
     if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarButtonMoved:)]) {
         [self.delegate ZCZProgressBarButtonMoved:p.x];
     }
-
-    
 }
+
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];

@@ -11,10 +11,15 @@
 #import "ZCZProgressBar.h"
 
 @interface ZCZMoviePlayerController ()<ZCZProgressBarDelegate>
+
 @property(nonatomic,strong)AVPlayer * player;
-@property(nonatomic,strong)ZCZProgressBar * progressBar;
 @property(nonatomic,strong)AVPlayerItem *item;
+//进度条
+@property(nonatomic,strong)ZCZProgressBar * progressBar;
+//定时器
 @property(nonatomic,strong)NSTimer * timer;
+@property(nonatomic,assign)CGFloat newTime;
+@property(nonatomic,assign)CGFloat preTime;
 @end
 
 @implementation ZCZMoviePlayerController
@@ -26,6 +31,14 @@
     [self startPlayer];
 }
 
+-(void)startPlayer
+{
+    [self.player play];
+    //添加定时器，使进度条移动
+    [self startMyTimer];
+    
+}
+
 -(void)setUpPlayer
 {
     NSURL * url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WeChatSight2.mp4" ofType:nil]];
@@ -34,6 +47,8 @@
     AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:self.player];
     layer.frame = CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.width/16*9);
     [self.view.layer addSublayer:layer];
+    //监听AVPlayerItem的状态
+    [self.item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)setUpProgressBar
@@ -42,80 +57,108 @@
     //给progressBar添加点按手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapZczProgressBar:)];
     [bar addGestureRecognizer:tap];
+    
     bar.center = self.view.center;
     bar.delegate = self;
     self.progressBar = bar;
     [self.view addSubview:bar];
 }
 
--(void)startPlayer
-{
-    [self.player play];
-    //添加定时器，使进度条移动
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getPlayerCurrentPlayTime) userInfo:nil repeats:YES];
-    
-//    self.timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(getPlayerCurrentPlayTime) userInfo:nil repeats:YES];
-//    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
-//    [currentRunLoop addTimer:self.timer  forMode:NSDefaultRunLoopMode];
-    
-    
-    //监听AVPlayerItem的状态
-    [self.item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    
-    
-   
-    
-}
--(void)ZCZadjustProgressBarLayoutLast
-{
-    [self.player play];
-      self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getPlayerCurrentPlayTime) userInfo:nil repeats:YES];
-    
-}
 
--(void)getPlayerCurrentPlayTime
-{
-     CGFloat curTime =  CMTimeGetSeconds(self.player.currentTime);
- 
-    [self.progressBar adjustProgressViewAndProgressBarButton:curTime/CMTimeGetSeconds(self.player.currentItem.duration)*240+66];
 
-    
-    
-}
+
+
+
+
+
 
 #pragma mark - <ProgressBar的点按手势响应方法>
 -(void)tapZczProgressBar:(UITapGestureRecognizer *)tap
 {
+    
+    
+    
     CGPoint tapPoint = [tap locationInView:self.progressBar];
-    [self.progressBar adjustProgressViewAndProgressBarButton:tapPoint.x];
-    CGFloat time = self.progressBar.progressView.frame.size.width/240* self.progressBar.movieDurationTime;
-    [self.player seekToTime:CMTimeMake(time, 1)];
+    CGFloat time = [self.progressBar adjustProgressViewAndProgressBarButton:tapPoint.x];
+    NSLog(@"%f.........tap--time.",time);
+    
+    self.newTime = time;
+    
+    [self.player seekToTime:CMTimeMake(time, 1)toleranceBefore:CMTimeMake(1, 30) toleranceAfter:CMTimeMake(1, 30) ];
+    
 }
 
+
+
+
+#pragma mark - <ZCZProgressBarDelegate>
+//点击播放暂停按钮来到此代理方法
+- (void)ZCZProgressBarPlayOrPauseBtnClick:(UIButton *)btn
+{
+    if (self.player.rate==0) {
+        [self.player play];
+        [btn setTitle:@"pause" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [self startMyTimer];
+    }else{
+        [self.player pause];
+        [btn setTitle:@"play" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [self stopMyTimer];
+    }
+}
+
+//当拖动滑块持续调用这个代理方法
 -(void)ZCZadjustProgressBarLayout:(CGFloat)buttonX
 {
-    [self.progressBar adjustProgressViewAndProgressBarButton:buttonX];
+    CGFloat time = [self.progressBar adjustProgressViewAndProgressBarButton:buttonX];
     
     [self.player pause];
-    
     
     [self.timer invalidate];
     self.timer = nil;
     
+    //     self.progressBar.progressView.frame.size.width/240* self.progressBar.movieDurationTime;
+    [self.player seekToTime:CMTimeMake(time, 1)toleranceBefore:CMTimeMake(1, 30) toleranceAfter:CMTimeMake(1, 30) ];
+    self.newTime = time;
+}
+
+//当拖动滑块持续调用这个代理方法
+-(void)ZCZadjustProgressBarLayoutLast
+{
+    [self startMyTimer];
+    [self.player play];
+}
+
+
+
+#pragma mark - <定时器相关代码>
+-(void)startMyTimer
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getPlayerCurrentPlayTime) userInfo:nil repeats:YES];
+}
+
+-(void)stopMyTimer
+{
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+-(void)getPlayerCurrentPlayTime
+{
+    CGFloat curTime =  CMTimeGetSeconds(self.player.currentTime);
+    if (curTime<self.newTime) {
+        return;
+    }
     
-    CGFloat time = self.progressBar.progressView.frame.size.width/240* self.progressBar.movieDurationTime;
-    [self.player seekToTime:CMTimeMake(time, 1)];
+    NSLog(@"%f.....。。。。。。curtime",curTime);
+    //    [self.progressBar adjustProgressViewAndProgressBarButton:curTime/CMTimeGetSeconds(self.player.currentItem.duration)*240+66];
+    [self.progressBar changeProgressViewWidthAndSliderCenterByTimer:curTime];
+    
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
+#pragma mark - <kvo监听方法>
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
-    //    NSLog(@"%@",change[@"new"]);
     switch ([change[@"new"]integerValue]) {
         case 0:{
             NSLog(@"未知状态");
@@ -123,7 +166,7 @@
         }
         case 1:{
             NSLog(@"获得视频总时长  %f",CMTimeGetSeconds(self.player.currentItem.duration));//CMTime在下面会介绍
-           self.progressBar.movieDurationTime = CMTimeGetSeconds(self.player.currentItem.duration);
+            self.progressBar.movieDurationTime = CMTimeGetSeconds(self.player.currentItem.duration);
             break;
         }
         case 2:{
@@ -135,20 +178,9 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(void)dealloc
 {
     [self.item removeObserver:self forKeyPath:@"status"];
-    
 }
 
 @end
