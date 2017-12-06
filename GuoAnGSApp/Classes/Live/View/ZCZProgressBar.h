@@ -15,6 +15,8 @@
 - (void)ZCZadjustProgressBarLayoutLast;
 /**当播放暂停按钮点击时调用*/
 - (void)ZCZProgressBarPlayOrPauseBtnClick:(UIButton *)btn;
+
+-(void)resetHiddenProcessBarTime;
 @end
 
 @interface ZCZProgressBar : UIView
@@ -27,6 +29,7 @@
 //-(void)adjustTimeLabel:(CGFloat)time;
 -(void)adjustleftTimeLabelAndProgressView:(CGFloat)time;
 -(void)changeProgressViewWidthAndSliderCenterByTimer:(CGFloat)currentTime;
+-(void)updateBufferViewWidth:(CGFloat)bufferValue;
 @end
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "ZCZProgressBarButton.h"
+#import "UIView+Frame.h"
 
 @implementation ZCZProgressBarButton
 
@@ -25,16 +26,18 @@
     
     
     CGPoint p = [[touches anyObject] locationInView:self.superview];
-    if (p.x>240+66) {
-        p.x = 306;
-    }
-    if (p.x<66) {
-        p.x = 66;
-    }
-    NSLog(@"%f",p.x);
-    CGRect frame =self.frame;
-    frame.origin.x = p.x-frame.size.width/2;
-    self.frame = frame;
+//    if (p.x>240+66) {
+//        p.x = 306;
+//    }
+//    if (p.x<66) {
+//        p.x = 66;
+//    }
+    NSLog(@"%f----%f",p.x,p.y);
+//    CGRect frame =self.frame;
+//    frame.origin.x = p.x-frame.size.width/2;
+//    self.frame = frame;
+//    self.zcz_x =p.x-self.zcz_width/2;
+    
     if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarButtonMoved:)]) {
         [self.delegate ZCZProgressBarButtonMoved:p.x];
     }
@@ -43,7 +46,7 @@
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarButtonMoved:)]) {
+    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarButtonMovedEnd)]) {
         [self.delegate ZCZProgressBarButtonMovedEnd];
     }
 }

@@ -28,6 +28,20 @@
 
 @implementation ZCZProgressBar
 
+
+-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *fitView = [super hitTest:point withEvent:event];
+    if ([[fitView superview] isKindOfClass:[self class]]||[fitView isKindOfClass:[self class]] ) {
+        [self.delegate resetHiddenProcessBarTime];
+    }
+    
+ 
+    
+    return fitView;
+}
+
+
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
@@ -35,6 +49,14 @@
     
 }
 
+//更新缓冲条的宽度
+-(void)updateBufferViewWidth:(CGFloat)bufferValue
+{
+    self.bufferView.zcz_width = self.backgroundView.zcz_width*bufferValue;
+    if (bufferValue>1) {
+        self.bufferView.zcz_width = self.backgroundView.zcz_width;
+    }
+}
 
 
 #pragma mark - <ZCZProgressBarButtonDelegate>
@@ -69,11 +91,12 @@
     self.leftTimeLabel.text = [self adjustTimeFormat:Lefttime];
 }
 
+//定时器重复调用此方法来修改滑块与进度条的UI
 -(void)changeProgressViewWidthAndSliderCenterByTimer:(CGFloat)currentTime
 {
     CGFloat pointX = currentTime/self.movieDurationTime*self.backgroundView.zcz_width+self.backgroundView.zcz_x;
     
-    NSLog(@"%f-----timer",pointX);
+//    NSLog(@"%f-----timer",pointX);
     [self adjustProgressViewAndProgressBarButton:pointX];
     
 }
@@ -92,16 +115,14 @@
     }
     //修改滑块的位置
     self.progressBarButton.center = CGPointMake(TapPointX, self.progressBarButton.center.y);
-    //修改进度条的位置
+    //修改进度条的宽度
     self.progressView.zcz_width = TapPointX-minX;
-    //修改已经播放的时间
-//    CGFloat Lefttime = (self.progressBarButton.center.x-self.backgroundView.zcz_x)
     
+//    CGFloat Lefttime = (self.progressBarButton.center.x-self.backgroundView.zcz_x)
+    //修改已经播放的时间
     CGFloat Lefttime = self.progressView.zcz_width/self.backgroundView.zcz_width*self.movieDurationTime;
     self.leftTimeLabel.text = [self adjustTimeFormat:Lefttime];
-    NSLog(@"%f--%f--%f",Lefttime,self.progressView.zcz_width,self.movieDurationTime);
-    
-    
+//    NSLog(@"%f--%f--%f",Lefttime,self.progressView.zcz_width,self.movieDurationTime);
     return Lefttime;
 }
 

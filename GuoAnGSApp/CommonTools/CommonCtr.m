@@ -45,6 +45,10 @@ static inline NSString * myselfSaveFile() {
     
     // Do any additional setup after loading the view.
 }
+//-(BOOL)shouldAutorotate
+//{
+//    return  NO;
+//}
 
 -(void)dealloc
 {

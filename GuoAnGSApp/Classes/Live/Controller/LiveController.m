@@ -23,8 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ZCZMoviePlayerController * zcz = [[ZCZMoviePlayerController alloc]init];
-    [self.navigationController pushViewController:zcz animated:YES];
+  
     
     self.leftViewArray = @[@"1",@"2",@"3"];
     
@@ -141,6 +140,9 @@
     [self.rightTableView reloadData];
     btn.selected = !btn.selected;
     self.selBtn = btn;
+    ZCZMoviePlayerController * zcz = [[ZCZMoviePlayerController alloc]init];
+    zcz.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:zcz animated:YES];
     
 }
 -(void)btnClick:(UIButton *)btn
