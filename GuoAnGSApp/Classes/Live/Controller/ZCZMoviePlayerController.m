@@ -81,7 +81,7 @@
 
 -(void)setUpPlayer
 {
-    NSURL * url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WeChatSight2.mp4" ofType:nil]];
+    NSURL * url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"123123.mp4" ofType:nil]];
     self.item = [AVPlayerItem playerItemWithURL:url];
     self.player = [AVPlayer playerWithPlayerItem:self.item];
     AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:self.player];
@@ -260,7 +260,7 @@
 }
 
 //当拖动滑块持续调用这个代理方法
--(void)ZCZadjustProgressBarLayout:(CGFloat)buttonX
+-(void)ZCZProgressBarSliderContinuousSliding:(CGFloat)buttonX
 {
     CGFloat time = [self.progressBar adjustProgressViewAndProgressBarButton:buttonX];
     if (self.player.rate!=0) {
@@ -272,21 +272,26 @@
     }
     
     [self.player seekToTime:CMTimeMake(time*1000, 1000)toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    //     self.progressBar.progressView.frame.size.width/240* self.progressBar.movieDurationTime;
-    
+    //     self.progressBar.progressView.frame.size.width/240* self.progressBar.movieDurationTime;if(self.fullScreenGestureView.hidden==NO)
+    if(self.fullScreenGestureView.hidden==NO){
+    [self cancelHiddenTheProgressBarInFullScreenMode];
+    }
     //time*1000 为了减少滑块的回弹效果
 
 //    self.newTime = time;
 }
 
 //当停止拖动滑块调用这个代理方法
--(void)ZCZadjustProgressBarLayoutLast
+-(void)ZCZProgressBarSliderEndSliding
 {
 //    [self.player seekToTime:CMTimeMake(self.lastScrollTime*1000, 1000)toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
 //
 //    }];
     [self startPlayer];
-}
+    
+    if(self.fullScreenGestureView.hidden==NO){
+     [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
+    }}
 
 
 -(void)resetHiddenProcessBarTime
@@ -337,7 +342,7 @@
 //        [UIView animateWithDuration:0.5 delay:0.5 options:0 animations:^{
 //
 //        } completion:nil];
-//
+        
 //
         [UIApplication sharedApplication].statusBarHidden = YES;
         
@@ -358,12 +363,19 @@
         self.progressBar.frame = CGRectMake(0, 0, 100, SCREEN_HEIGHT);
         self.progressBar.hidden = YES;
         
+        
+        
 //        [UIView animateWithDuration:1.0f animations:^{
 //            self.playerLayer.transform = CATransform3DMakeScale(2, 2, 1);}];
 //        self.progressBar.hidden = YES;
 //        self.navigationController.navigationBar.hidden = YES;
 //
 //
+    [self.progressBar setBackgroundViewWidth:500];
+        [self.progressBar layoutIfNeeded];
+        
+        
+        
     }else if (duration ==UIDeviceOrientationPortrait){
 //        self.playerLayer.transform =  CATransform3DIdentity;
         [UIView animateWithDuration:1.0f animations:^{
@@ -376,13 +388,15 @@
             self.progressBar.transform = CGAffineTransformIdentity;
             self.progressBar.frame = CGRectMake(0, 300, SCREEN_WIDTH, 100);
             self.navigationController.navigationBar.hidden = NO;
+            [self.progressBar setBackgroundViewWidth:240];
 //            self.progressBar.hidden = YES;
 //            self.navigationController.navigationBar.hidden = YES;
+            [self cancelHiddenTheProgressBarInFullScreenMode];
 //            NSLog(@"%@",NSStringFromCGRect(self.playerLayer.frame) );
 //            self.playerLayer.frame = self.view.bounds;
 //            NSLog(@"%@",NSStringFromCGRect(self.playerLayer.frame) );
 //        }];
-
+[self.progressBar layoutIfNeeded];
         }];
     
     
@@ -397,7 +411,7 @@
         //      self.playerLayer.transform =  CATransform3DIdentity;
         self.navigationController.navigationBar.hidden = YES;
         [UIApplication sharedApplication].statusBarHidden = YES;
-        
+        [self.progressBar setBackgroundViewWidth:500];
         self.fullScreenGestureView.hidden = NO;
         [UIView animateWithDuration:1.0f animations:^{
             self.playerLayer.transform =CATransform3DConcat(CATransform3DMakeRotation(M_PI/180*90, 0, 0, -1), CATransform3DMakeScale(2, 2, 1));
@@ -468,8 +482,15 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self stopMyTimer];
+}
+
 -(void)dealloc
 {
+    NSLog(@"dealloc11111111");
     [self.item removeObserver:self forKeyPath:@"status"];
 }
 

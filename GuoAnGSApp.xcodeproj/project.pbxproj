@@ -69,6 +69,7 @@
 		3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214AE1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.m */; };
 		3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */; };
 		3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */; };
+		3DAB4A8E1FD7E7480038741C /* 123123.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DAB4A8C1FD7E7450038741C /* 123123.mp4 */; };
 		3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */; };
 		3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */; };
 		3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F81F94583A0076B7D3 /* UIView+QREasyFrame.m */; };
@@ -95,7 +96,7 @@
 		3DF04B9E1FCE5093009C5D2A /* WeChatSight2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DF04B9D1FCE5093009C5D2A /* WeChatSight2.mp4 */; };
 		3DF04BA11FCE5DA5009C5D2A /* ZCZProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA01FCE5DA5009C5D2A /* ZCZProgressBar.m */; };
 		3DF04BA31FCE5DB8009C5D2A /* ZCZProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */; };
-		3DF04BA61FCE7D3A009C5D2A /* ZCZProgressBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA51FCE7D3A009C5D2A /* ZCZProgressBarButton.m */; };
+		3DF04BA61FCE7D3A009C5D2A /* ZCZSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */; };
 		3DF04BAD1FCFD594009C5D2A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BAC1FCFD594009C5D2A /* UIView+Frame.m */; };
 		6DCAEF00024144BF370DDF5B /* libPods-GuoAnGSApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */; };
 /* End PBXBuildFile section */
@@ -175,6 +176,7 @@
 		3DAA7BBF1FBD76E6005FB4EE /* ProcessImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessImageController.h; sourceTree = "<group>"; };
 		3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessImageController.m; sourceTree = "<group>"; };
 		3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProcessImageController.xib; sourceTree = "<group>"; };
+		3DAB4A8C1FD7E7450038741C /* 123123.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = 123123.mp4; path = "../../../../../../Downloads/[HYSUB]Dragon Ball Super[117~118][BIG5_MP4][1280X720]/123123.mp4"; sourceTree = "<group>"; };
 		3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+QREasyFrame.h"; sourceTree = "<group>"; };
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
@@ -262,8 +264,8 @@
 		3DF04B9F1FCE5DA5009C5D2A /* ZCZProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZProgressBar.h; sourceTree = "<group>"; };
 		3DF04BA01FCE5DA5009C5D2A /* ZCZProgressBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZProgressBar.m; sourceTree = "<group>"; };
 		3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZCZProgressBar.xib; sourceTree = "<group>"; };
-		3DF04BA41FCE7D3A009C5D2A /* ZCZProgressBarButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZProgressBarButton.h; sourceTree = "<group>"; };
-		3DF04BA51FCE7D3A009C5D2A /* ZCZProgressBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZProgressBarButton.m; sourceTree = "<group>"; };
+		3DF04BA41FCE7D3A009C5D2A /* ZCZSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZSlider.h; sourceTree = "<group>"; };
+		3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZSlider.m; sourceTree = "<group>"; };
 		3DF04BAB1FCFD594009C5D2A /* UIView+Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3DF04BAC1FCFD594009C5D2A /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		DD23D2332ED4C04FEE58E36C /* Pods-GuoAnGSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoAnGSApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 		3DE214841F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3DAB4A8C1FD7E7450038741C /* 123123.mp4 */,
 				3DF04B9D1FCE5093009C5D2A /* WeChatSight2.mp4 */,
 				3DE2149B1F7B70B80076FCD6 /* LiveController.h */,
 				3DE2149C1F7B70B80076FCD6 /* LiveController.m */,
@@ -577,8 +580,8 @@
 				3DF04B9F1FCE5DA5009C5D2A /* ZCZProgressBar.h */,
 				3DF04BA01FCE5DA5009C5D2A /* ZCZProgressBar.m */,
 				3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */,
-				3DF04BA41FCE7D3A009C5D2A /* ZCZProgressBarButton.h */,
-				3DF04BA51FCE7D3A009C5D2A /* ZCZProgressBarButton.m */,
+				3DF04BA41FCE7D3A009C5D2A /* ZCZSlider.h */,
+				3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */,
 				3D0E5C491FAAC22400CC8828 /* WeiShareController.xib in Resources */,
 				3D1CFB6D1F9F23C400D88608 /* STBButtonView.xib in Resources */,
+				3DAB4A8E1FD7E7480038741C /* 123123.mp4 in Resources */,
 				3DAA7BC31FBD76E6005FB4EE /* ProcessImageController.xib in Resources */,
 				3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */,
 				3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */,
@@ -979,7 +983,7 @@
 				3D1CFB631F9F19E500D88608 /* STBTopView.m in Sources */,
 				3DB93C6E1F98836700AA90B2 /* HeaderCell.m in Sources */,
 				3DA722191FC3D4AE000DD9E3 /* FilterCollectionViewCell.m in Sources */,
-				3DF04BA61FCE7D3A009C5D2A /* ZCZProgressBarButton.m in Sources */,
+				3DF04BA61FCE7D3A009C5D2A /* ZCZSlider.m in Sources */,
 				3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */,
 				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,

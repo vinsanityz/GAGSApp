@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @protocol ZCZProgressBarDelegate <NSObject>
-/**当拖动滑块时调用*/
-- (void)ZCZadjustProgressBarLayout:(CGFloat)buttonX;//协议方法
-/**当停止拖动滑块时调用*/
-- (void)ZCZadjustProgressBarLayoutLast;
-/**当播放暂停按钮点击时调用*/
+/**持续拖动滑块*/
+- (void)ZCZProgressBarSliderContinuousSliding:(CGFloat)buttonX;
+/**停止拖动滑块*/
+- (void)ZCZProgressBarSliderEndSliding;
+/**播放暂停按钮点击*/
 - (void)ZCZProgressBarPlayOrPauseBtnClick:(UIButton *)btn;
 
 -(void)resetHiddenProcessBarTime;
@@ -29,6 +29,7 @@
 //-(void)adjustTimeLabel:(CGFloat)time;
 -(void)adjustleftTimeLabelAndProgressView:(CGFloat)time;
 -(void)changeProgressViewWidthAndSliderCenterByTimer:(CGFloat)currentTime;
+-(void)setBackgroundViewWidth:(CGFloat)width;
 -(void)updateBufferViewWidth:(CGFloat)bufferValue;
 @end
 

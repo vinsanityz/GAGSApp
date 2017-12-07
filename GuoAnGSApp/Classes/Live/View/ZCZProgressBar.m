@@ -9,16 +9,16 @@
 #import "ZCZProgressBar.h"
 
 #import "UIView+Frame.h"
-#import "ZCZProgressBarButton.h"
+#import "ZCZSlider.h"
 
-@interface ZCZProgressBar()<ZCZProgressBarButtonDelegate>
+@interface ZCZProgressBar()<ZCZSliderDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseBtn;
 //背景条
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 //缓冲条
 @property (weak, nonatomic) IBOutlet UIView *bufferView;
 //滑块
-@property (weak, nonatomic) IBOutlet ZCZProgressBarButton *progressBarButton;
+@property (weak, nonatomic) IBOutlet ZCZSlider *progressBarButton;
 //总时长
 @property (weak, nonatomic) IBOutlet UILabel *rightTimeLabel;
 //已播放时长
@@ -40,7 +40,10 @@
     return fitView;
 }
 
-
+-(void)setBackgroundViewWidth:(CGFloat)width
+{
+    self.backgroundView.zcz_width = width;
+}
 
 -(void)awakeFromNib
 {
@@ -59,19 +62,20 @@
 }
 
 
-#pragma mark - <ZCZProgressBarButtonDelegate>
-//当拖动滑块持续调用这个代理方法
--(void)ZCZProgressBarButtonMoved:(CGFloat)buttonX
+#pragma mark - <ZCZSliderDelegate>
+//持续拖动滑块
+-(void)ZCZSliderContinuousSliding:(CGFloat)pointX
 {
-    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZadjustProgressBarLayout:)]) {
-        [self.delegate ZCZadjustProgressBarLayout:buttonX];
+    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarSliderContinuousSliding:)]) {
+        [self.delegate ZCZProgressBarSliderContinuousSliding:pointX];
     }
 }
-//当停止拖动滑块来到这个代理方法
--(void)ZCZProgressBarButtonMovedEnd
+
+//停止拖动滑块
+-(void)ZCZSliderEndSliding
 {
-    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZadjustProgressBarLayoutLast)]) {
-        [self.delegate ZCZadjustProgressBarLayoutLast];
+    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarSliderEndSliding)]) {
+        [self.delegate ZCZProgressBarSliderEndSliding];
     }
 }
 
