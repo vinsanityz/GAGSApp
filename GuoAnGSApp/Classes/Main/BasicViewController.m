@@ -24,11 +24,12 @@
 
 -(BOOL)shouldAutorotate
 {
-    return  YES;
+    return  [self.MyTabBarVC.selectedViewController shouldAutorotate];
 }
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
+      return  [self.MyTabBarVC.selectedViewController supportedInterfaceOrientations];
+    //只支持这一个方向(正常的方向)
 }
 
 - (void)viewDidLoad {
@@ -306,6 +307,8 @@
     if (self.MyTabBarVC.selectedViewController.childViewControllers.count>1) {
         return NO;
     }
+    
+//    UIInterfaceOrientation currentOrient = [UIApplication  sharedApplication].statusBarFrame.size.width>;
     
     if ([gestureRecognizer locationInView:self.MyTabBarVCView].x<100||[gestureRecognizer locationInView:self.MyTabBarVCView].x>375-40) {
         return YES;

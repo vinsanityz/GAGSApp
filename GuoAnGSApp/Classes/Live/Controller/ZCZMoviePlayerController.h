@@ -10,4 +10,6 @@
 
 @interface ZCZMoviePlayerController : UIViewController
 
+-(instancetype)initWithURL:(NSString *)url;
+
 @end

@@ -37,7 +37,10 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
 @end
 
 @implementation SearchController
-
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
 -(NSMutableArray *)dataSource
 {
     if (!_dataSource) {

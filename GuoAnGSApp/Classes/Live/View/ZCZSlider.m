@@ -8,21 +8,16 @@
 
 @implementation ZCZSlider
 
--(instancetype)initWithFrame:(CGRect)frame
-{
-    return [super initWithFrame:frame];
-}
-
--(void)awakeFromNib
-{
-    [super awakeFromNib];
-    NSLog(@"%@",NSStringFromCGRect(self.bounds));
-    UIImageView * view = [[UIImageView alloc]init];
-    view.image = [UIImage imageNamed:@"屏幕快照 2017-10-17 下午2.15.50"];
-    view.frame = self.bounds;
-    [self addSubview:view];
-    
-}
+//-(void)awakeFromNib
+//{
+//    [super awakeFromNib];
+//    NSLog(@"%@",NSStringFromCGRect(self.bounds));
+//    UIImageView * view = [[UIImageView alloc]init];
+//    view.image = [UIImage imageNamed:@"屏幕快照 2017-10-17 下午2.15.50"];
+//    view.frame = self.bounds;
+//    [self addSubview:view];
+//    
+//}
 
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

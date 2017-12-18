@@ -52,6 +52,12 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vG2-7Z-YGD" customClass="ZCZSlider">
                     <rect key="frame" x="45" y="15" width="38" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="屏幕快照 2017-10-17 下午2.15.37" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-mc-ALh">
+                            <rect key="frame" x="8" y="8" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmX-o2-niZ">
@@ -62,7 +68,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Mqk-Mu-38c" secondAttribute="bottom" constant="9" id="5fi-IM-bbU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pmX-o2-niZ" secondAttribute="bottom" constant="3" id="7ar-zD-HBj"/>
@@ -81,11 +87,14 @@
                 <outlet property="bufferView" destination="iTJ-uK-uHr" id="N0t-bs-xVC"/>
                 <outlet property="leftTimeLabel" destination="Mqk-Mu-38c" id="NJp-7v-1uo"/>
                 <outlet property="playOrPauseBtn" destination="pmX-o2-niZ" id="PC3-pZ-xdO"/>
-                <outlet property="progressBarButton" destination="vG2-7Z-YGD" id="6JG-7x-47F"/>
+                <outlet property="progressBarSlider" destination="vG2-7Z-YGD" id="6JG-7x-47F"/>
                 <outlet property="progressView" destination="IFu-9V-ebg" id="trJ-8T-tkU"/>
                 <outlet property="rightTimeLabel" destination="vBR-OQ-H2e" id="FSI-bM-pjt"/>
             </connections>
             <point key="canvasLocation" x="31" y="-115.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="屏幕快照 2017-10-17 下午2.15.37" width="21" height="21"/>
+    </resources>
 </document>

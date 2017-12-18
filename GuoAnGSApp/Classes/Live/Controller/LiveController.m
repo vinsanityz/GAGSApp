@@ -19,7 +19,10 @@
 
 @implementation LiveController
 
-
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -141,6 +144,8 @@
     btn.selected = !btn.selected;
     self.selBtn = btn;
     ZCZMoviePlayerController * zcz = [[ZCZMoviePlayerController alloc]init];
+//    [UIApplication sharedApplication].keyWindow.rootViewController = zcz;
+    
     zcz.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:zcz animated:YES];
     

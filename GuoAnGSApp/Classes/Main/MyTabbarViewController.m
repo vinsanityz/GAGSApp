@@ -11,7 +11,7 @@
 #import "ParamFile.h"
 #import "SingleColor.h"
 #import "CommonCtr.h"
-
+#import "ZCZNavigationController.h"
 
 @implementation MyTabbarViewController
 
@@ -21,7 +21,15 @@
     
     
 }
-
+-(BOOL)shouldAutorotate
+{
+    return  [self.selectedViewController shouldAutorotate];
+}
+- (NSUInteger)supportedInterfaceOrientations
+{
+     return  [self.selectedViewController supportedInterfaceOrientations];
+    //只支持这一个方向(正常的方向)
+}
 
 //创建tabBar
 - (void) makeMyTabbar
@@ -40,7 +48,7 @@
         if (!class) {
             *stop = YES;
         }
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[class alloc] init]];
+        ZCZNavigationController *nav = [[ZCZNavigationController alloc] initWithRootViewController:[[class alloc] init]];
         [viewControllersArr addObject:nav];
 
 #warning todo 未添加图片

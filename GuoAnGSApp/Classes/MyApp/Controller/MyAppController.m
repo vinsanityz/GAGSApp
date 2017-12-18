@@ -16,7 +16,10 @@
 @end
 
 @implementation MyAppController
-
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController pushViewController:[[ProcessImageController alloc]init] animated:YES];

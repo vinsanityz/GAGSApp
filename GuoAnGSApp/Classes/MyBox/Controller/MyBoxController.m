@@ -36,6 +36,11 @@
     
 }
 
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
+
 -(void)setUpScrollView
 {
     UIScrollView * scrolV = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];

@@ -70,6 +70,7 @@
 		3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */; };
 		3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */; };
 		3DAB4A8E1FD7E7480038741C /* 123123.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DAB4A8C1FD7E7450038741C /* 123123.mp4 */; };
+		3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */; };
 		3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */; };
 		3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */; };
 		3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F81F94583A0076B7D3 /* UIView+QREasyFrame.m */; };
@@ -177,6 +178,9 @@
 		3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessImageController.m; sourceTree = "<group>"; };
 		3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProcessImageController.xib; sourceTree = "<group>"; };
 		3DAB4A8C1FD7E7450038741C /* 123123.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = 123123.mp4; path = "../../../../../../Downloads/[HYSUB]Dragon Ball Super[117~118][BIG5_MP4][1280X720]/123123.mp4"; sourceTree = "<group>"; };
+		3DAB4A8F1FDF79590038741C /* GuoAnGSApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GuoAnGSApp.entitlements; sourceTree = "<group>"; };
+		3DAB4A901FE35E9E0038741C /* ZCZNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZNavigationController.h; sourceTree = "<group>"; };
+		3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZNavigationController.m; sourceTree = "<group>"; };
 		3DB8D9F51F94583A0076B7D3 /* UIView+QREasyFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+QREasyFrame.h"; sourceTree = "<group>"; };
 		3DB8D9F61F94583A0076B7D3 /* QRScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 		3DDD18201F7B53A400ADC124 /* GuoAnGSApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DAB4A8F1FDF79590038741C /* GuoAnGSApp.entitlements */,
 				3DE2147A1F7B60D60076FCD6 /* Classes */,
 				3DE2148F1F7B60D60076FCD6 /* Other */,
 				3DDD183A1F7B53DC00ADC124 /* CommonTools */,
@@ -401,6 +406,8 @@
 			children = (
 				3D5893511F95D12800B2AA85 /* Login */,
 				3DDD18211F7B53A400ADC124 /* AppDelegate.h */,
+				3DAB4A901FE35E9E0038741C /* ZCZNavigationController.h */,
+				3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */,
 				3DDD18221F7B53A400ADC124 /* AppDelegate.m */,
 				3DA7221B1FC665B2000DD9E3 /* BasicViewController.h */,
 				3DA7221C1FC665B2000DD9E3 /* BasicViewController.m */,
@@ -829,6 +836,11 @@
 					3DDD181D1F7B53A400ADC124 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -917,7 +929,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp-frameworks.sh",
-				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.6/HyphenateFullSDK/Hyphenate.framework",
+				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.7/HyphenateFullSDK/Hyphenate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -963,6 +975,7 @@
 				3D5893691F95E64E00B2AA85 /* SDCollectionViewCell.m in Sources */,
 				3D58936A1F95E64E00B2AA85 /* SDCycleScrollView.m in Sources */,
 				3D58936B1F95E64E00B2AA85 /* UIView+SDExtension.m in Sources */,
+				3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */,
 				3DBB21261F8F53DB008B1B87 /* LoadOnVC.xib in Sources */,
 				3D1CFB601F9EEA1600D88608 /* GroupDetailsTableViewController.m in Sources */,
 				3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */,
@@ -1090,7 +1103,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1139,7 +1152,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1151,11 +1164,12 @@
 			baseConfigurationReference = DD23D2332ED4C04FEE58E36C /* Pods-GuoAnGSApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GuoAnGSApp/GuoAnGSApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FCHGECVTXF;
+				DEVELOPMENT_TEAM = 233N4L3WD9;
 				INFOPLIST_FILE = /Users/rgx/Desktop/GAGSAppzhengshi/GuoAnGSApp/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGSApp;
+				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGuangShiAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1166,11 +1180,12 @@
 			baseConfigurationReference = 05E19051C8CF18A421A0503A /* Pods-GuoAnGSApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GuoAnGSApp/GuoAnGSApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FCHGECVTXF;
+				DEVELOPMENT_TEAM = 233N4L3WD9;
 				INFOPLIST_FILE = /Users/rgx/Desktop/GAGSAppzhengshi/GuoAnGSApp/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGSApp;
+				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGuangShiAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

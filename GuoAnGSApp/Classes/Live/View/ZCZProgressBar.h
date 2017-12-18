@@ -16,7 +16,7 @@
 /**播放暂停按钮点击*/
 - (void)ZCZProgressBarPlayOrPauseBtnClick:(UIButton *)btn;
 
--(void)resetHiddenProcessBarTime;
+-(void)resetProcessBarHiddenTime;
 @end
 
 @interface ZCZProgressBar : UIView
@@ -25,9 +25,9 @@
 @property (nonatomic,assign) CGFloat movieDurationTime;
 @property (nonatomic, weak) id<ZCZProgressBarDelegate> delegate;
 
--(CGFloat)adjustProgressViewAndProgressBarButton:(CGFloat)TapPointX;
+-(CGFloat)adjustProgressViewAndprogressBarSlider:(CGFloat)TapPointX;
 //-(void)adjustTimeLabel:(CGFloat)time;
--(void)adjustleftTimeLabelAndProgressView:(CGFloat)time;
+//-(void)adjustleftTimeLabelAndProgressView:(CGFloat)time;
 -(void)changeProgressViewWidthAndSliderCenterByTimer:(CGFloat)currentTime;
 -(void)setBackgroundViewWidth:(CGFloat)width;
 -(void)updateBufferViewWidth:(CGFloat)bufferValue;

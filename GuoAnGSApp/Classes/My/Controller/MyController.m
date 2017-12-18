@@ -21,7 +21,10 @@
 @end
 
 @implementation MyController
-
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     

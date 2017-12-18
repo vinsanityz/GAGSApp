@@ -30,6 +30,11 @@
     
  
 }
+
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
 -(void)btnClick:(UIButton *)btn
 {
     SearchController * vc = [[SearchController alloc]init];
