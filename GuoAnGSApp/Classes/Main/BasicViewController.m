@@ -26,7 +26,8 @@
 {
     return  [self.MyTabBarVC.selectedViewController shouldAutorotate];
 }
-- (NSUInteger)supportedInterfaceOrientations
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
       return  [self.MyTabBarVC.selectedViewController supportedInterfaceOrientations];
     //只支持这一个方向(正常的方向)

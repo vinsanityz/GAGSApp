@@ -99,6 +99,8 @@
 		3DF04BA31FCE5DB8009C5D2A /* ZCZProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */; };
 		3DF04BA61FCE7D3A009C5D2A /* ZCZSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */; };
 		3DF04BAD1FCFD594009C5D2A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BAC1FCFD594009C5D2A /* UIView+Frame.m */; };
+		3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF409B91FE8F5F7003BACE0 /* ZCZHeaderBar.m */; };
+		3DF409BC1FE8F618003BACE0 /* ZCZHeaderBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF409BB1FE8F618003BACE0 /* ZCZHeaderBar.xib */; };
 		6DCAEF00024144BF370DDF5B /* libPods-GuoAnGSApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */; };
 /* End PBXBuildFile section */
 
@@ -272,6 +274,9 @@
 		3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZSlider.m; sourceTree = "<group>"; };
 		3DF04BAB1FCFD594009C5D2A /* UIView+Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3DF04BAC1FCFD594009C5D2A /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		3DF409B81FE8F5F6003BACE0 /* ZCZHeaderBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZHeaderBar.h; sourceTree = "<group>"; };
+		3DF409B91FE8F5F7003BACE0 /* ZCZHeaderBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZHeaderBar.m; sourceTree = "<group>"; };
+		3DF409BB1FE8F618003BACE0 /* ZCZHeaderBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZCZHeaderBar.xib; sourceTree = "<group>"; };
 		DD23D2332ED4C04FEE58E36C /* Pods-GuoAnGSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoAnGSApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuoAnGSApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -589,6 +594,9 @@
 				3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */,
 				3DF04BA41FCE7D3A009C5D2A /* ZCZSlider.h */,
 				3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */,
+				3DF409B81FE8F5F6003BACE0 /* ZCZHeaderBar.h */,
+				3DF409B91FE8F5F7003BACE0 /* ZCZHeaderBar.m */,
+				3DF409BB1FE8F618003BACE0 /* ZCZHeaderBar.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -885,6 +893,7 @@
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
 				3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */,
 				3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */,
+				3DF409BC1FE8F618003BACE0 /* ZCZHeaderBar.xib in Resources */,
 				3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -987,6 +996,7 @@
 				3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */,
 				3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */,
+				3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */,
 				3D1CFB681F9F1F4900D88608 /* STBButtonView.m in Sources */,
 				3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */,
 				3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */,

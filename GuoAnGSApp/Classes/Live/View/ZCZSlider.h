@@ -12,7 +12,7 @@
 /** 持续拖拽滑块 */
 - (void)ZCZSliderContinuousSliding:(CGFloat)buttonX;
 /** 结束拖拽滑块 */
-- (void)ZCZSliderEndSliding;
+- (void)ZCZSliderEndSliding:(CGFloat)pointX;
 @end
 
 @interface ZCZSlider : UIView

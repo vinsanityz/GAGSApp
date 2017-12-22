@@ -34,13 +34,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FkV-7U-wPF" userLabel="backgroundView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FkV-7U-wPF" userLabel="backgroundView">
                     <rect key="frame" x="66" y="30" width="240" height="2"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="KCU-2L-l7A"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTJ-uK-uHr" userLabel="bufferView">
-                    <rect key="frame" x="66" y="30" width="40" height="2"/>
+                    <rect key="frame" x="66" y="30" width="1" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -50,7 +52,7 @@
                     <color key="backgroundColor" red="1" green="0.036645021540000003" blue="0.1135372535" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vG2-7Z-YGD" customClass="ZCZSlider">
-                    <rect key="frame" x="45" y="15" width="38" height="37"/>
+                    <rect key="frame" x="45" y="13" width="38" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="屏幕快照 2017-10-17 下午2.15.37" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-mc-ALh">
@@ -72,11 +74,14 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Mqk-Mu-38c" secondAttribute="bottom" constant="9" id="5fi-IM-bbU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pmX-o2-niZ" secondAttribute="bottom" constant="3" id="7ar-zD-HBj"/>
+                <constraint firstItem="FkV-7U-wPF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="FAn-ET-FKn"/>
                 <constraint firstItem="pmX-o2-niZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="57" id="KgG-Fd-QM9"/>
                 <constraint firstItem="Mqk-Mu-38c" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="TAA-rT-TyE"/>
                 <constraint firstItem="vBR-OQ-H2e" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="62" id="bDv-Ar-Bij"/>
                 <constraint firstItem="Mqk-Mu-38c" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="62" id="cXG-1p-8cr"/>
+                <constraint firstAttribute="trailing" secondItem="FkV-7U-wPF" secondAttribute="trailing" constant="66" id="dMZ-lT-oK3"/>
                 <constraint firstItem="pmX-o2-niZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dqf-ig-ddw"/>
+                <constraint firstItem="FkV-7U-wPF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="66" id="kdB-5s-KcS"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vBR-OQ-H2e" secondAttribute="bottom" constant="9" id="sD1-zH-obY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vBR-OQ-H2e" secondAttribute="trailing" constant="5" id="yz5-cY-yUB"/>
             </constraints>

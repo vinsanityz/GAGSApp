@@ -49,11 +49,13 @@
     }
 }
 
+
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+     CGPoint p = [[touches anyObject] locationInView:self.superview];
     [super touchesEnded:touches withEvent:event];
-    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZSliderEndSliding)]) {
-        [self.delegate ZCZSliderEndSliding];
+    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZSliderEndSliding:)]) {
+        [self.delegate ZCZSliderEndSliding:p.x];
     }
 }
 @end

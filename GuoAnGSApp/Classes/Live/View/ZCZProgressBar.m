@@ -9,6 +9,7 @@
 #import "ZCZProgressBar.h"
 #import "UIView+Frame.h"
 #import "ZCZSlider.h"
+#import <Masonry.h>
 
 @interface ZCZProgressBar()<ZCZSliderDelegate>
 
@@ -25,6 +26,7 @@
 //已播放时长
 @property (weak, nonatomic) IBOutlet UILabel *leftTimeLabel;
 
+@property(nonatomic,strong)UITapGestureRecognizer * progressBarTap;
 @end
 
 @implementation ZCZProgressBar
@@ -35,9 +37,9 @@
 //    NSLog(@"width%f---height%f",self.zcz_width,self.zcz_height);
     UIView *fitView = [super hitTest:point withEvent:event];
     
-    if (self.zcz_width>self.zcz_height) {
-        return fitView;
-    }
+//    if (self.zcz_width<[UIScreen mainScreen].bounds.size.height) {
+//        return fitView;
+//    }
     if ([[fitView superview] isKindOfClass:[self class]]||[fitView isKindOfClass:[self class]] ) {
         [self.delegate resetProcessBarHiddenTime];
 //        NSLog(@"%@--%@",[fitView class],[fitView.superview class]);
@@ -52,6 +54,19 @@
 //
 //}
 
+-(void)useBackgroundViewWidthFixOtherViewFrame
+{
+    self.progressBarSlider.center =CGPointMake(self.progressBarSlider.center.x, self.backgroundView.center.y);
+    self.progressView.zcz_x = self.backgroundView.zcz_x;
+    self.progressView.zcz_y = self.backgroundView.zcz_y;
+    self.bufferView.zcz_x =  self.backgroundView.zcz_x;
+    self.bufferView.zcz_y =  self.backgroundView.zcz_y;
+  
+    if (self.bufferView.zcz_width>self.backgroundView.zcz_width) {
+        self.bufferView.zcz_width = self.backgroundView.zcz_width;
+        }
+}
+
 -(void)setBackgroundViewWidth:(CGFloat)width
 {
     self.backgroundView.zcz_width = width;
@@ -61,8 +76,18 @@
 {
     [super awakeFromNib];
     self.progressBarSlider.delegate = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapZCZProgressBar:)];
+    [self addGestureRecognizer:tap];
+    self.progressBarTap = tap;
+    
 }
 
+-(void)tapZCZProgressBar:(UITapGestureRecognizer *)tap
+{
+    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarTriggerTapGestureRecognizer:)]) {
+        [self.delegate ZCZProgressBarTriggerTapGestureRecognizer:tap];
+    }
+}
 //更新缓冲条的宽度
 -(void)updateBufferViewWidth:(CGFloat)bufferValue
 {
@@ -77,16 +102,22 @@
 //持续拖动滑块
 -(void)ZCZSliderContinuousSliding:(CGFloat)pointX
 {
+  //touchesmove会与tap手势发生冲突，当touchesmove时禁止tap手势的交互
+    if (self.progressBarTap.enabled==YES)
+    {
+    self.progressBarTap.enabled=NO;
+    }
     if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarSliderContinuousSliding:)]) {
         [self.delegate ZCZProgressBarSliderContinuousSliding:pointX];
     }
 }
 
 //停止拖动滑块
--(void)ZCZSliderEndSliding
-{
-    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarSliderEndSliding)]) {
-        [self.delegate ZCZProgressBarSliderEndSliding];
+-(void)ZCZSliderEndSliding:(CGFloat)pointX
+{   //恢复tap手势的交互
+    self.progressBarTap.enabled=YES;
+    if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(ZCZProgressBarSliderEndSliding:)]) {
+        [self.delegate ZCZProgressBarSliderEndSliding:pointX];
     }
 }
 
@@ -104,26 +135,15 @@
     self.rightTimeLabel.text = [self adjustTimeFormat:movieDurationTime];
 }
 
-//-(void)adjustleftTimeLabelAndProgressView:(CGFloat)buttonX
-//{
-//    CGRect frame = self.progressView.frame;
-//    frame.size.width = buttonX-frame.origin.x;
-//    self.progressView.frame = frame;
-//    CGFloat Lefttime = frame.size.width/240*self.movieDurationTime;
-//    self.leftTimeLabel.text = [self adjustTimeFormat:Lefttime];
-//}
-
 //定时器重复调用此方法来修改滑块与进度条的UI
 -(void)changeProgressViewWidthAndSliderCenterByTimer:(CGFloat)currentTime
 {
     CGFloat pointX = currentTime/self.movieDurationTime*self.backgroundView.zcz_width+self.backgroundView.zcz_x;
-    
-//    NSLog(@"%f-----timer",pointX);
+
     [self adjustProgressViewAndprogressBarSlider:pointX];
-    
 }
 
-#pragma mark - <根据点击手势所在点的X值，来重新确定进度条与滑块的位置>
+#pragma mark - <根据点击手势所在点的X值或者滑块的位置，来重新确定进度条与滑块的位置>
 -(CGFloat)adjustProgressViewAndprogressBarSlider:(CGFloat)TapPointX
 {
     CGFloat maxX = CGRectGetMaxX(self.backgroundView.frame);
@@ -135,16 +155,26 @@
     if (TapPointX<minX) {
         TapPointX = minX;
     }
+    
+//    [self.progressBarSlider mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(@(TapPointX-self.progressBarSlider.zcz_width/2));
+//    }];
+//    [self.progressView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@(TapPointX-minX));
+//    }];
+    
+//    [self.progressBarSlider layoutIfNeeded];
+//    [self.progressView layoutIfNeeded];
     //修改滑块的位置
     self.progressBarSlider.center = CGPointMake(TapPointX, self.progressBarSlider.center.y);
-    //修改进度条的宽度
+//    修改进度条的宽度
     self.progressView.zcz_width = TapPointX-minX;
     
-//    CGFloat Lefttime = (self.progressBarSlider.center.x-self.backgroundView.zcz_x)
     //修改已经播放的时间
-    CGFloat Lefttime = self.progressView.zcz_width/self.backgroundView.zcz_width*self.movieDurationTime;
+    CGFloat Lefttime = (TapPointX-minX)/self.backgroundView.zcz_width*self.movieDurationTime;
+    //设置左侧时间label
     self.leftTimeLabel.text = [self adjustTimeFormat:Lefttime];
-//    NSLog(@"%f--%f--%f",Lefttime,self.progressView.zcz_width,self.movieDurationTime);
+
     return Lefttime;
 }
 

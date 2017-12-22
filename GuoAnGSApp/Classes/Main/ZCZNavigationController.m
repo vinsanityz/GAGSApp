@@ -30,7 +30,7 @@
     return [self.visibleViewController shouldAutorotate];
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
     // 返回当前显示的viewController支持旋转的方向
     return [self.visibleViewController preferredInterfaceOrientationForPresentation];
 }

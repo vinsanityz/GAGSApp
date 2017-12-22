@@ -12,9 +12,11 @@
 /**持续拖动滑块*/
 - (void)ZCZProgressBarSliderContinuousSliding:(CGFloat)buttonX;
 /**停止拖动滑块*/
-- (void)ZCZProgressBarSliderEndSliding;
+- (void)ZCZProgressBarSliderEndSliding:(CGFloat)pointX;
 /**播放暂停按钮点击*/
 - (void)ZCZProgressBarPlayOrPauseBtnClick:(UIButton *)btn;
+/**点击手势触发*/
+-(void)ZCZProgressBarTriggerTapGestureRecognizer:(UITapGestureRecognizer *)tap;
 
 -(void)resetProcessBarHiddenTime;
 @end
@@ -29,7 +31,7 @@
 //-(void)adjustTimeLabel:(CGFloat)time;
 //-(void)adjustleftTimeLabelAndProgressView:(CGFloat)time;
 -(void)changeProgressViewWidthAndSliderCenterByTimer:(CGFloat)currentTime;
--(void)setBackgroundViewWidth:(CGFloat)width;
+-(void)useBackgroundViewWidthFixOtherViewFrame;
 -(void)updateBufferViewWidth:(CGFloat)bufferValue;
 @end
 
