@@ -2,11 +2,12 @@ platform :ios, ‘8.0’
 target 'GuoAnGSApp' do
 pod 'AFNetworking'
 pod 'Masonry'
-pod 'SDWebImage'
+pod 'SDWebImage', '~> 4.2.3'
 pod 'MBProgressHUD'
 pod 'AutoCoding'
 pod 'JPush'
 
+pod 'SDCycleScrollView', '~> 1.75'
 pod 'MJRefresh'
 
 pod 'TZImagePickerController'
@@ -16,8 +17,6 @@ pod 'YYText'
 
 #图片视频处理
 pod 'GPUImage'
-
-#Lite版本
 
 #Full版本
 pod 'Hyphenate'

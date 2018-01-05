@@ -41,7 +41,12 @@
         make.centerY.equalTo(self.contentView.mas_centerY);
     }];
     
-   
+    self.subtitleLabel = [[UILabel alloc] init];
+    [self.contentView addSubview:self.subtitleLabel];
+    [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.image.mas_right).offset(100);
+        make.centerY.equalTo(self.contentView.mas_centerY);
+    }];
     
 }
 

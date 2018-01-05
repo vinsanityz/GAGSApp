@@ -15,14 +15,15 @@
     if (self) {
         [self.contentView addSubview:self.images];
         [self.contentView addSubview:self.titleLabel];
-         [self.contentView addSubview:self.btn];
+//         [self.contentView addSubview:self.btn];
     }
     return self;
 }
 
 -(UIImageView *)images {
     if (!_images) {
-        _images = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 70, 70)];
+        _images = [[UIImageView alloc] initWithFrame:CGRectMake(150, 5, 70, 70)];
+
         _images.contentMode = UIViewContentModeScaleAspectFill;
         //将头像设置为圆形的
         _images.layer.cornerRadius = 35;//设置圆角的半径
@@ -35,7 +36,7 @@
 
 -(UILabel *)titleLabel {
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 25,[UIScreen mainScreen].bounds.size.width - 110,30)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 85,[UIScreen mainScreen].bounds.size.width - 110,30)];
     
     }
     return _titleLabel;

@@ -15,6 +15,8 @@
 @implementation ZCZHeaderBar
 -(void)awakeFromNib
 {
+    
+    
     [super awakeFromNib];
          self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.7];
 }

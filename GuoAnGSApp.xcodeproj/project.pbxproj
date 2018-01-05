@@ -19,13 +19,6 @@
 		3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C70B41FAC108B00C662F5 /* ScreenShotController.m */; };
 		3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */; };
 		3D353DD01FB56AC500B33A0B /* ZCZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D353DCF1FB56AC500B33A0B /* ZCZLabel.m */; };
-		3D5893651F95E64E00B2AA85 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */; };
-		3D5893661F95E64E00B2AA85 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935A1F95E61F00B2AA85 /* TAAnimatedDotView.m */; };
-		3D5893671F95E64E00B2AA85 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935C1F95E61F00B2AA85 /* TADotView.m */; };
-		3D5893681F95E64E00B2AA85 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58935E1F95E61F00B2AA85 /* TAPageControl.m */; };
-		3D5893691F95E64E00B2AA85 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5893601F95E61F00B2AA85 /* SDCollectionViewCell.m */; };
-		3D58936A1F95E64E00B2AA85 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5893621F95E61F00B2AA85 /* SDCycleScrollView.m */; };
-		3D58936B1F95E64E00B2AA85 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5893641F95E61F00B2AA85 /* UIView+SDExtension.m */; };
 		3D6CB2F81F959ABB00B326FC /* EPGRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CB2F61F959ABB00B326FC /* EPGRightTableViewCell.m */; };
 		3D6CB2F91F959ABC00B326FC /* EPGRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D6CB2F71F959ABB00B326FC /* EPGRightTableViewCell.xib */; };
 		3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */; };
@@ -44,6 +37,21 @@
 		3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2E5281FB3F38100BF51B3 /* HistoryCollectionViewCell.xib */; };
 		3DA2E52E1FB4340A00BF51B3 /* HistoryCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */; };
 		3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */; };
+		3DA35CDB1FF0CD1600C64620 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3DA35CD91FF0CD1600C64620 /* AlipaySDK.bundle */; };
+		3DA35CDC1FF0CD1600C64620 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CDA1FF0CD1600C64620 /* AlipaySDK.framework */; };
+		3DA35CDE1FF0CD9000C64620 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CDD1FF0CD9000C64620 /* libc++.tbd */; };
+		3DA35CE01FF0CDA100C64620 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CDF1FF0CDA100C64620 /* libz.tbd */; };
+		3DA35CE41FF0CDF300C64620 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CE31FF0CDE500C64620 /* QuartzCore.framework */; };
+		3DA35CE51FF0CE2600C64620 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CE11FF0CDB600C64620 /* SystemConfiguration.framework */; };
+		3DA35CE61FF0CE4B00C64620 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CE21FF0CDD500C64620 /* CoreTelephony.framework */; };
+		3DA35CE81FF0CE6F00C64620 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CE71FF0CE5F00C64620 /* CoreText.framework */; };
+		3DA35CEA1FF0CE8200C64620 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CE91FF0CE7900C64620 /* CoreGraphics.framework */; };
+		3DA35CEC1FF0CE9D00C64620 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CEB1FF0CE9400C64620 /* UIKit.framework */; };
+		3DA35CEE1FF0CEB400C64620 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CED1FF0CEA500C64620 /* Foundation.framework */; };
+		3DA35CF01FF0CECB00C64620 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CEF1FF0CEC100C64620 /* CFNetwork.framework */; };
+		3DA35CF21FF0CEEA00C64620 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CF11FF0CEE100C64620 /* CoreMotion.framework */; };
+		3DA35CF51FF493EE00C64620 /* tableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA35CF41FF493ED00C64620 /* tableViewHeaderView.m */; };
+		3DA35CF71FF4941000C64620 /* tableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA35CF61FF4941000C64620 /* tableViewHeaderView.xib */; };
 		3DA722141FC3D0DA000DD9E3 /* FiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA722121FC3D0DA000DD9E3 /* FiltersController.m */; };
 		3DA722191FC3D4AE000DD9E3 /* FilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA722171FC3D4AE000DD9E3 /* FilterCollectionViewCell.m */; };
 		3DA7221A1FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA722181FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib */; };
@@ -69,7 +77,6 @@
 		3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214AE1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.m */; };
 		3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */; };
 		3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */; };
-		3DAB4A8E1FD7E7480038741C /* 123123.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DAB4A8C1FD7E7450038741C /* 123123.mp4 */; };
 		3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */; };
 		3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */; };
 		3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8D9F71F94583A0076B7D3 /* QRScanViewController.m */; };
@@ -94,7 +101,6 @@
 		3DE214A61F7B70DE0076FCD6 /* MyBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A51F7B70DE0076FCD6 /* MyBoxController.m */; };
 		3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */; };
 		3DF04B9C1FCE4F11009C5D2A /* ZCZMoviePlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04B9B1FCE4F11009C5D2A /* ZCZMoviePlayerController.m */; };
-		3DF04B9E1FCE5093009C5D2A /* WeChatSight2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DF04B9D1FCE5093009C5D2A /* WeChatSight2.mp4 */; };
 		3DF04BA11FCE5DA5009C5D2A /* ZCZProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA01FCE5DA5009C5D2A /* ZCZProgressBar.m */; };
 		3DF04BA31FCE5DB8009C5D2A /* ZCZProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */; };
 		3DF04BA61FCE7D3A009C5D2A /* ZCZSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA51FCE7D3A009C5D2A /* ZCZSlider.m */; };
@@ -126,20 +132,6 @@
 		3D2C70B51FAC108B00C662F5 /* ScreenShotController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenShotController.xib; sourceTree = "<group>"; };
 		3D353DCE1FB56AC500B33A0B /* ZCZLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZLabel.h; sourceTree = "<group>"; };
 		3D353DCF1FB56AC500B33A0B /* ZCZLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZLabel.m; sourceTree = "<group>"; };
-		3D5893571F95E61F00B2AA85 /* TAAbstractDotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
-		3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
-		3D5893591F95E61F00B2AA85 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
-		3D58935A1F95E61F00B2AA85 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
-		3D58935B1F95E61F00B2AA85 /* TADotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
-		3D58935C1F95E61F00B2AA85 /* TADotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
-		3D58935D1F95E61F00B2AA85 /* TAPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
-		3D58935E1F95E61F00B2AA85 /* TAPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
-		3D58935F1F95E61F00B2AA85 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
-		3D5893601F95E61F00B2AA85 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
-		3D5893611F95E61F00B2AA85 /* SDCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
-		3D5893621F95E61F00B2AA85 /* SDCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
-		3D5893631F95E61F00B2AA85 /* UIView+SDExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
-		3D5893641F95E61F00B2AA85 /* UIView+SDExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		3D58936C1F95EC7400B2AA85 /* loginpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginpic.jpg; sourceTree = "<group>"; };
 		3D6CB2F51F959ABB00B326FC /* EPGRightTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPGRightTableViewCell.h; sourceTree = "<group>"; };
 		3D6CB2F61F959ABB00B326FC /* EPGRightTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPGRightTableViewCell.m; sourceTree = "<group>"; };
@@ -169,6 +161,22 @@
 		3DA2E52B1FB4340A00BF51B3 /* HistoryCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCollectionReusableView.h; sourceTree = "<group>"; };
 		3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryCollectionReusableView.m; sourceTree = "<group>"; };
 		3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCollectionReusableView.xib; sourceTree = "<group>"; };
+		3DA35CD91FF0CD1600C64620 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		3DA35CDA1FF0CD1600C64620 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		3DA35CDD1FF0CD9000C64620 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		3DA35CDF1FF0CDA100C64620 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3DA35CE11FF0CDB600C64620 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3DA35CE21FF0CDD500C64620 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3DA35CE31FF0CDE500C64620 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3DA35CE71FF0CE5F00C64620 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		3DA35CE91FF0CE7900C64620 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3DA35CEB1FF0CE9400C64620 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3DA35CED1FF0CEA500C64620 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3DA35CEF1FF0CEC100C64620 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3DA35CF11FF0CEE100C64620 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		3DA35CF31FF493ED00C64620 /* tableViewHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tableViewHeaderView.h; sourceTree = "<group>"; };
+		3DA35CF41FF493ED00C64620 /* tableViewHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tableViewHeaderView.m; sourceTree = "<group>"; };
+		3DA35CF61FF4941000C64620 /* tableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = tableViewHeaderView.xib; sourceTree = "<group>"; };
 		3DA722111FC3D0DA000DD9E3 /* FiltersController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersController.h; sourceTree = "<group>"; };
 		3DA722121FC3D0DA000DD9E3 /* FiltersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersController.m; sourceTree = "<group>"; };
 		3DA722161FC3D4AE000DD9E3 /* FilterCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCollectionViewCell.h; sourceTree = "<group>"; };
@@ -179,7 +187,6 @@
 		3DAA7BBF1FBD76E6005FB4EE /* ProcessImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessImageController.h; sourceTree = "<group>"; };
 		3DAA7BC01FBD76E6005FB4EE /* ProcessImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessImageController.m; sourceTree = "<group>"; };
 		3DAA7BC11FBD76E6005FB4EE /* ProcessImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProcessImageController.xib; sourceTree = "<group>"; };
-		3DAB4A8C1FD7E7450038741C /* 123123.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = 123123.mp4; path = "../../../../../../Downloads/[HYSUB]Dragon Ball Super[117~118][BIG5_MP4][1280X720]/123123.mp4"; sourceTree = "<group>"; };
 		3DAB4A8F1FDF79590038741C /* GuoAnGSApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GuoAnGSApp.entitlements; sourceTree = "<group>"; };
 		3DAB4A901FE35E9E0038741C /* ZCZNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZNavigationController.h; sourceTree = "<group>"; };
 		3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZNavigationController.m; sourceTree = "<group>"; };
@@ -266,7 +273,6 @@
 		3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zczdemoViewController.m; sourceTree = "<group>"; };
 		3DF04B9A1FCE4F11009C5D2A /* ZCZMoviePlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZMoviePlayerController.h; sourceTree = "<group>"; };
 		3DF04B9B1FCE4F11009C5D2A /* ZCZMoviePlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZMoviePlayerController.m; sourceTree = "<group>"; };
-		3DF04B9D1FCE5093009C5D2A /* WeChatSight2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = WeChatSight2.mp4; sourceTree = "<group>"; };
 		3DF04B9F1FCE5DA5009C5D2A /* ZCZProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZProgressBar.h; sourceTree = "<group>"; };
 		3DF04BA01FCE5DA5009C5D2A /* ZCZProgressBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZProgressBar.m; sourceTree = "<group>"; };
 		3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZCZProgressBar.xib; sourceTree = "<group>"; };
@@ -286,7 +292,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA35CF21FF0CEEA00C64620 /* CoreMotion.framework in Frameworks */,
+				3DA35CF01FF0CECB00C64620 /* CFNetwork.framework in Frameworks */,
+				3DA35CEE1FF0CEB400C64620 /* Foundation.framework in Frameworks */,
+				3DA35CEC1FF0CE9D00C64620 /* UIKit.framework in Frameworks */,
+				3DA35CEA1FF0CE8200C64620 /* CoreGraphics.framework in Frameworks */,
+				3DA35CE81FF0CE6F00C64620 /* CoreText.framework in Frameworks */,
+				3DA35CE61FF0CE4B00C64620 /* CoreTelephony.framework in Frameworks */,
+				3DA35CE51FF0CE2600C64620 /* SystemConfiguration.framework in Frameworks */,
+				3DA35CE41FF0CDF300C64620 /* QuartzCore.framework in Frameworks */,
+				3DA35CDE1FF0CD9000C64620 /* libc++.tbd in Frameworks */,
+				3DA35CE01FF0CDA100C64620 /* libz.tbd in Frameworks */,
 				6DCAEF00024144BF370DDF5B /* libPods-GuoAnGSApp.a in Frameworks */,
+				3DA35CDC1FF0CD1600C64620 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,33 +365,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3D5893551F95E61F00B2AA85 /* SDCycleScrollView */ = {
+		3DA35CD81FF0CD1600C64620 /* Alipay */ = {
 			isa = PBXGroup;
 			children = (
-				3D5893561F95E61F00B2AA85 /* PageControl */,
-				3D58935F1F95E61F00B2AA85 /* SDCollectionViewCell.h */,
-				3D5893601F95E61F00B2AA85 /* SDCollectionViewCell.m */,
-				3D5893611F95E61F00B2AA85 /* SDCycleScrollView.h */,
-				3D5893621F95E61F00B2AA85 /* SDCycleScrollView.m */,
-				3D5893631F95E61F00B2AA85 /* UIView+SDExtension.h */,
-				3D5893641F95E61F00B2AA85 /* UIView+SDExtension.m */,
+				3DA35CD91FF0CD1600C64620 /* AlipaySDK.bundle */,
+				3DA35CDA1FF0CD1600C64620 /* AlipaySDK.framework */,
 			);
-			path = SDCycleScrollView;
-			sourceTree = "<group>";
-		};
-		3D5893561F95E61F00B2AA85 /* PageControl */ = {
-			isa = PBXGroup;
-			children = (
-				3D5893571F95E61F00B2AA85 /* TAAbstractDotView.h */,
-				3D5893581F95E61F00B2AA85 /* TAAbstractDotView.m */,
-				3D5893591F95E61F00B2AA85 /* TAAnimatedDotView.h */,
-				3D58935A1F95E61F00B2AA85 /* TAAnimatedDotView.m */,
-				3D58935B1F95E61F00B2AA85 /* TADotView.h */,
-				3D58935C1F95E61F00B2AA85 /* TADotView.m */,
-				3D58935D1F95E61F00B2AA85 /* TAPageControl.h */,
-				3D58935E1F95E61F00B2AA85 /* TAPageControl.m */,
-			);
-			path = PageControl;
+			path = Alipay;
 			sourceTree = "<group>";
 		};
 		3DDD18151F7B53A400ADC124 = {
@@ -564,8 +562,6 @@
 		3DE214841F7B60D60076FCD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DAB4A8C1FD7E7450038741C /* 123123.mp4 */,
-				3DF04B9D1FCE5093009C5D2A /* WeChatSight2.mp4 */,
 				3DE2149B1F7B70B80076FCD6 /* LiveController.h */,
 				3DE2149C1F7B70B80076FCD6 /* LiveController.m */,
 				3DF04B9A1FCE4F11009C5D2A /* ZCZMoviePlayerController.h */,
@@ -597,6 +593,9 @@
 				3DF409B81FE8F5F6003BACE0 /* ZCZHeaderBar.h */,
 				3DF409B91FE8F5F7003BACE0 /* ZCZHeaderBar.m */,
 				3DF409BB1FE8F618003BACE0 /* ZCZHeaderBar.xib */,
+				3DA35CF31FF493ED00C64620 /* tableViewHeaderView.h */,
+				3DA35CF41FF493ED00C64620 /* tableViewHeaderView.m */,
+				3DA35CF61FF4941000C64620 /* tableViewHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -755,7 +754,7 @@
 		3DE214A71F7B71C90076FCD6 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
-				3D5893551F95E61F00B2AA85 /* SDCycleScrollView */,
+				3DA35CD81FF0CD1600C64620 /* Alipay */,
 				3DE214A81F7B71C90076FCD6 /* Reachability */,
 				3DE214AB1F7B71C90076FCD6 /* SVPullToRefresh */,
 			);
@@ -804,6 +803,17 @@
 		FAE887AA673AF50E8FAC6BF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DA35CF11FF0CEE100C64620 /* CoreMotion.framework */,
+				3DA35CEF1FF0CEC100C64620 /* CFNetwork.framework */,
+				3DA35CED1FF0CEA500C64620 /* Foundation.framework */,
+				3DA35CEB1FF0CE9400C64620 /* UIKit.framework */,
+				3DA35CE91FF0CE7900C64620 /* CoreGraphics.framework */,
+				3DA35CE71FF0CE5F00C64620 /* CoreText.framework */,
+				3DA35CE31FF0CDE500C64620 /* QuartzCore.framework */,
+				3DA35CE21FF0CDD500C64620 /* CoreTelephony.framework */,
+				3DA35CE11FF0CDB600C64620 /* SystemConfiguration.framework */,
+				3DA35CDF1FF0CDA100C64620 /* libz.tbd */,
+				3DA35CDD1FF0CD9000C64620 /* libc++.tbd */,
 				FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */,
 			);
 			name = Frameworks;
@@ -816,10 +826,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DDD18341F7B53A400ADC124 /* Build configuration list for PBXNativeTarget "GuoAnGSApp" */;
 			buildPhases = (
+				3DDD181C1F7B53A400ADC124 /* Resources */,
 				D704FFB14D37A039227DFC2C /* [CP] Check Pods Manifest.lock */,
 				3DDD181A1F7B53A400ADC124 /* Sources */,
 				3DDD181B1F7B53A400ADC124 /* Frameworks */,
-				3DDD181C1F7B53A400ADC124 /* Resources */,
 				D00F636B0C45CC5EE7A76FA6 /* [CP] Embed Pods Frameworks */,
 				71B0C28D3160C334B5344BBB /* [CP] Copy Pods Resources */,
 			);
@@ -876,14 +886,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D6CB2F91F959ABC00B326FC /* EPGRightTableViewCell.xib in Resources */,
-				3DF04B9E1FCE5093009C5D2A /* WeChatSight2.mp4 in Resources */,
 				3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */,
 				3D0E5C491FAAC22400CC8828 /* WeiShareController.xib in Resources */,
 				3D1CFB6D1F9F23C400D88608 /* STBButtonView.xib in Resources */,
-				3DAB4A8E1FD7E7480038741C /* 123123.mp4 in Resources */,
 				3DAA7BC31FBD76E6005FB4EE /* ProcessImageController.xib in Resources */,
 				3DA2E52F1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib in Resources */,
 				3D7CCD141F9499CF002D59A7 /* SetDetailsController.xib in Resources */,
+				3DA35CDB1FF0CD1600C64620 /* AlipaySDK.bundle in Resources */,
 				3DF04BA31FCE5DB8009C5D2A /* ZCZProgressBar.xib in Resources */,
 				3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */,
 				3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */,
@@ -891,6 +900,7 @@
 				3DA7221A1FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib in Resources */,
 				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
+				3DA35CF71FF4941000C64620 /* tableViewHeaderView.xib in Resources */,
 				3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */,
 				3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */,
 				3DF409BC1FE8F618003BACE0 /* ZCZHeaderBar.xib in Resources */,
@@ -976,14 +986,7 @@
 			files = (
 				3D8B12C71FB1A6C800473D79 /* SearchResultsTableViewCell.xib in Sources */,
 				3D8B12C61FB160FE00473D79 /* SearchResultsTableViewCell.m in Sources */,
-				3D5893651F95E64E00B2AA85 /* TAAbstractDotView.m in Sources */,
 				3DF04B9C1FCE4F11009C5D2A /* ZCZMoviePlayerController.m in Sources */,
-				3D5893661F95E64E00B2AA85 /* TAAnimatedDotView.m in Sources */,
-				3D5893671F95E64E00B2AA85 /* TADotView.m in Sources */,
-				3D5893681F95E64E00B2AA85 /* TAPageControl.m in Sources */,
-				3D5893691F95E64E00B2AA85 /* SDCollectionViewCell.m in Sources */,
-				3D58936A1F95E64E00B2AA85 /* SDCycleScrollView.m in Sources */,
-				3D58936B1F95E64E00B2AA85 /* UIView+SDExtension.m in Sources */,
 				3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */,
 				3DBB21261F8F53DB008B1B87 /* LoadOnVC.xib in Sources */,
 				3D1CFB601F9EEA1600D88608 /* GroupDetailsTableViewController.m in Sources */,
@@ -997,6 +1000,7 @@
 				3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */,
 				3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */,
+				3DA35CF51FF493EE00C64620 /* tableViewHeaderView.m in Sources */,
 				3D1CFB681F9F1F4900D88608 /* STBButtonView.m in Sources */,
 				3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */,
 				3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */,
@@ -1177,6 +1181,10 @@
 				CODE_SIGN_ENTITLEMENTS = GuoAnGSApp/GuoAnGSApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 233N4L3WD9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GuoAnGSApp/Other/ThirdLib/Alipay",
+				);
 				INFOPLIST_FILE = /Users/rgx/Desktop/GAGSAppzhengshi/GuoAnGSApp/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGuangShiAppTest;
@@ -1193,6 +1201,10 @@
 				CODE_SIGN_ENTITLEMENTS = GuoAnGSApp/GuoAnGSApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 233N4L3WD9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GuoAnGSApp/Other/ThirdLib/Alipay",
+				);
 				INFOPLIST_FILE = /Users/rgx/Desktop/GAGSAppzhengshi/GuoAnGSApp/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = beiyou.GuoAnGuangShiAppTest;

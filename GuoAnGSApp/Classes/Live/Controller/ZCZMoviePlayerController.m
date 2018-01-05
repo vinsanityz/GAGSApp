@@ -14,6 +14,7 @@
 #import <Masonry.h>
 #import "AppDelegate.h"
 #import "ZCZHeaderBar.h"
+
 @interface ZCZMoviePlayerController ()<ZCZProgressBarDelegate,ZCZHeaderBarDelegate>
 //AVPlayer
 @property(nonatomic,strong)AVPlayer * player;
@@ -24,8 +25,7 @@
 @property(nonatomic,strong)ZCZHeaderBar * headerBar;
 //定时器
 @property(nonatomic,weak)NSTimer * timer;
-@property(nonatomic,assign)CGFloat lastScrollTime;
-@property(nonatomic,assign)CATransform3D oriTransform;
+//全屏手势view
 @property(nonatomic,weak)UIView *fullScreenGestureView;
 //基层view
 @property(nonatomic,weak)UIView *baseView;
@@ -38,10 +38,12 @@
 @property(nonatomic,assign)BOOL isHorizontalPaning;
 @property(nonatomic,strong)NSString * movieURL;
 @property(nonatomic,strong)UILabel * timeLabel;
+@property(nonatomic,assign)BOOL isShouldPlay;
 //@property(nonatomic,strong)UITapGestureRecognizer * progressBarTap;
 @end
 
 @implementation ZCZMoviePlayerController
+
 
 -(BOOL)shouldAutorotate
 {
@@ -64,6 +66,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    NSLog(@"self.view.bounds---%@",NSStringFromCGRect(self.view.bounds));
+//    self.navigationController.navigationBar.translucent = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
    //设置音频为扬声器模式，并且能与其他音源混合
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory: AVAudioSessionCategoryPlayback
@@ -80,7 +86,7 @@
     [self setUpPlayerLayerView];
     [self setUpFullScreenGestureView];
     [self setUpPlayer];
-    
+    self.view.backgroundColor = [UIColor blackColor];
     //监听屏幕方向改变
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RotatingScreen) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
@@ -93,6 +99,7 @@
     [self.playerLayerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.baseView);
         make.top.equalTo(self.baseView).offset(64);
+//        make.top.equalTo(self.baseView);
         make.right.equalTo(self.baseView);
         make.height.equalTo(@(SCREEN_WIDTH/16*9));
     }];
@@ -114,13 +121,6 @@
     [self.timeLabel setTextColor:[UIColor whiteColor]];
 }
 
--(void)backBtnClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    
-//  AppDelegate * appdele =  (AppDelegate*)[UIApplication sharedApplication].delegate;
-//    [UIApplication sharedApplication].keyWindow.rootViewController = (UIViewController *)appdele.basicViewController;
-}
 //调节亮度声音与进度的手势的View，目前小屏全屏都适用。
 -(void)setUpFullScreenGestureView
 {
@@ -143,13 +143,13 @@
    
     
     
-    MPVolumeView * volumeView = [[MPVolumeView alloc]initWithFrame:CGRectMake(100, 100, 300, 300)];
+    MPVolumeView * volumeView = [[MPVolumeView alloc]initWithFrame:CGRectMake(100,100, 300, 300)];
     volumeView.transform = CGAffineTransformMakeRotation(M_PI_4);
     
     volumeView.showsRouteButton = NO;
     //默认YES，这里为了突出，故意设置一遍
     volumeView.showsVolumeSlider = NO;
-
+    
 //    [self.myVolumeView sizeToFit];
 //    [self.myVolumeView setFrame:CGRectMake(-1000, -1000, 10, 10)];
 
@@ -164,49 +164,16 @@
     }
 }
 
-//baseView上面有多个View，由底层到顶层依次为，playerLayerView->fullScreenGestureView->procressBar and headerBar
--(UIView *)baseView
-{
-    if (_baseView==nil) {
-        UIView * baseView= [[UIView alloc]init];
-        baseView.backgroundColor = [UIColor greenColor];
-        [self.view addSubview:baseView];
-        [baseView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.view);
-            make.left.equalTo(self.view);
-            make.right.equalTo(self.view);
-            make.height.equalTo(@(SCREEN_HEIGHT));
-        }];
-        _baseView = baseView;
-    }
-    return _baseView;
-}
-
--(void)startPlayer
-{
-    [self.player play];
-    //添加定时器，使进度条移动
-    [self startMyTimer];
-}
-
 -(void)setUpPlayer
 {
-    NSURL * url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"123123.mp4" ofType:nil]];
+    NSURL * url = [NSURL URLWithString:@"http://120.25.226.186:32812/resources/videos/minion_02.mp4"];
     self.item = [AVPlayerItem playerItemWithURL:url];
     self.player = [AVPlayer playerWithPlayerItem:self.item];
     AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-//    //layer不能添加约束，所以只能用frame形式
-//    layer.frame = CGRectMake(0, 64, SCREEN_WIDTH,SCREEN_WIDTH/16*9 );
-//    self.playerLayer = layer;
-//    self.oriTransform = self.playerLayer.transform;
-//    [self.baseView.layer addSublayer:layer];
-    
     //layer不能添加约束，所以只能用frame形式
     NSLog(@"%@",NSStringFromCGRect(self.playerLayerView.bounds));
-    
     layer.frame = self.playerLayerView.bounds;
     self.playerLayer = layer;
-//    self.oriTransform = self.playerLayer.transform;
     [self.playerLayerView.layer addSublayer:layer];
     
     //监听AVPlayerItem的状态
@@ -223,22 +190,31 @@
     //    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
 }
 
-//播放结束来到
--(void)playerIsFinished:(NSNotification *)noti
+#pragma mark - <懒加载>
+//baseView上面有多个View，由底层到顶层依次为，playerLayerView->fullScreenGestureView->procressBar and headerBar
+-(UIView *)baseView
 {
-    NSLog(@"%@",noti);
-    [self stopMyTimer];
+    if (_baseView==nil) {
+        UIView * baseView= [[UIView alloc]init];
+        baseView.backgroundColor = [UIColor greenColor];
+        [self.view addSubview:baseView];
+        [baseView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view);
+//            make.top.equalTo(self.view).offset(64);
+            make.left.equalTo(self.view);
+            make.right.equalTo(self.view);
+            make.bottom.equalTo(self.view);
+        }];
+        _baseView = baseView;
+    }
+    return _baseView;
 }
 
+//进度栏与头部标题栏
 -(ZCZProgressBar *)progressBar
 {
     if (_progressBar==nil) {
         ZCZProgressBar * bar = [[[NSBundle mainBundle]loadNibNamed:@"ZCZProgressBar" owner:nil options:nil] lastObject];
-        //给progressBar添加点按手势
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapZczProgressBar:)];
-//        [bar addGestureRecognizer:tap];
-//        self.progressBarTap = tap;
-//        bar.frame = CGRectMake(0, 300, SCREEN_WIDTH, 100);
         bar.delegate = self;
         [self.baseView addSubview:bar];
         [bar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -249,60 +225,47 @@
         }];
         _progressBar = bar;
         
-        //progressbar顶部的View
+        //headerBar
         self.headerBar = [[[NSBundle mainBundle]loadNibNamed:@"ZCZHeaderBar" owner:nil options:nil] lastObject];
         self.headerBar.delegate = self;
-   
-        
         [self.baseView addSubview:self.headerBar];
-//        WithFrame:CGRectMake(300, 0, SCREEN_WIDTH-300, SCREEN_HEIGHT)
         [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.playerLayerView);
-            make.left.equalTo(self.playerLayerView);
-            make.right.equalTo(self.playerLayerView);
+            make.top.equalTo(self.view);
+            make.left.equalTo(self.view);
+            make.right.equalTo(self.view);
             make.height.equalTo(@(40));
-            
         }];
+//        self.headerBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 40);
         self.headerBar.hidden = YES;
     }
     return _progressBar;
 }
 
+-(void)startPlayer
+{
+    [self.player play];
+    //添加定时器，使进度条移动
+    [self startMyTimer];
+    //5s后隐藏进度条
+    [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
+}
+
+//播放结束来到
+-(void)playerIsFinished:(NSNotification *)noti
+{
+    NSLog(@"%@",noti);
+    [self stopMyTimer];
+}
 
 
-
-//-(void)tapZczProgressBar:(UITapGestureRecognizer *)tap
-//{
-//    [self stopMyTimer];
-//    CGPoint tapPoint = [tap locationInView:self.progressBar];
-//    //调整滑块、左侧时间与进度条的UI
-////    CGFloat tapValue =0;
-//    //    if (duration ==UIDeviceOrientationLandscapeLeft||duration ==UIDeviceOrientationLandscapeRight) {
-//    //        tapValue = tapPoint.y;
-//    //    }
-////    if (self.progressBar.frame.size.height>SCREEN_HEIGHT/2) {
-////        tapValue = tapPoint.y;
-////    }else{
-////        tapValue = tapPoint.x;
-////    }
-//    CGFloat time = [self.progressBar adjustProgressViewAndprogressBarSlider:tapPoint.x];
-//    //    NSLog(@"%f.........tap--time.",time);
-//    //    self.newTime = time;
-//    //    self.player.seekToTime(time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
-//    //进行时间跳转
-//    [self.player seekToTime:CMTimeMake(time*1000, 1000)toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
-//    }];
-//    if (self.player.rate==0) {
-//        [self startPlayer];
-//
-//    }else{
-//        [self startMyTimer];
-//    }
-//
-//}
+#pragma mark - <导航栏返回按钮响应方法>
+-(void)backBtnClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - <FullScreenGestureView的手势>
-//FullScreenGestureView的点按手势
+//FullScreenGestureView的点按手势-->控制进度条与头部标题的显示与隐藏
 -(void)tapFullScreenGestureView:(UITapGestureRecognizer * )tap
 {
     if (self.progressBar.hidden==YES) {
@@ -344,17 +307,16 @@
         }];
     }
 }
+
 //FullScreenGestureView的拖拽手势
 -(void)panFullScreenGestureView:(UIPanGestureRecognizer * )pan
 {
-    
     if (pan.state==UIGestureRecognizerStateBegan) {
         self.previousTranPoint = CGPointZero;
          self.beginPoint = [pan locationInView:self.fullScreenGestureView];
     NSLog(@"beginPoint%@",NSStringFromCGPoint(self.beginPoint));
     }
-    
-//    CGFloat curVal = self.volumeSlider.value;
+
     CGPoint panPoint = [pan locationInView:self.fullScreenGestureView];
     
     NSLog(@"panX--%f+++++++panY--%f",panPoint.x,panPoint.y);
@@ -362,13 +324,11 @@
    CGPoint tranP = [pan translationInView:self.fullScreenGestureView];
     NSLog(@"tranX--%f+++++++tranY--%f",tranP.x,tranP.y);
     
-    
     if (pan.state==UIGestureRecognizerStateChanged) {
     //垂直移动
     if (fabs(tranP.y)>fabs(3*tranP.x)&&self.isHorizontalPaning==NO) {
         if(fabs(tranP.y)>30){
                     self.isVerticalPaning = YES;
-            
         }
         
         if (self.beginPoint.x>SCREEN_WIDTH/2) {
@@ -432,16 +392,18 @@
         self.timeLabel.text = [self adjustTimeFormat:value];
         self.timeLabel.hidden = NO;
         [self.player seekToTime:CMTimeMake(lastValue*1000, 1000) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    }
+        }
     }
     
     self.previousTranPoint = tranP;
+    
     if (pan.state==UIGestureRecognizerStateEnded) {
         self.previousTranPoint = CGPointMake(0, 0);
+        //初始化对手势方向的判断
         self.isHorizontalPaning = NO;
         self.isVerticalPaning = NO;
+        //隐藏中央的label
         self.timeLabel.hidden = YES;
-        
         self.beginPoint = CGPointMake(0, 0);
         if (self.player.rate==0) {
             [self.player play];
@@ -449,7 +411,6 @@
         }
     }
 }
-
 
 #pragma mark - <把时间从CGFloat格式转换成00：00：00格式>
 -(NSString *)adjustTimeFormat:(CGFloat)timeValue
@@ -460,6 +421,8 @@
     NSString * timeStr  = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",hour,minute,second];
     return timeStr;
 }
+
+#pragma mark - <progressBar与headerBar的动画>
 //隐藏progressBar与headerBar的动画
 -(void)hiddenTheProgressBarInFullScreenMode
 {
@@ -487,17 +450,18 @@
      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenTheProgressBarInFullScreenMode) object:nil];
 }
 
-
 #pragma mark - <ZCZProgressBarDelegate>
 //点击播放暂停按钮来到此代理方法
 - (void)ZCZProgressBarPlayOrPauseBtnClick:(UIButton *)btn
 {
     if (self.player.rate==0) {
+        self.isShouldPlay = YES;
         [self.player play];
         [btn setTitle:@"pause" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [self startMyTimer];
     }else{
+        self.isShouldPlay = NO;
         [self.player pause];
         [btn setTitle:@"play" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -527,9 +491,8 @@
     CGFloat time = [self.progressBar adjustProgressViewAndprogressBarSlider:pointX];
 
       [self.player seekToTime:CMTimeMake(time, 1)toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    
     [self startPlayer];
-   
-    [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
 }
 
 //ProgressBar的点按手势响应方法
@@ -540,6 +503,7 @@
         [self stopMyTimer];
     }
     CGPoint tapPoint = [tap locationInView:self.progressBar];
+    [self.player pause];
     
     //返回tap所对应的播放时间
     CGFloat time = [self.progressBar adjustProgressViewAndprogressBarSlider:tapPoint.x];
@@ -549,10 +513,7 @@
     
     if (tap.state == UIGestureRecognizerStateEnded)
     {
-        if (self.player.rate==0)
-        {
-            [self.player play];
-        }
+        [self.player play];
         [self startMyTimer];
     }
 }
@@ -561,7 +522,7 @@
 -(void)resetProcessBarHiddenTime
 {
     //取消HiddenTheProgressBarInFullScreenMode的延迟执行
-        [self cancelHiddenTheProgressBarInFullScreenMode];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenTheProgressBarInFullScreenMode) object:nil];
     //开始HiddenTheProgressBarInFullScreenMode的延迟执行
     [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
 }
@@ -587,7 +548,6 @@
     [self.progressBar changeProgressViewWidthAndSliderCenterByTimer:curTime];
 }
 
-
 #pragma mark - <监听屏幕旋转通知>
 -(void)RotatingScreen
 {
@@ -595,7 +555,13 @@
     //向左转
     if (duration ==UIDeviceOrientationLandscapeLeft||duration ==UIDeviceOrientationLandscapeRight)
     {
-        self.navigationController.navigationBar.hidden = YES;
+//        [UIView animateWithDuration:1.0 animations:^{
+//            self.navigationController.navigationBar.alpha = 0;
+//        }];
+              self.navigationController.navigationBar.hidden = YES;
+     
+        
+        
         self.headerBar.hidden = NO;
         self.progressBar.hidden = NO;
         self.headerBar.alpha = 1;
@@ -603,35 +569,43 @@
         
         [self cancelHiddenTheProgressBarInFullScreenMode];
          [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
+        [self.headerBar layoutSubviews];
         
         //更新约束
         [self.playerLayerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.baseView);
+            make.left.equalTo(self.baseView);
+            make.right.equalTo(self.baseView);
             make.height.equalTo(@(SCREEN_HEIGHT));
         }];
         [self.fullScreenGestureView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.baseView);
+            make.left.equalTo(self.baseView);
+            make.right.equalTo(self.baseView);
             make.height.equalTo(@(SCREEN_HEIGHT));
         }];
-        //得到更新约束后的frame
-            [self.view layoutIfNeeded];
-            self.playerLayer.frame = self.playerLayerView.bounds;
+        
+        //更新约束,使控件达到真实的frame,从而使self.playerLayerView.frame达到全屏的状态
+        [self.view layoutIfNeeded];
+        
+        self.playerLayer.frame = self.playerLayerView.bounds;
         [self.progressBar useBackgroundViewWidthFixOtherViewFrame];
+        [self getPlayerCurrentPlayTime];
+//        self.timeLabel.hidden = NO;
+//        self.timeLabel.hidden = YES;
+//        self.headerBar.hidden = YES;
+//        self.headerBar.hidden = NO;
+      
 //正常方向
-    }else if (duration ==UIDeviceOrientationPortrait)
-    {
+    }else if (duration ==UIDeviceOrientationPortrait){
+        
+        self.navigationController.navigationBar.hidden = NO;
         self.progressBar.hidden = NO;
         self.progressBar.alpha =1;
         self.headerBar.hidden = YES;
-        self.navigationController.navigationBar.hidden = NO;
-        [self cancelHiddenTheProgressBarInFullScreenMode];
-        [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
         
-//        self.fullScreenGestureView.hidden = YES;
-//        [UIApplication sharedApplication].statusBarHidden = NO;
-//        self.progressBar.transform = CGAffineTransformIdentity;
-//        self.progressBar.frame = CGRectMake(0, 300, SCREEN_WIDTH, 100);
-//        [self.progressBar setBackgroundViewWidth:240];
+        [self resetProcessBarHiddenTime];
+
        //更新约束
         [self.playerLayerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.baseView).offset(0);
@@ -645,10 +619,11 @@
             make.right.equalTo(self.baseView).offset(0);
             make.height.equalTo(@(SCREEN_WIDTH/16*9));
         }];
+        //使self.playerLayerView.frame达到最新的状态
         [self.view layoutIfNeeded];
         self.playerLayer.frame = self.playerLayerView.bounds;
- [self.progressBar useBackgroundViewWidthFixOtherViewFrame];
-//    [self cancelHiddenTheProgressBarInFullScreenMode];
+        [self.progressBar useBackgroundViewWidthFixOtherViewFrame];
+        [self getPlayerCurrentPlayTime];
     }
 }
 
@@ -666,6 +641,7 @@
 #pragma mark - <kvo监听方法>
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
+    //AVPlayerItemStatus
     if ([keyPath isEqualToString:@"status"]) {
     switch ([change[@"new"] integerValue])
         {
@@ -674,11 +650,9 @@
             break;
         }
         case AVPlayerItemStatusReadyToPlay:{
-            NSLog(@"获得视频总时长  %f",CMTimeGetSeconds(self.player.currentItem.duration));//CMTime在下面会介绍
             self.progressBar.movieDurationTime = CMTimeGetSeconds(self.player.currentItem.duration);
-            [self startPlayer];
-            [self performSelector:@selector(hiddenTheProgressBarInFullScreenMode) withObject:nil afterDelay:5.0];
-            
+//            [self startPlayer];
+       
             break;
         }
         case AVPlayerItemStatusFailed:{
@@ -689,6 +663,7 @@
             break;
         }
     }
+    //视频的缓冲
     else if([keyPath isEqualToString:@"loadedTimeRanges"])
     {
         AVPlayerItem *playerItem = object;
@@ -704,11 +679,21 @@
         [self.progressBar updateBufferViewWidth:bufferValue];
         NSLog(@"共缓冲：%.2f",totalBuffer);
     }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) { //监听播放器在缓冲数据的状态
+        [self stopMyTimer];
+        
         NSLog(@"缓冲不足暂停了");
     } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
         NSLog(@"缓冲达到可播放程度了");
+        NSLog(@"%f---zczcz缓冲达到可播放程度了",self.player.rate);
+        if (_isShouldPlay==YES&&self.player.rate==0) {
+            [self.player play];
+            [self startMyTimer];
+        }
+        
+        
+        
         //由于 AVPlayer 缓存不足就会自动暂停，所以缓存充足了需要手动播放，才能继续播放
-        [_player play];
+//        [_player play];
     }
 }
 

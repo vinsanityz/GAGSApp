@@ -27,9 +27,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    [[EMClient sharedClient].groupManager addDelegate:self delegateQueue:nil];
-//    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+
     self.showLeft = NO;
     //设置主TableVIew
     [self.view addSubview:self.tableView];
@@ -55,34 +53,11 @@
         _tableView.showsVerticalScrollIndicator = NO;
         [self.tableView registerClass:[HeaderCell class] forCellReuseIdentifier:@"cellHeader"];
         [self.tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"cell"];
-        
-        self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^ {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.tableView.header endRefreshing];
-            });
-        }];
-        
-       
-        
-        //        //设置动画图像的普通状态
-//        [header setImages:@[[UIImage imageNamed:@"loginpic"]] forState: MJRefreshStateIdle];
-//        //设置动画图像的拉动状态（松开后立即进入刷新状态）
-//        [header setImages:@[[UIImage imageNamed:@"loginpic"]] forState: MJRefreshStatePulling];
-//        //设置动画图像的刷新状态
-//        [header setImages:@[[UIImage imageNamed:@"loginpic"]]  forState: MJRefreshStateRefreshing];
-//        //设置标题
-//        self.tableView.mj_header = header;
-        
-        
     }
     return _tableView;
 }
 
--(void)loadNewData
-{
-    NSLog(@"refresh!!!!!!");
-    
-}
+
 - (void)handleChangeTextColorActionTwo:(NSNotificationCenter *)notification {
     [self.tableView reloadData];
 }
@@ -92,51 +67,57 @@
     self.tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [self.tableView reloadData];
-//}
 
-#pragma mark - UITableViewDataSource -
+#pragma mark - <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{    
-    return 1;
+{
+    NSArray * arr = PersonalCenterTableViewSectionArray[section];
+    return arr.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [MY_SectionArraySecond count]+1;
+    return [PersonalCenterTableViewSectionArray count];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
         HeaderCell *cellHeader = [tableView dequeueReusableCellWithIdentifier:@"cellHeader" forIndexPath:indexPath];
         cellHeader.selectionStyle = UITableViewCellSelectionStyleNone;
-        cellHeader.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cellHeader.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (kPermanent_GET_OBJECT(kGetName)== nil) {
-            cellHeader.titleLabel.text = @"待完善";
+            cellHeader.titleLabel.text = @"vinceTest";
         }else{
             cellHeader.titleLabel.text = kPermanent_GET_OBJECT(kGetName);
         }
-        cellHeader.titleLabel.textColor = [UIColor whiteColor];
+        cellHeader.titleLabel.textColor = [UIColor blackColor];
         cellHeader.titleLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
-        NSString *mergeStr =  [NSString stringWithFormat:PreHttpImage,kPermanent_GET_OBJECT(KGetIP),kPermanent_GET_OBJECT(KGetPort),kPermanent_GET_OBJECT(KGetHeadImageUrl)];
-        NSLog(@"mergeStr:%@",mergeStr);
-        [cellHeader.images sd_setImageWithURL:[NSURL URLWithString:mergeStr] placeholderImage:[UIImage imageNamed:MAX_IMAGE]];
-        
-        
-        cellHeader.backgroundColor = BACK_CONTROL_BLACK;
+//        NSString *mergeStr =  [NSString stringWithFormat:PreHttpImage,kPermanent_GET_OBJECT(KGetIP),kPermanent_GET_OBJECT(KGetPort),kPermanent_GET_OBJECT(KGetHeadImageUrl)];
+//        NSLog(@"mergeStr:%@",mergeStr);
+//        [cellHeader.images sd_setImageWithURL:[NSURL URLWithString:mergeStr] placeholderImage:[UIImage imageNamed:MAX_IMAGE]];
+        cellHeader.images.backgroundColor = [UIColor redColor];
+//        cellHeader.backgroundColor = BACK_CONTROL_BLACK;
         return cellHeader;
-    } else {
+    }
+    else {
         CommonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (indexPath.section==1) {
+            cell.subtitleLabel.text = @"关联微信账号";
+        }else{
+            cell.subtitleLabel.text = nil;
+        }
+        
         cell.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
         cell.titleLabel.textColor = [single.colorDic objectForKey:FONT_MAIN_COLOR];
         cell.titleLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE]intValue]];
-        
-        cell.titleLabel.text = MY_SectionArraySecond[indexPath.section-1];
-        [cell.image setImage:[UIImage imageNamed:MY_PictureNameSecond[indexPath.row]]];//添加图标
+        NSArray * arr = PersonalCenterTableViewSectionArray[indexPath.section];
+        cell.titleLabel.text = arr[indexPath.row];
+//        cell.titleLabel.text = MY_SectionArraySecond[indexPath.section-1];
+//        [cell.image setImage:[UIImage imageNamed:MY_PictureNameSecond[indexPath.row]]];//添加图标
         return cell;
     }
 }
@@ -144,7 +125,7 @@
 #pragma mark - UITableViewDelegate -
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 80;
+        return 130;
     }else {
         return 44;
     }

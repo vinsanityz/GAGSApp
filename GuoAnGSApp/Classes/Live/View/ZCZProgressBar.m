@@ -53,10 +53,16 @@
 //    return [super pointInside:point withEvent:event];
 //
 //}
-
+//根据backgroundView的frame来调整其他子控件的位置
 -(void)useBackgroundViewWidthFixOtherViewFrame
 {
-    self.progressBarSlider.center =CGPointMake(self.progressBarSlider.center.x, self.backgroundView.center.y);
+    
+    
+     self.progressBarSlider.center =CGPointMake(self.progressBarSlider.center.x, self.backgroundView.center.y);
+if(self.progressBarSlider.center.x>self.backgroundView.zcz_width) {
+         self.progressBarSlider.center =CGPointMake(self.backgroundView.zcz_width, self.backgroundView.center.y);
+    }
+   
     self.progressView.zcz_x = self.backgroundView.zcz_x;
     self.progressView.zcz_y = self.backgroundView.zcz_y;
     self.bufferView.zcz_x =  self.backgroundView.zcz_x;
