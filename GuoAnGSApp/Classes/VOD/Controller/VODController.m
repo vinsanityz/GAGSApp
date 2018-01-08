@@ -8,7 +8,8 @@
 #define HeaderArray @[@"精选",@"免费",@"电影",@"电视剧",@"纪录片",@"综艺",@"动漫"]
 
 #import "VODController.h"
-#import "SDCycleScrollView.h"
+#import <SDCycleScrollView.h>
+
 
 #import "SearchController.h"
 

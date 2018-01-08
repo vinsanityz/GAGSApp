@@ -10,8 +10,9 @@
 
 #import <GPUImage.h>
 #import "ProcessImageController.h"
+#import "ZCZPickView.h"
 
-@interface MyAppController ()
+@interface MyAppController ()<ZCZPickViewDelegate>
 
 @end
 
@@ -22,7 +23,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController pushViewController:[[ProcessImageController alloc]init] animated:YES];
+    ZCZPickView * zczpicker = [[ZCZPickView alloc]initForAreaPickView];
+    zczpicker.frame = CGRectMake(0, 100, 376, 400);
+    [self.view addSubview:zczpicker];
+    zczpicker.delegate = self;
+//    [self.navigationController pushViewController:[[ProcessImageController alloc]init] animated:YES];
 //    UIImage *inputImage = [UIImage imageNamed:@"loginpic"];
 //
 //    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:inputImage];
@@ -49,7 +54,7 @@
     
 //    GPUImageBrightnessFilter
     
-    [self.view addSubview:v];
+//    [self.view addSubview:v];
     // Do any additional setup after loading the view.
 }
 
@@ -67,5 +72,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString *)dateStr
+{
+    NSLog(@"%@",dateStr);
+    
+}
 
 @end

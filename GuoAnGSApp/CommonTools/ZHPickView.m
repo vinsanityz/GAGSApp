@@ -20,7 +20,7 @@
 @property(nonatomic,assign)BOOL isLevelArray;
 @property(nonatomic,assign)BOOL isLevelDic;
 @property(nonatomic,strong)NSDictionary *levelTwoDic;
-@property(nonatomic,strong)UIView *toolbar;
+@property(nonatomic,strong)UIView *headerBar;
 @property(nonatomic,strong)UIDatePicker *datePicker;
 @property(nonatomic,assign)NSDate *defaulDate;
 @property(nonatomic,copy)NSString *resultString;
@@ -67,7 +67,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         colorData = [SingleColor sharedInstance];
-        [self setUpToolBar];
+        [self setUpheaderBar];
         
         self.backgroundColor = [colorData.colorDic objectForKey:BACK_CONTROL_COLOR];
     }
@@ -209,49 +209,42 @@
     [pickView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
         make.right.equalTo(self.mas_right);
-        make.top.equalTo(self.toolbar.mas_bottom);
+        make.top.equalTo(self.headerBar.mas_bottom);
         make.bottom.equalTo(self.mas_bottom);
     }];
 }
 
 
--(void)setUpToolBar{
+-(void)setUpheaderBar{
     
-    self.toolbar = [[UIView alloc] init];
-    [self addSubview:self.toolbar];
-    [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.headerBar = [[UIView alloc] init];
+    [self addSubview:self.headerBar];
+    [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
         make.right.equalTo(self.mas_right);
         make.top.equalTo(self.mas_top);
         make.height.equalTo(@(ZHToobarHeight));
     }];
-    
-    
     //取消按钮
     self.leftBtn = [self setButtonWithTitle:@"取消"];
     [_leftBtn addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.toolbar addSubview:_leftBtn];
+    [self.headerBar addSubview:_leftBtn];
     [_leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_toolbar.mas_left).offset(10);
-        make.top.equalTo(_toolbar.mas_top).offset(4);
-        make.bottom.equalTo(_toolbar.mas_bottom).offset(-4);
+        make.left.equalTo(_headerBar.mas_left).offset(10);
+        make.top.equalTo(_headerBar.mas_top).offset(4);
+        make.bottom.equalTo(_headerBar.mas_bottom).offset(-4);
         make.width.equalTo(@(60));
     }];
-    
-    
     //确定按钮
     self.rightBtn = [self setButtonWithTitle:@"确定"];
     [_rightBtn addTarget:self action:@selector(doneClick)   forControlEvents:UIControlEventTouchUpInside];
-    [self.toolbar addSubview:_rightBtn];
+    [self.headerBar addSubview:_rightBtn];
     [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_toolbar.mas_right).offset(-10);
-        make.top.equalTo(_toolbar.mas_top).offset(4);
-        make.bottom.equalTo(_toolbar.mas_bottom).offset(-4);
+        make.right.equalTo(_headerBar.mas_right).offset(-10);
+        make.top.equalTo(_headerBar.mas_top).offset(4);
+        make.bottom.equalTo(_headerBar.mas_bottom).offset(-4);
         make.width.equalTo(@(60));
-        
     }];
-    
-    
 }
 
 -(UIButton *)setButtonWithTitle:(NSString *)titleStr {
@@ -653,8 +646,8 @@
     }
      */
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(toolbarCancelBtnClick)]) {
-        [self.delegate toolbarCancelBtnClick];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(headerBarCancelBtnClick)]) {
+        [self.delegate headerBarCancelBtnClick];
     }
     
     [self removeFromSuperview];

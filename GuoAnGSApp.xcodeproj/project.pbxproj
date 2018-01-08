@@ -21,6 +21,8 @@
 		3D353DD01FB56AC500B33A0B /* ZCZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D353DCF1FB56AC500B33A0B /* ZCZLabel.m */; };
 		3D6CB2F81F959ABB00B326FC /* EPGRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CB2F61F959ABB00B326FC /* EPGRightTableViewCell.m */; };
 		3D6CB2F91F959ABC00B326FC /* EPGRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D6CB2F71F959ABB00B326FC /* EPGRightTableViewCell.xib */; };
+		3D6F80442003193E00C08E73 /* ZCZPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F80432003193E00C08E73 /* ZCZPickView.m */; };
+		3D6F8045200354FD00C08E73 /* area.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18421F7B53DC00ADC124 /* area.plist */; };
 		3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */; };
 		3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD001F949233002D59A7 /* ManualInputViewController.m */; };
 		3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD041F94931C002D59A7 /* ManualInputViewController.xib */; };
@@ -74,8 +76,6 @@
 		3DAAD3051F7B76D200C91E5C /* SingleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18571F7B53DC00ADC124 /* SingleColor.m */; };
 		3DAAD3061F7B76D200C91E5C /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD185A1F7B53DC00ADC124 /* ZHPickView.m */; };
 		3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214AA1F7B71C90076FCD6 /* Reachability.m */; };
-		3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214AE1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.m */; };
-		3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */; };
 		3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */; };
 		3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */; };
 		3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */; };
@@ -99,7 +99,6 @@
 		3DE214A01F7B70C60076FCD6 /* VODController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2149F1F7B70C60076FCD6 /* VODController.m */; };
 		3DE214A31F7B70D10076FCD6 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A21F7B70D10076FCD6 /* MyController.m */; };
 		3DE214A61F7B70DE0076FCD6 /* MyBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214A51F7B70DE0076FCD6 /* MyBoxController.m */; };
-		3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */; };
 		3DF04B9C1FCE4F11009C5D2A /* ZCZMoviePlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04B9B1FCE4F11009C5D2A /* ZCZMoviePlayerController.m */; };
 		3DF04BA11FCE5DA5009C5D2A /* ZCZProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BA01FCE5DA5009C5D2A /* ZCZProgressBar.m */; };
 		3DF04BA31FCE5DB8009C5D2A /* ZCZProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF04BA21FCE5DB8009C5D2A /* ZCZProgressBar.xib */; };
@@ -136,6 +135,8 @@
 		3D6CB2F51F959ABB00B326FC /* EPGRightTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPGRightTableViewCell.h; sourceTree = "<group>"; };
 		3D6CB2F61F959ABB00B326FC /* EPGRightTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPGRightTableViewCell.m; sourceTree = "<group>"; };
 		3D6CB2F71F959ABB00B326FC /* EPGRightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EPGRightTableViewCell.xib; sourceTree = "<group>"; };
+		3D6F80422003193E00C08E73 /* ZCZPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZPickView.h; sourceTree = "<group>"; };
+		3D6F80432003193E00C08E73 /* ZCZPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZPickView.m; sourceTree = "<group>"; };
 		3D7CCCFC1F948BB0002D59A7 /* HelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		3D7CCCFF1F949233002D59A7 /* ManualInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManualInputViewController.h; sourceTree = "<group>"; };
@@ -246,7 +247,6 @@
 		3DDD18551F7B53DC00ADC124 /* ReturnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReturnModel.m; sourceTree = "<group>"; };
 		3DDD18561F7B53DC00ADC124 /* SingleColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleColor.h; sourceTree = "<group>"; };
 		3DDD18571F7B53DC00ADC124 /* SingleColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleColor.m; sourceTree = "<group>"; };
-		3DDD18581F7B53DC00ADC124 /* TabbarConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TabbarConfig.plist; sourceTree = "<group>"; };
 		3DDD18591F7B53DC00ADC124 /* ZHPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		3DDD185A1F7B53DC00ADC124 /* ZHPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TabbarConfig.plist; sourceTree = "<group>"; };
@@ -264,13 +264,6 @@
 		3DE214A51F7B70DE0076FCD6 /* MyBoxController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBoxController.m; sourceTree = "<group>"; };
 		3DE214A91F7B71C90076FCD6 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3DE214AA1F7B71C90076FCD6 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		3DE214AC1F7B71C90076FCD6 /* SVPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
-		3DE214AD1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
-		3DE214AE1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
-		3DE214AF1F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
-		3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
-		3DEFAFF11F97196900D7DC5D /* zczdemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zczdemoViewController.h; sourceTree = "<group>"; };
-		3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zczdemoViewController.m; sourceTree = "<group>"; };
 		3DF04B9A1FCE4F11009C5D2A /* ZCZMoviePlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZMoviePlayerController.h; sourceTree = "<group>"; };
 		3DF04B9B1FCE4F11009C5D2A /* ZCZMoviePlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZMoviePlayerController.m; sourceTree = "<group>"; };
 		3DF04B9F1FCE5DA5009C5D2A /* ZCZProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZProgressBar.h; sourceTree = "<group>"; };
@@ -329,8 +322,6 @@
 				3DBB20FE1F8F4B9A008B1B87 /* LoadOnVC.h */,
 				3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */,
 				3DBB20FC1F8F4B99008B1B87 /* LoadOnVC.xib */,
-				3DEFAFF11F97196900D7DC5D /* zczdemoViewController.h */,
-				3DEFAFF21F97196900D7DC5D /* zczdemoViewController.m */,
 				3D7CCCFF1F949233002D59A7 /* ManualInputViewController.h */,
 				3D7CCD001F949233002D59A7 /* ManualInputViewController.m */,
 				3D7CCD041F94931C002D59A7 /* ManualInputViewController.xib */,
@@ -436,8 +427,6 @@
 				3DDD18451F7B53DC00ADC124 /* CommonCtr.h */,
 				3DDD18441F7B53DC00ADC124 /* AreaObject.m */,
 				3DDD18461F7B53DC00ADC124 /* CommonCtr.m */,
-				3DDD18471F7B53DC00ADC124 /* CSReachability.h */,
-				3DDD18481F7B53DC00ADC124 /* CSReachability.m */,
 				3DDD18491F7B53DC00ADC124 /* CustomTextField.h */,
 				3DDD184A1F7B53DC00ADC124 /* CustomTextField.m */,
 				3DDD184B1F7B53DC00ADC124 /* HJSTKToastView.h */,
@@ -453,9 +442,10 @@
 				3DDD18551F7B53DC00ADC124 /* ReturnModel.m */,
 				3DDD18561F7B53DC00ADC124 /* SingleColor.h */,
 				3DDD18571F7B53DC00ADC124 /* SingleColor.m */,
-				3DDD18581F7B53DC00ADC124 /* TabbarConfig.plist */,
 				3DDD18591F7B53DC00ADC124 /* ZHPickView.h */,
 				3DDD185A1F7B53DC00ADC124 /* ZHPickView.m */,
+				3D6F80422003193E00C08E73 /* ZCZPickView.h */,
+				3D6F80432003193E00C08E73 /* ZCZPickView.m */,
 				3D58936C1F95EC7400B2AA85 /* loginpic.jpg */,
 			);
 			path = CommonTools;
@@ -756,7 +746,6 @@
 			children = (
 				3DA35CD81FF0CD1600C64620 /* Alipay */,
 				3DE214A81F7B71C90076FCD6 /* Reachability */,
-				3DE214AB1F7B71C90076FCD6 /* SVPullToRefresh */,
 			);
 			path = ThirdLib;
 			sourceTree = "<group>";
@@ -764,22 +753,12 @@
 		3DE214A81F7B71C90076FCD6 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
+				3DDD18471F7B53DC00ADC124 /* CSReachability.h */,
+				3DDD18481F7B53DC00ADC124 /* CSReachability.m */,
 				3DE214A91F7B71C90076FCD6 /* Reachability.h */,
 				3DE214AA1F7B71C90076FCD6 /* Reachability.m */,
 			);
 			path = Reachability;
-			sourceTree = "<group>";
-		};
-		3DE214AB1F7B71C90076FCD6 /* SVPullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				3DE214AC1F7B71C90076FCD6 /* SVPullToRefresh.h */,
-				3DE214AD1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.h */,
-				3DE214AE1F7B71C90076FCD6 /* UIScrollView+SVInfiniteScrolling.m */,
-				3DE214AF1F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.h */,
-				3DE214B01F7B71C90076FCD6 /* UIScrollView+SVPullToRefresh.m */,
-			);
-			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		3DF04BA71FCFD4D2009C5D2A /* Category */ = {
@@ -826,8 +805,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DDD18341F7B53A400ADC124 /* Build configuration list for PBXNativeTarget "GuoAnGSApp" */;
 			buildPhases = (
-				3DDD181C1F7B53A400ADC124 /* Resources */,
 				D704FFB14D37A039227DFC2C /* [CP] Check Pods Manifest.lock */,
+				3DDD181C1F7B53A400ADC124 /* Resources */,
 				3DDD181A1F7B53A400ADC124 /* Sources */,
 				3DDD181B1F7B53A400ADC124 /* Frameworks */,
 				D00F636B0C45CC5EE7A76FA6 /* [CP] Embed Pods Frameworks */,
@@ -918,14 +897,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp-resources.sh",
-				"${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
@@ -984,6 +961,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D6F8045200354FD00C08E73 /* area.plist in Sources */,
 				3D8B12C71FB1A6C800473D79 /* SearchResultsTableViewCell.xib in Sources */,
 				3D8B12C61FB160FE00473D79 /* SearchResultsTableViewCell.m in Sources */,
 				3DF04B9C1FCE4F11009C5D2A /* ZCZMoviePlayerController.m in Sources */,
@@ -997,13 +975,10 @@
 				3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */,
 				3D0E5C481FAAC22400CC8828 /* WeiShareController.m in Sources */,
 				3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */,
-				3DAAD3081F7B76FC00C91E5C /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */,
 				3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */,
 				3DA35CF51FF493EE00C64620 /* tableViewHeaderView.m in Sources */,
 				3D1CFB681F9F1F4900D88608 /* STBButtonView.m in Sources */,
-				3DEFAFF31F97196900D7DC5D /* zczdemoViewController.m in Sources */,
-				3DAAD3091F7B76FC00C91E5C /* UIScrollView+SVPullToRefresh.m in Sources */,
 				3D6CB2F81F959ABB00B326FC /* EPGRightTableViewCell.m in Sources */,
 				3D0E5C4C1FAAFA7E00CC8828 /* ChoosePhotoController.m in Sources */,
 				3D2C05281F99D41100AAE921 /* SettingTableViewController.m in Sources */,
@@ -1020,6 +995,7 @@
 				3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */,
 				3DAAD2FD1F7B76D200C91E5C /* AreaObject.m in Sources */,
 				3DAAD2FE1F7B76D200C91E5C /* CSReachability.m in Sources */,
+				3D6F80442003193E00C08E73 /* ZCZPickView.m in Sources */,
 				3DAAD2FF1F7B76D200C91E5C /* CustomTextField.m in Sources */,
 				3DAA7BC21FBD76E6005FB4EE /* ProcessImageController.m in Sources */,
 				3DAAD3001F7B76D200C91E5C /* HJSTKToastView.m in Sources */,

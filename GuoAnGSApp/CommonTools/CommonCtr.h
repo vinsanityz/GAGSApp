@@ -11,7 +11,7 @@
 
 #import <MBProgressHUD.h>
 #import "LYNetworkManager.h" //网络请求基类
-#import "SVPullToRefresh.h" //上拉加载，下拉刷新
+
 #import "HJSTKToastView.h" 
 #import "CSReachability.h" //网络监测封装
 #import "ReturnModel.h"    //错误数据返回

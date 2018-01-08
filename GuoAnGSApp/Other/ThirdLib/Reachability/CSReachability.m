@@ -8,12 +8,6 @@
 
 #import "CSReachability.h"
 
-@interface CSReachability ()
-
-//@property (nonatomic, strong) Reachability *reachability;
-
-@end
-
 @implementation CSReachability
 
 + (instancetype)shareInstance {

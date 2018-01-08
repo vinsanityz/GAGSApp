@@ -3,6 +3,7 @@ target 'GuoAnGSApp' do
 pod 'AFNetworking'
 pod 'Masonry'
 pod 'SDWebImage', '~> 4.2.3'
+
 pod 'MBProgressHUD'
 pod 'AutoCoding'
 pod 'JPush'
@@ -19,8 +20,8 @@ pod 'YYText'
 pod 'GPUImage'
 
 #Full版本
-pod 'Hyphenate'
-pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+#pod 'Hyphenate'
+#pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
 
 
  # U-Share SDK UI模块（分享面板，建议添加）

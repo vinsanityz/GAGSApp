@@ -16,7 +16,7 @@
 @protocol ZHPickViewDelegate <NSObject>
 @optional
 -(void)toobarDonBtnHaveClick:(ZHPickView *)pickView resultString:(NSString *)resultString;
--(void)toolbarCancelBtnClick;
+-(void)headerBarCancelBtnClick;
 @end
 
 

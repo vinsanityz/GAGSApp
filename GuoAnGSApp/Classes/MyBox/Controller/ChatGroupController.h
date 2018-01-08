@@ -6,8 +6,9 @@
 //  Copyright © 2017年 zcz. All rights reserved.
 //
 
-#import <EaseUI/EaseUI.h>
+//#import <EaseUI/EaseUI.h>
+//
+//@interface ChatGroupController : EaseMessageViewController
+//
+//@end
 
-@interface ChatGroupController : EaseMessageViewController
-
-@end

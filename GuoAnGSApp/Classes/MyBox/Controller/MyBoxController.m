@@ -12,8 +12,8 @@
 #import "WeiShareController.h"
 #import "ChoosePhotoController.h"
 #import "ScreenShotController.h"
-#import <Hyphenate/Hyphenate.h>//及时通讯
-#import "ChatGroupController.h"
+//#import <Hyphenate/Hyphenate.h>//及时通讯
+//#import "ChatGroupController.h"
 #define UIScreenWidth [UIScreen mainScreen].bounds.size.width
 #define UIScreenHeight [UIScreen mainScreen].bounds.size.height
 
@@ -186,40 +186,40 @@
     
     return view;}
 
-#pragma mark - <STBButtonViewDelegate>
--(void)didClickSTBButtonViewBtn:(UIButton *)btn
-{
-    if (btn.tag==1301) {
-        WeiShareController * vc = [[WeiShareController alloc]init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }else if (btn.tag==1302) {
-        ScreenShotController * vc = [[ScreenShotController alloc]init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-       
-    }
-    else if (btn.tag==1304) {
-        //根据房间号初始化聊天控制器
-        ChoosePhotoController *photoVC = [[ChoosePhotoController alloc] initWithMaxImagesCount:9 delegate:self];
-        
-        [photoVC setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-            //拿到图片
-        }];
-        //   self.hidesBottomBarWhenPushed = YES;
-        
-        [self presentViewController:photoVC animated:YES completion:nil];
-    
-    }else if (btn.tag==1305) {
-        //根据房间号初始化聊天控制器
-        ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
-        //   self.hidesBottomBarWhenPushed = YES;
-        chat.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:chat animated:YES];
-    }
-    
-    
-}
+//#pragma mark - <STBButtonViewDelegate>
+//-(void)didClickSTBButtonViewBtn:(UIButton *)btn
+//{
+//    if (btn.tag==1301) {
+//        WeiShareController * vc = [[WeiShareController alloc]init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }else if (btn.tag==1302) {
+//        ScreenShotController * vc = [[ScreenShotController alloc]init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//
+//    }
+//    else if (btn.tag==1304) {
+//        //根据房间号初始化聊天控制器
+//        ChoosePhotoController *photoVC = [[ChoosePhotoController alloc] initWithMaxImagesCount:9 delegate:self];
+//
+//        [photoVC setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+//            //拿到图片
+//        }];
+//        //   self.hidesBottomBarWhenPushed = YES;
+//
+//        [self presentViewController:photoVC animated:YES completion:nil];
+//
+//    }else if (btn.tag==1305) {
+//        //根据房间号初始化聊天控制器
+//        ChatGroupController *chat = [[ChatGroupController alloc] initWithConversationChatter:@"30320499949569" conversationType:EMConversationTypeGroupChat];
+//        //   self.hidesBottomBarWhenPushed = YES;
+//        chat.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:chat animated:YES];
+//    }
+//
+//
+//}
 
 
 @end
