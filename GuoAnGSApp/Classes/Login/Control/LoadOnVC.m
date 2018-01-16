@@ -146,7 +146,9 @@
       NSLog(@"%@",responseObject);
       self.loadModel = [LoadReturnModel itemLoadReturnModelWithDictionary:responseObject];
          NSLog(@"登录返回信息：%@",self.loadModel.returnMsg);
-      [HJSTKToastView addPopString:self.loadModel.returnMsg];
+         [[ZCZTipsView sharedZCZTipsView]showWithString: self.loadModel.returnMsg];
+         
+      
          /**
           * 0:登陆成功
           * 1:密码不正确
@@ -200,7 +202,7 @@
       [self hideMBProgressHud];
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
       [self hideMBProgressHud];
-      [HJSTKToastView addPopString:error.localizedDescription];
+         [[ZCZTipsView sharedZCZTipsView]showWithString: error.localizedDescription];
 
   }];
 }

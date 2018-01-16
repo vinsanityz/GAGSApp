@@ -9,17 +9,27 @@
 #import "ZCZPickView.h"
 #import <Masonry.h>
 @interface ZCZPickView()<UIPickerViewDelegate,UIPickerViewDataSource>
+@property(nonatomic,assign)BOOL isSinglePicker;
+@property(nonatomic,strong)NSArray *singlePickerArray;
+//最初的字典数组
 @property(nonatomic,strong)NSArray * areaArray;
+//省份数组
 @property(nonatomic,strong)NSMutableArray * provinceArray;
+//城市数组
 @property(nonatomic,strong)NSMutableArray * citiesArray;
+//每个城市的区域数组
 @property(nonatomic,strong)NSMutableArray * citiesAreaArray;
-@property(nonatomic,strong)NSMutableArray * cur_provinceArray;
 @property(nonatomic,strong)NSMutableArray * cur_citiesArray;
 @property(nonatomic,strong)NSMutableArray * cur_citiesAreaArray;
+//当前选中的省份序号
 @property(nonatomic,assign)NSInteger provinceIndex;
+//当前选中的城市序号
 @property(nonatomic,assign)NSInteger citiesIndex;
 @property(nonatomic,strong)UIPickerView * pickerView;
 @property(nonatomic,strong)UIView * headerBar;
+@property(nonatomic,strong)NSDate * defaulDate;
+@property(nonatomic,strong)UIDatePicker * datePicker;
+@property(nonatomic,assign)BOOL isDatePicker;
 @end
 
 
@@ -46,13 +56,7 @@
     }
     return _citiesAreaArray;
 }
--(NSMutableArray *)cur_provinceArray
-{
-    if (_cur_provinceArray==nil) {
-        _cur_provinceArray = [NSMutableArray array];
-    }
-    return _cur_provinceArray;
-}
+
 -(NSMutableArray *)cur_citiesAreaArray
 {
     if (_cur_citiesAreaArray==nil) {
@@ -67,19 +71,53 @@
     }
     return _cur_citiesArray;
 }
+
 -(instancetype)initForAreaPickView
 {
     if (self = [super init]) {
         [self setUpdataSource];
         [self setUpheaderBar];
         [self setUpPickView];
-        
-        
-        
+    }
+    return self;
+}
+-(instancetype)initSinglePickerWithArray:(NSArray * )array
+{
+    if (self = [super init]) {
+        self.isSinglePicker = YES;
+        self.singlePickerArray = array;
+        [self setUpheaderBar];
+        [self setUpPickView];
     }
     return self;
 }
 
+- (instancetype)initDatePickWithDate:(NSDate *)defaulDate datePickerMode:(UIDatePickerMode)datePickerMode {
+    self=[super init];
+    if (self) {
+        self.isDatePicker = YES;
+        [self setUpheaderBar];
+        self.defaulDate = defaulDate;
+        self.datePicker = [[UIDatePicker alloc] init];
+        //设置显示格式为中文。默认根据本地设置显示为中文还是其他语言
+        _datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+        _datePicker.datePickerMode = datePickerMode;
+        _datePicker.maximumDate = defaulDate;
+        NSDate *minDate = [[NSDate alloc]initWithTimeInterval:-50 *365*24*3600 sinceDate:defaulDate];
+        NSLog(@"minDate:%@",minDate);
+        _datePicker.minimumDate = minDate;
+        
+        if (_defaulDate) {
+            [self.datePicker setDate:_defaulDate animated:YES];
+        }
+        NSLog(@"dataPickerheight:%f",_datePicker.frame.size.height);
+        _datePicker.frame=CGRectMake(0, 30  , 375, self.datePicker.frame.size.height);
+        //更改datePicker字体颜色
+//        [_datePicker setValue:[colorData.colorDic objectForKey:FONT_MAIN_COLOR] forKey:@"textColor"];
+        [self addSubview:_datePicker];
+    }
+    return self;
+}
 -(void)setUpdataSource
 {
     //地名的字典数组
@@ -111,6 +149,7 @@
 -(void)setUpheaderBar{
     
     self.headerBar = [[UIView alloc] init];
+    self.headerBar.backgroundColor = [UIColor grayColor];
     [self addSubview:self.headerBar];
     [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
@@ -190,22 +229,44 @@
 #pragma mark - 确认点击
 - (void)doneClick
 {
+
     if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(headerBarDoneBtnCilck:WithFinalString:)]) {
+        if (self.isSinglePicker==YES) {
+          NSInteger i = [self.pickerView selectedRowInComponent:0];
+            NSString * str =self.singlePickerArray[i];
+            [self.delegate headerBarDoneBtnCilck:self WithFinalString:str];
+            [self removeFromSuperview];
+            return;
+        }
+        NSString * str;
+        if (self.isDatePicker==NO) {
         NSInteger lastNumber = [self.pickerView selectedRowInComponent:2];
         NSString * provinceName = self.provinceArray[self.provinceIndex];
         NSString * cityName = self.citiesArray[self.provinceIndex][self.citiesIndex];
         NSString * areaName = self.citiesAreaArray[self.provinceIndex][self.citiesIndex][lastNumber];
-        NSString * str = [NSString stringWithFormat:@"%@%@%@",provinceName,cityName,areaName];
+            str = [NSString stringWithFormat:@"%@%@%@",provinceName,cityName,areaName];
+        }else{
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                str = [dateFormatter stringFromDate:_datePicker.date];
+        }
         [self.delegate headerBarDoneBtnCilck:self WithFinalString:str];
     }
     [self removeFromSuperview];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
+    if (self.isSinglePicker==YES) {
+        return 1;
+    }else{
     return 3;
+    }
 }
 
 - (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (self.isSinglePicker==YES) {
+        return self.singlePickerArray.count;
+    }
     switch (component) {
         case 0:
             return self.provinceArray.count;
@@ -223,6 +284,10 @@
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (self.isSinglePicker==YES) {
+        return self.singlePickerArray[row];
+    }
+    
     switch (component) {
         case 0:
             return self.provinceArray[row];
@@ -240,7 +305,9 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
+    if (self.isSinglePicker==YES) {
+        return;
+    }
     switch (component) {
         case 0:
             self.provinceIndex = row;
@@ -265,5 +332,26 @@
     
 }
 
-
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    
+    //设置分割线的颜色
+    for(UIView *singleLine in pickerView.subviews)
+    {
+        if (singleLine.frame.size.height < 1)
+        {
+//            singleLine.backgroundColor = [colorData.colorDic objectForKey:LINECOLOR];
+            singleLine.backgroundColor = [UIColor redColor];
+        }
+    }
+    
+    UILabel *label = [UILabel new];
+    label.adjustsFontSizeToFitWidth = YES;
+    label.textAlignment = NSTextAlignmentCenter;
+//    label.textColor = [colorData.colorDic objectForKey:FONT_MAIN_COLOR];
+    label.textColor =[UIColor blueColor];
+//    label.font = [UIFont systemFontOfSize:[[colorData.fontDic objectForKey:NAORMAL_SIZE] intValue]];
+    label.font = [UIFont systemFontOfSize:15];
+    label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    return label;
+}
 @end

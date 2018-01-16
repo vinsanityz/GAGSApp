@@ -7,7 +7,7 @@
 
 #import "LYNetworkManager.h"
 #import "ParamFile.h"
-#import "HJSTKToastView.h"
+#import "ZCZTipsView.h"
 
 @implementation LYNetworkManager
 {
@@ -156,7 +156,7 @@ failureBlock:(requestFailureBlock _Nonnull)failure {
         if (failure) {
             failure(task, error);
         }
-        [HJSTKToastView addPopString:error.localizedDescription];//错误提醒
+        [[ZCZTipsView sharedZCZTipsView] showWithString: error.localizedDescription];//错误提醒
     }];
     [taskArray addObject:dataTask];
 }
@@ -184,9 +184,9 @@ failureBlock:(requestFailureBlock _Nonnull)failure {
             failure(task, error);
         }
 //        if (error.code == NSURLErrorTimedOut) {
-//            [HJSTKToastView addPopString:NETWRONG];
+//            [ZCZTipsView addPopString:NETWRONG];
 //        }
-        [HJSTKToastView addPopString:error.localizedDescription];//错误提醒
+        [[ZCZTipsView sharedZCZTipsView] showWithString: error.localizedDescription];
     }];
     [taskArray addObject:dataTask];//添加任务
 

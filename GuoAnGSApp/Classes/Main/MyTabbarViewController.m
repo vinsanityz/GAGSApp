@@ -18,21 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self makeMyTabbar];
-    
-    
 }
--(BOOL)shouldAutorotate
+
+- (BOOL)shouldAutorotate
 {
     return  [self.selectedViewController shouldAutorotate];
 }
-- (NSUInteger)supportedInterfaceOrientations
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
      return  [self.selectedViewController supportedInterfaceOrientations];
-    //只支持这一个方向(正常的方向)
 }
 
 //创建tabBar
-- (void) makeMyTabbar
+- (void)makeMyTabbar
 {
     //获取文件路径
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TabbarConfig" ofType:@"plist"];
@@ -59,7 +58,7 @@
     single = [SingleColor sharedInstance];
     [self SetTabbarColor];
     self.viewControllers = viewControllersArr;
-
+    
     //不将标签栏设置为透明的
     [self.tabBar setTranslucent:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SetTabbarColor) name:ColorNoti object:nil];
@@ -84,7 +83,7 @@
     }
 
     UIColor *TextColor = [single.colorDic objectForKey:FONT_TABBAR_COLOR];
-    NSLog(@"color is %@ ",[single.colorDic objectForKey:TABBARCOLOR]);
+//    NSLog(@"color is %@ ",[single.colorDic objectForKey:TABBARCOLOR]);
     self.tabBar.barTintColor = [single.colorDic objectForKey:TABBARCOLOR];
      UIColor *selTextColor = HIGHLIGHTED_COLOR ;
     [[UITabBarItem appearance] setTitleTextAttributes:
@@ -92,7 +91,6 @@
       forState:UIControlStateSelected];
     [[UITabBarItem appearance] setTitleTextAttributes:
      @{NSForegroundColorAttributeName : TextColor}forState:UIControlStateNormal];
-
 }
 /**
  *  tabbarItem 定义

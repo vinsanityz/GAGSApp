@@ -11,7 +11,7 @@
 #import "FamilyMembersController.h"
 #import "SettingTableViewController.h"
 #import <MJRefresh.h>
-
+#import "SetVC.h"
 
 #import "CommonTableViewCell.h"
 #import "HeaderCell.h"
@@ -161,8 +161,11 @@
         familyVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:familyVC animated:YES];
     }
-    if (indexPath.section==7) {
-        SettingTableViewController * settingVC = [[SettingTableViewController alloc]init];
+    if (indexPath.section==4) {
+//        SettingTableViewController * settingVC = [[SettingTableViewController alloc]init];
+//        settingVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:settingVC animated:YES];
+        SetVC * settingVC = [[SetVC alloc]init];
         settingVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:settingVC animated:YES];
     }

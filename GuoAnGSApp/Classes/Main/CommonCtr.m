@@ -8,42 +8,39 @@
 
 #import "CommonCtr.h"
 
-
 #define LOGO_IMAGE @"vtv_logo"
-
 #define LOGO_TITLE @"国安微TV"
+
+static NSArray *_backColorArr;
+// inline :内联函数;作用:替代宏.
+static inline NSString * myselfSaveFile() {
+    return [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/info"];
+}
 
 
 @interface CommonCtr ()
-
+//地市名
 @property(nonatomic,strong) UILabel *nameLab;
 @property (nonatomic,strong) UILabel *titleLabel;
 
 @end
 
-
-static NSArray *_backColorArr;
-
-static inline NSString * myselfSaveFile() {
-    return [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/info"];
-}
-
 @implementation CommonCtr
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-   _netWorkReachability = [CSReachability shareInstance];//用于网络监测
+    //用于网络监测
+   _netWorkReachability = [CSReachability shareInstance];
    _netWorkReachability.delegate = self;
-
+    //主题颜色和字体的单例
     single =[SingleColor sharedInstance];
+    //解档获得存储的主题颜色和字体
     [CommonCtr restore];
     
+    //监听字体与颜色改变的通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setCommonColor) name:ColorNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serCommonFont) name:FontNoti object:nil];
     [self creatUI];
-    
-    // Do any additional setup after loading the view.
 }
 //-(BOOL)shouldAutorotate
 //{
@@ -53,7 +50,6 @@ static inline NSString * myselfSaveFile() {
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
 }
 
 +(void)saveColor:(id)colorArr
@@ -83,33 +79,31 @@ static inline NSString * myselfSaveFile() {
 {
     NSString *path =myselfSaveFile();
     NSData *data2 = [NSData dataWithContentsOfFile:path];
-    NSLog(@"沙河路径path=%@",path);//打印沙盒路径
+//    NSLog(@"沙河路径path=%@",path);//打印沙盒路径
     
-    NSKeyedUnarchiver *keyedUnarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data2];
+    //解档
+    NSKeyedUnarchiver *keyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data2];
     
     SingleColor* newArray = [keyedUnarchiver decodeObjectForKey:@"dic"];
     SingleColor *sing1 = [SingleColor sharedInstance];
+    
+    //sing1=newArray; 不就ok了?
     sing1.colorDic = newArray.colorDic;
     sing1.colorEdition = newArray.colorEdition;
-    
     sing1.fontDic = newArray.fontDic;
     sing1.fontEdition = newArray.fontEdition;
-    
     sing1.fontSize = newArray.fontSize;
     return newArray;
 }
 
-
-
 -(void)creatUI
 {
-
     _backSuperView  = [UIView new];
     [self.view addSubview:_backSuperView];
     [_backSuperView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    
+    //颜色与字体
     mainColor = [single.colorDic objectForKey:FONT_MAIN_COLOR];
     secColor = [single.colorDic objectForKey:FONT_SEC_COLOR];
     cellColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
@@ -117,11 +111,8 @@ static inline NSString * myselfSaveFile() {
     normal =[[single.fontDic objectForKey:NAORMAL_SIZE] floatValue];
     big = [[single.fontDic objectForKey:BIG_SIZE] integerValue];
     small =  [[single.fontDic objectForKey:SMALL_SIZE] integerValue];
-
-    
+    //设置颜色
     [self setCommonColor];
-  
-
 }
 
 //设置颜色
@@ -141,10 +132,7 @@ static inline NSString * myselfSaveFile() {
 -(void)serCommonFont{
     self.nameLab.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
     self.titleLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
-    
-    
 }
-
 
 #pragma mark - 沙盒路径 -
 /**保存在Document文件夹中**/
@@ -166,9 +154,6 @@ static inline NSString * myselfSaveFile() {
     return filePath;
     
 }
-
-
-
 
 #pragma mark - writeToFile:写入文件-
 -(void)writeEasyToFile:(NSString *)filePath object:(id)object
@@ -198,16 +183,12 @@ static inline NSString * myselfSaveFile() {
     return dataList;
 }
 
-
-
-
 //删除文件
 -(void)deleateFile:(NSString *)fileName
 {
     NSFileManager *file = [NSFileManager defaultManager];
     [file removeItemAtPath:fileName error:nil];
 }
-
 
 #pragma mark - <导航条左侧按钮>
 -(BOOL)showLeft {
@@ -217,11 +198,7 @@ static inline NSString * myselfSaveFile() {
 
 -(void)setShowLeft:(BOOL)showLeft {
     _showLeft = showLeft;
-    /*
-     _showLeft为yes说明返回按钮
-     _showLeft为no说明为logo图片
-     */
-    
+    //_showLeft为yes说明返回按钮;_showLeft为no说明为logo图片
     if (_showLeft) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setBackgroundImage:ImageNamed(@"返回键") forState:UIControlStateNormal];
@@ -235,45 +212,43 @@ static inline NSString * myselfSaveFile() {
         self.nameLab.textColor = [single.colorDic objectForKey:FONT_NAV_MAIN_COLOR];
         self.nameLab.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
         UIBarButtonItem *imgItem = [[UIBarButtonItem alloc] initWithCustomView:img];
-        
         UIBarButtonItem *nameItem = [[UIBarButtonItem alloc] initWithCustomView:self.nameLab];
         NSArray *itemArr = [[NSArray alloc]initWithObjects:imgItem,nameItem, nil];
+        
         self.navigationItem.leftBarButtonItems = itemArr;
-
         NSArray *sourceArray = [self readDataFromPlist];
        [sourceArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
            NSDictionary *dict = obj;
            NSString *titleName = dict[@"titleName"];
            NSString *imageName = dict[@"imageName"];
-           NSLog(@"titleName:%@",titleName);
-           NSLog(@"地区：%@",kPermanent_GET_OBJECT(KGetArea));
-
+//           NSLog(@"titleName:%@",titleName);
+//           NSLog(@"地区：%@",kPermanent_GET_OBJECT(KGetArea));
+           //根据userdefault中存储的地区名 找到对应的图片
            if ([kPermanent_GET_OBJECT(KGetArea) isEqualToString:titleName]) {
                img.image = ImageNamed(imageName);
            }
-          
-           NSLog(@"image:%@",img.image);
+//           NSLog(@"image:%@",img.image);
        }];
+        
         self.nameLab.text = [NSString stringWithFormat:@"%@%@",kPermanent_GET_OBJECT(KGetArea),LOGO_TITLE];
-        NSLog(@"img:%@",img.image);
+//        NSLog(@"img:%@",img.image);
+        //一下城市使用相同的图片
         if (img.image == nil ) {
             if ([kPermanent_GET_OBJECT(KGetArea) isEqualToString:@"黄冈"] ||[kPermanent_GET_OBJECT(KGetArea) isEqualToString:@"黄石"]||[kPermanent_GET_OBJECT(KGetArea) isEqualToString:@"咸宁"]) {
                 img.image = ImageNamed(@"hb_logo");
-            
             }
-            else   {img.image = ImageNamed(LOGO_IMAGE);
+            else{
+                img.image = ImageNamed(LOGO_IMAGE);
             }
-        
-        
-    
-        }}}
+        }
+    }
+}
 
 -(NSArray *)readDataFromPlist
 {
     NSString *filePath = [[NSBundle mainBundle]pathForResource:@"NavSource" ofType:@"plist"];
     return [NSArray arrayWithContentsOfFile:filePath];
 }
-
 
 #pragma mark - <返回上一层级>
 -(void)goBack {
@@ -294,7 +269,6 @@ static inline NSString * myselfSaveFile() {
     self.navigationItem.leftBarButtonItem = nextItm;
 }
 
-
 -(void)setNavRightWithStr:(NSString *)str{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:str forState:UIControlStateNormal];
@@ -306,7 +280,6 @@ static inline NSString * myselfSaveFile() {
     self.navigationItem.rightBarButtonItem = nextItm;
 }
 
-
 #pragma mark - <导航条右侧图片按钮>
 //包含图片的按钮
 //主页搜索
@@ -317,12 +290,10 @@ static inline NSString * myselfSaveFile() {
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *nextItm = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = nextItm;
-    
 }
 
 -(void)setNavRightArr:(NSArray *)btnArr
 {
-    
     NSMutableArray *arr = [[NSMutableArray alloc]init];
     for (int i = 0; i<[btnArr count]; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -334,10 +305,7 @@ static inline NSString * myselfSaveFile() {
         [arr addObject:imgItem];
     }
     self.navigationItem.rightBarButtonItems = arr;
-    
 }
-
-
 
 //各类方法中重写
 -(void)btnClick:(UIButton *)btn
@@ -355,10 +323,6 @@ static inline NSString * myselfSaveFile() {
     self.navigationItem.titleView = _titleLabel;
 }
 
-
-
-
-
 #pragma mark - <判断手机号格式是否正确>
 //^1[3|4|5|7|8][0-9]\\d{8}$
 //.手机号：11位数字。其他内容属于非法内容，提示用户输入有误。
@@ -374,7 +338,6 @@ static inline NSString * myselfSaveFile() {
 
 }
 
-
 #pragma mark - <判断密码格式>
 //.密码：不包含空格，长度限制6~18位。其他内容属于非法内容，提示用户输入有误。
 - (BOOL)isPassword:(NSString*)string
@@ -384,13 +347,8 @@ static inline NSString * myselfSaveFile() {
     NSString *phoneRegex = @"^[^\\s]{6,18}$";
     NSPredicate *phoneP = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     NSLog(@"%u",[phoneP evaluateWithObject:string]);
-
     return [phoneP evaluateWithObject:string];
-
 }
-
-
-
 
 #pragma mark - <判断用户名>
 //用户名：包含数字、字母、下划线，长度限制4~18位。其他内容属于非法内容，提示用户输入有误。
@@ -398,7 +356,6 @@ static inline NSString * myselfSaveFile() {
 {
     /**
      * "\w" 匹配包括下划线的任何单词字符    等价于   "[A-Za-z0-9_]"
-     *
      **/
     NSLog(@"判断用户名");
     //包括数字字符下划线，4-18位
@@ -408,8 +365,6 @@ static inline NSString * myselfSaveFile() {
 
     return [phoneP evaluateWithObject:string];
 }
-
-
 
 #pragma mark - <导航条取消保存按钮>
 -(void)setNavLeft_title
@@ -440,7 +395,6 @@ static inline NSString * myselfSaveFile() {
     NSLog(@"导航条右侧保存按钮");
 }
 
-
 #pragma - mark 提交按钮
 -(void)submitNavRight{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -451,33 +405,26 @@ static inline NSString * myselfSaveFile() {
     [btn addTarget:self action:@selector(submmit) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *nextItm = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = nextItm;
-    
 }
 
 -(void)submmit{
     NSLog(@"提交按钮，子类中实现");
 }
 
-
-
-
-
-
 #pragma mark - <显示加载进度框>
 -(void)showMBProgressHud
 {
     _tvHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_tvHub setMode:MBProgressHUDModeIndeterminate];
-    _tvHub.labelText = @"加载中";
+    _tvHub.label.text = @"加载中";
 }
 
 -(void)showMBProgressHud:(NSString *)str
 {
     _tvHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_tvHub setMode:MBProgressHUDModeIndeterminate];
-    _tvHub.labelText = str;
+    _tvHub.label.text = str;
 }
-
 
 #pragma mark - <隐藏加载进度框>
 -(void)hideMBProgressHud
@@ -486,9 +433,7 @@ static inline NSString * myselfSaveFile() {
 
 }
 
-
 #pragma mark - <没有网，没有缓存时加载的视图>
-
 -(void)createAlertStateViewHeight:(CGFloat)headerHeight msg:(NSString *)msg
 {
     //保证只创建一次
@@ -505,11 +450,9 @@ static inline NSString * myselfSaveFile() {
 #pragma mark - <移除警示view>
 -(void)removeAlertStateView
 {
-    NSLog(@"移除view");
-    
+//    NSLog(@"移除view");
     [self.stateView removeFromSuperview];
     self.stateView = nil;
-    
 }
 
 -(void)requestOnceMoreNetWorking
@@ -519,7 +462,7 @@ static inline NSString * myselfSaveFile() {
 
 -(void)netWorkChangedAction:(NetworkStatus)status
 {
-    NSLog(@"网络状态变化代理方法，子类中实现");
+    NSLog(@"网络状态变化代理方法，子类中实现---这是基类");
 }
 
 #pragma mark - <修改个人信息---昵称，生日，性别，地址网络请求方法>
@@ -550,7 +493,8 @@ static inline NSString * myselfSaveFile() {
         NSLog(@"修改返回信息：%@\n%@",self.commonReturnCode.returnCode,self.commonReturnCode.returnMsg);
         NSLog(@"修改前：%@",self.loadModel.lastName);
         if ([self.commonReturnCode.returnCode isEqualToNumber:[NSNumber numberWithInt:0]]) {
-            [HJSTKToastView addPopString:@"修改成功"];
+            [[ZCZTipsView sharedZCZTipsView] showWithString: @"修改成功"];
+            
             if (nickName != nil) {
                 kPermanent_SET_OBJECT(nickName, kGetName);
             }
@@ -565,11 +509,14 @@ static inline NSString * myselfSaveFile() {
             }
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [HJSTKToastView addPopString:self.commonReturnCode.returnMsg];
+            
+             [[ZCZTipsView sharedZCZTipsView] showWithString: self.commonReturnCode.returnMsg];
+           
         }
         [self hideMBProgressHud];
     } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
-        [HJSTKToastView addPopString:error.localizedDescription];
+        [[ZCZTipsView sharedZCZTipsView] showWithString: error.localizedDescription];
+//        [ZCZTipsView addPopString:error.localizedDescription];
         [self hideMBProgressHud];
     }];
 
@@ -590,7 +537,6 @@ static inline NSString * myselfSaveFile() {
             ];
 }
 
-
 #pragma mark - <https证书验证>
 - (AFSecurityPolicy*)customSecurityPolicy {
     // /先导入证书
@@ -609,20 +555,12 @@ static inline NSString * myselfSaveFile() {
     //置为NO，主要用于这种情况：客户端请求的是子域名，而证书上的是另外一个域名。因为SSL证书上的域名是独立的，假如证书上注册的域名是www.google.com，那么mail.google.com是无法验证通过的；当然，有钱可以注册通配符的域名*.google.com，但这个还是比较贵的。
     //如置为NO，建议自己添加对应域名的校验逻辑。
     securityPolicy.validatesDomainName = NO;
-    
     securityPolicy.pinnedCertificates = [NSSet setWithObject:certData];
-    
     return securityPolicy;
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-
-
 
 @end

@@ -1,14 +1,10 @@
 //
-//  popLabel.h
-//  textLabel
+//  ZCZTipsView.h
+//  GuoAnGSApp
 //
-//  Created by  on 12-9-12.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
-//0.1秒用来出现及消失，1.0秒用来显示；多条toast弹出则依照弹出顺序依次完整显示
-
-#import <UIKit/UIKit.h>
-
-
+//  Created by zhaochengzhu on 2018/1/10.
+//  Copyright © 2018年 zcz. All rights reserved.
+//
 #define SERVERWRONG  @"没有数据，请稍后重试"
 #define NETWRONG @"连接超时，请稍后重试"
 #define NONetWork @"网络不给力"
@@ -20,12 +16,9 @@
 #define messageIsNULL @"数据为空"
 #define INFO_NULL @"播放数据有误"
 
+#import <UIKit/UIKit.h>
 
-
-@interface HJSTKToastView:NSObject
-
-+(void)addPopString:(NSString *)str;
-+(void)setbShowSidewards:(Boolean)bSetIn;
-
-
+@interface ZCZTipsView : UIView
++(instancetype)sharedZCZTipsView;
+-(void)showWithString:(NSString *)str;
 @end

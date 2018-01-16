@@ -11,8 +11,8 @@
 
 @protocol ZCZPickViewDelegate <NSObject>
 @optional
-//-(void)toobarDonBtnHaveClick:(ZHPickView *)pickView resultString:(NSString *)resultString;
--(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString * )dateStr;
+
+-(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString * )resultString;
 -(void)headerBarCancelBtnClick;
 @end
 
@@ -24,4 +24,8 @@
 @property (nonatomic,strong) UIButton *btn;
 
 -(instancetype)initForAreaPickView;
+
+- (instancetype)initDatePickWithDate:(NSDate *)defaulDate datePickerMode:(UIDatePickerMode)datePickerMode;
+
+-(instancetype)initSinglePickerWithArray:(NSArray * )array;
 @end

@@ -7,11 +7,15 @@
 //
 
 #import "CSReachability.h"
+#import "ZCZTipsView.h"
+#import "Reachability.h"
 
 @implementation CSReachability
 
+static CSReachability *reachability = nil;
+
 + (instancetype)shareInstance {
-    static CSReachability *reachability = nil;
+
     static dispatch_once_t oneToken;
     dispatch_once(&oneToken, ^{
         reachability = [[CSReachability alloc] init];
@@ -21,8 +25,7 @@
 
 - (instancetype)init
 {
-    self = [super init];
-    if (self) {
+    if (self= [super init]) {
         
         //初始化网路监测；检测手机是否能直接连上互联网
         self.reachability = [Reachability  reachabilityForInternetConnection];
@@ -35,7 +38,6 @@
     return self;
 }
 
-
 - (void)handleNetworkChangeAction:(NSNotification *)sender
 {
     Reachability *reach = [sender object];
@@ -43,21 +45,22 @@
         NetworkStatus status = [reach currentReachabilityStatus];
         self.CSReachabilityStatus = status;//将网络状态值传到其他控制器
         NSLog(@"notify状态：%ld", (long)status);
+        
+        ZCZTipsView * tipView = [ZCZTipsView sharedZCZTipsView];
         switch (status) {
             case NotReachable:
             {
-                [HJSTKToastView addPopString:@"无网络连接"];
+                [tipView showWithString:@"无网络连接"];
                 break;
             }
             case ReachableViaWWAN:
             {
-                [HJSTKToastView addPopString:@"正在使用蜂窝移动网"];
+                [tipView showWithString:@"正在使用蜂窝移动网"];
                 break;
             }
             case ReachableViaWiFi:
             {
-                [HJSTKToastView addPopString:@"正在使用Wi-Fi网络"];
-                break;
+                [tipView showWithString:@"正在使用WIFI网络"];                break;
             }
             default:
                 break;
@@ -72,11 +75,10 @@
     }
 }
 
-
--(void)notifyNetWorkChanged
-{
-    
-}
+//-(void)notifyNetWorkChanged
+//{
+//    
+//}
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];

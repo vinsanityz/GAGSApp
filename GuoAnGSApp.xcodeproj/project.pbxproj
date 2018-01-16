@@ -23,6 +23,7 @@
 		3D6CB2F91F959ABC00B326FC /* EPGRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D6CB2F71F959ABB00B326FC /* EPGRightTableViewCell.xib */; };
 		3D6F80442003193E00C08E73 /* ZCZPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F80432003193E00C08E73 /* ZCZPickView.m */; };
 		3D6F8045200354FD00C08E73 /* area.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18421F7B53DC00ADC124 /* area.plist */; };
+		3D6F80482005C44B00C08E73 /* ZCZTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F80472005C44B00C08E73 /* ZCZTipsView.m */; };
 		3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */; };
 		3D7CCD021F949233002D59A7 /* ManualInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CCD001F949233002D59A7 /* ManualInputViewController.m */; };
 		3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCD041F94931C002D59A7 /* ManualInputViewController.xib */; };
@@ -63,18 +64,14 @@
 		3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */; };
 		3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18461F7B53DC00ADC124 /* CommonCtr.m */; };
 		3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD183C1F7B53DC00ADC124 /* AddressCell.m */; };
-		3DAAD2FB1F7B76D200C91E5C /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD183E1F7B53DC00ADC124 /* AddressViewController.m */; };
 		3DAAD2FC1F7B76D200C91E5C /* AlertStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18401F7B53DC00ADC124 /* AlertStateView.m */; };
 		3DAAD2FD1F7B76D200C91E5C /* AreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18441F7B53DC00ADC124 /* AreaObject.m */; };
 		3DAAD2FE1F7B76D200C91E5C /* CSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18481F7B53DC00ADC124 /* CSReachability.m */; };
 		3DAAD2FF1F7B76D200C91E5C /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD184A1F7B53DC00ADC124 /* CustomTextField.m */; };
-		3DAAD3001F7B76D200C91E5C /* HJSTKToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD184C1F7B53DC00ADC124 /* HJSTKToastView.m */; };
 		3DAAD3011F7B76D200C91E5C /* LoadReturnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD184E1F7B53DC00ADC124 /* LoadReturnModel.m */; };
 		3DAAD3021F7B76D200C91E5C /* LYNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18501F7B53DC00ADC124 /* LYNetworkManager.m */; };
-		3DAAD3031F7B76D200C91E5C /* PlayExceptionTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18531F7B53DC00ADC124 /* PlayExceptionTip.m */; };
 		3DAAD3041F7B76D200C91E5C /* ReturnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18551F7B53DC00ADC124 /* ReturnModel.m */; };
 		3DAAD3051F7B76D200C91E5C /* SingleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18571F7B53DC00ADC124 /* SingleColor.m */; };
-		3DAAD3061F7B76D200C91E5C /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD185A1F7B53DC00ADC124 /* ZHPickView.m */; };
 		3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214AA1F7B71C90076FCD6 /* Reachability.m */; };
 		3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */; };
 		3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */; };
@@ -106,6 +103,9 @@
 		3DF04BAD1FCFD594009C5D2A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF04BAC1FCFD594009C5D2A /* UIView+Frame.m */; };
 		3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF409B91FE8F5F7003BACE0 /* ZCZHeaderBar.m */; };
 		3DF409BC1FE8F618003BACE0 /* ZCZHeaderBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF409BB1FE8F618003BACE0 /* ZCZHeaderBar.xib */; };
+		3DF9B656200CA00600C8587D /* SetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9B655200CA00500C8587D /* SetVC.m */; };
+		3DF9B659200CA03000C8587D /* NSString+calculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9B658200CA03000C8587D /* NSString+calculate.m */; };
+		3DF9B65C200CA07300C8587D /* My_ReuseCllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9B65A200CA07200C8587D /* My_ReuseCllTableViewCell.m */; };
 		6DCAEF00024144BF370DDF5B /* libPods-GuoAnGSApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +137,8 @@
 		3D6CB2F71F959ABB00B326FC /* EPGRightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EPGRightTableViewCell.xib; sourceTree = "<group>"; };
 		3D6F80422003193E00C08E73 /* ZCZPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZPickView.h; sourceTree = "<group>"; };
 		3D6F80432003193E00C08E73 /* ZCZPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZPickView.m; sourceTree = "<group>"; };
+		3D6F80462005C44A00C08E73 /* ZCZTipsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZTipsView.h; sourceTree = "<group>"; };
+		3D6F80472005C44B00C08E73 /* ZCZTipsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZTipsView.m; sourceTree = "<group>"; };
 		3D7CCCFC1F948BB0002D59A7 /* HelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		3D7CCCFD1F948BB0002D59A7 /* HelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		3D7CCCFF1F949233002D59A7 /* ManualInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManualInputViewController.h; sourceTree = "<group>"; };
@@ -220,8 +222,6 @@
 		3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTabbarViewController.m; sourceTree = "<group>"; };
 		3DDD183B1F7B53DC00ADC124 /* AddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
 		3DDD183C1F7B53DC00ADC124 /* AddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
-		3DDD183D1F7B53DC00ADC124 /* AddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
-		3DDD183E1F7B53DC00ADC124 /* AddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		3DDD183F1F7B53DC00ADC124 /* AlertStateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertStateView.h; sourceTree = "<group>"; };
 		3DDD18401F7B53DC00ADC124 /* AlertStateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertStateView.m; sourceTree = "<group>"; };
 		3DDD18411F7B53DC00ADC124 /* AlertStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertStateView.xib; sourceTree = "<group>"; };
@@ -234,21 +234,15 @@
 		3DDD18481F7B53DC00ADC124 /* CSReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSReachability.m; sourceTree = "<group>"; };
 		3DDD18491F7B53DC00ADC124 /* CustomTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		3DDD184A1F7B53DC00ADC124 /* CustomTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
-		3DDD184B1F7B53DC00ADC124 /* HJSTKToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJSTKToastView.h; sourceTree = "<group>"; };
-		3DDD184C1F7B53DC00ADC124 /* HJSTKToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJSTKToastView.m; sourceTree = "<group>"; };
 		3DDD184D1F7B53DC00ADC124 /* LoadReturnModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadReturnModel.h; sourceTree = "<group>"; };
 		3DDD184E1F7B53DC00ADC124 /* LoadReturnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadReturnModel.m; sourceTree = "<group>"; };
 		3DDD184F1F7B53DC00ADC124 /* LYNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYNetworkManager.h; sourceTree = "<group>"; };
 		3DDD18501F7B53DC00ADC124 /* LYNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYNetworkManager.m; sourceTree = "<group>"; };
 		3DDD18511F7B53DC00ADC124 /* ParamFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParamFile.h; sourceTree = "<group>"; };
-		3DDD18521F7B53DC00ADC124 /* PlayExceptionTip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayExceptionTip.h; sourceTree = "<group>"; };
-		3DDD18531F7B53DC00ADC124 /* PlayExceptionTip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayExceptionTip.m; sourceTree = "<group>"; };
 		3DDD18541F7B53DC00ADC124 /* ReturnModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReturnModel.h; sourceTree = "<group>"; };
 		3DDD18551F7B53DC00ADC124 /* ReturnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReturnModel.m; sourceTree = "<group>"; };
 		3DDD18561F7B53DC00ADC124 /* SingleColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleColor.h; sourceTree = "<group>"; };
 		3DDD18571F7B53DC00ADC124 /* SingleColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleColor.m; sourceTree = "<group>"; };
-		3DDD18591F7B53DC00ADC124 /* ZHPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
-		3DDD185A1F7B53DC00ADC124 /* ZHPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TabbarConfig.plist; sourceTree = "<group>"; };
 		3DE214951F7B70850076FCD6 /* CenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
 		3DE214961F7B70850076FCD6 /* CenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
@@ -276,6 +270,12 @@
 		3DF409B81FE8F5F6003BACE0 /* ZCZHeaderBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCZHeaderBar.h; sourceTree = "<group>"; };
 		3DF409B91FE8F5F7003BACE0 /* ZCZHeaderBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCZHeaderBar.m; sourceTree = "<group>"; };
 		3DF409BB1FE8F618003BACE0 /* ZCZHeaderBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZCZHeaderBar.xib; sourceTree = "<group>"; };
+		3DF9B654200CA00500C8587D /* SetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetVC.h; sourceTree = "<group>"; };
+		3DF9B655200CA00500C8587D /* SetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetVC.m; sourceTree = "<group>"; };
+		3DF9B657200CA02F00C8587D /* NSString+calculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+calculate.h"; sourceTree = "<group>"; };
+		3DF9B658200CA03000C8587D /* NSString+calculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+calculate.m"; sourceTree = "<group>"; };
+		3DF9B65A200CA07200C8587D /* My_ReuseCllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = My_ReuseCllTableViewCell.m; sourceTree = "<group>"; };
+		3DF9B65B200CA07200C8587D /* My_ReuseCllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = My_ReuseCllTableViewCell.h; sourceTree = "<group>"; };
 		DD23D2332ED4C04FEE58E36C /* Pods-GuoAnGSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoAnGSApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuoAnGSApp/Pods-GuoAnGSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FECF191D9A5EA27E310E2E73 /* libPods-GuoAnGSApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuoAnGSApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -398,16 +398,19 @@
 		3DDD18371F7B53D200ADC124 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3D5893511F95D12800B2AA85 /* Login */,
 				3DDD18211F7B53A400ADC124 /* AppDelegate.h */,
+				3DDD18221F7B53A400ADC124 /* AppDelegate.m */,
 				3DAB4A901FE35E9E0038741C /* ZCZNavigationController.h */,
 				3DAB4A911FE35E9F0038741C /* ZCZNavigationController.m */,
-				3DDD18221F7B53A400ADC124 /* AppDelegate.m */,
 				3DA7221B1FC665B2000DD9E3 /* BasicViewController.h */,
 				3DA7221C1FC665B2000DD9E3 /* BasicViewController.m */,
 				3DDD18381F7B53D200ADC124 /* MyTabbarViewController.h */,
 				3DDD18391F7B53D200ADC124 /* MyTabbarViewController.m */,
 				3DE214941F7B6FC70076FCD6 /* TabbarConfig.plist */,
+				3D6F80462005C44A00C08E73 /* ZCZTipsView.h */,
+				3D6F80472005C44B00C08E73 /* ZCZTipsView.m */,
+				3DDD18451F7B53DC00ADC124 /* CommonCtr.h */,
+				3DDD18461F7B53DC00ADC124 /* CommonCtr.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -417,35 +420,22 @@
 			children = (
 				3DDD183B1F7B53DC00ADC124 /* AddressCell.h */,
 				3DDD183C1F7B53DC00ADC124 /* AddressCell.m */,
-				3DDD183D1F7B53DC00ADC124 /* AddressViewController.h */,
-				3DDD183E1F7B53DC00ADC124 /* AddressViewController.m */,
 				3DDD183F1F7B53DC00ADC124 /* AlertStateView.h */,
 				3DDD18401F7B53DC00ADC124 /* AlertStateView.m */,
 				3DDD18411F7B53DC00ADC124 /* AlertStateView.xib */,
-				3DDD18421F7B53DC00ADC124 /* area.plist */,
 				3DDD18431F7B53DC00ADC124 /* AreaObject.h */,
-				3DDD18451F7B53DC00ADC124 /* CommonCtr.h */,
 				3DDD18441F7B53DC00ADC124 /* AreaObject.m */,
-				3DDD18461F7B53DC00ADC124 /* CommonCtr.m */,
 				3DDD18491F7B53DC00ADC124 /* CustomTextField.h */,
 				3DDD184A1F7B53DC00ADC124 /* CustomTextField.m */,
-				3DDD184B1F7B53DC00ADC124 /* HJSTKToastView.h */,
-				3DDD184C1F7B53DC00ADC124 /* HJSTKToastView.m */,
 				3DDD184D1F7B53DC00ADC124 /* LoadReturnModel.h */,
-				3DDD184E1F7B53DC00ADC124 /* LoadReturnModel.m */,
 				3DDD184F1F7B53DC00ADC124 /* LYNetworkManager.h */,
 				3DDD18501F7B53DC00ADC124 /* LYNetworkManager.m */,
 				3DDD18511F7B53DC00ADC124 /* ParamFile.h */,
-				3DDD18521F7B53DC00ADC124 /* PlayExceptionTip.h */,
-				3DDD18531F7B53DC00ADC124 /* PlayExceptionTip.m */,
 				3DDD18541F7B53DC00ADC124 /* ReturnModel.h */,
 				3DDD18551F7B53DC00ADC124 /* ReturnModel.m */,
 				3DDD18561F7B53DC00ADC124 /* SingleColor.h */,
 				3DDD18571F7B53DC00ADC124 /* SingleColor.m */,
-				3DDD18591F7B53DC00ADC124 /* ZHPickView.h */,
-				3DDD185A1F7B53DC00ADC124 /* ZHPickView.m */,
-				3D6F80422003193E00C08E73 /* ZCZPickView.h */,
-				3D6F80432003193E00C08E73 /* ZCZPickView.m */,
+				3DDD184E1F7B53DC00ADC124 /* LoadReturnModel.m */,
 				3D58936C1F95EC7400B2AA85 /* loginpic.jpg */,
 			);
 			path = CommonTools;
@@ -461,6 +451,7 @@
 				3DE2147F1F7B60D60076FCD6 /* MyApp */,
 				3DE214831F7B60D60076FCD6 /* Live */,
 				3DE2148B1F7B60D60076FCD6 /* My */,
+				3D5893511F95D12800B2AA85 /* Login */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -655,6 +646,15 @@
 				3D1CFB5F1F9EEA1600D88608 /* GroupDetailsTableViewController.m */,
 				3DB93C721F99964C00AA90B2 /* FamilyMembersController.h */,
 				3DB93C731F99964C00AA90B2 /* FamilyMembersController.m */,
+				3D6F80422003193E00C08E73 /* ZCZPickView.h */,
+				3D6F80432003193E00C08E73 /* ZCZPickView.m */,
+				3DDD18421F7B53DC00ADC124 /* area.plist */,
+				3DF9B654200CA00500C8587D /* SetVC.h */,
+				3DF9B655200CA00500C8587D /* SetVC.m */,
+				3DF9B657200CA02F00C8587D /* NSString+calculate.h */,
+				3DF9B658200CA03000C8587D /* NSString+calculate.m */,
+				3DF9B65B200CA07200C8587D /* My_ReuseCllTableViewCell.h */,
+				3DF9B65A200CA07200C8587D /* My_ReuseCllTableViewCell.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -974,22 +974,24 @@
 				3DA2E5291FB3F38100BF51B3 /* HistoryCollectionViewCell.m in Sources */,
 				3D2C70B61FAC108B00C662F5 /* ScreenShotController.m in Sources */,
 				3D0E5C481FAAC22400CC8828 /* WeiShareController.m in Sources */,
+				3DF9B656200CA00600C8587D /* SetVC.m in Sources */,
 				3DAAD3071F7B76FC00C91E5C /* Reachability.m in Sources */,
 				3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */,
 				3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */,
 				3DA35CF51FF493EE00C64620 /* tableViewHeaderView.m in Sources */,
 				3D1CFB681F9F1F4900D88608 /* STBButtonView.m in Sources */,
 				3D6CB2F81F959ABB00B326FC /* EPGRightTableViewCell.m in Sources */,
+				3DF9B65C200CA07300C8587D /* My_ReuseCllTableViewCell.m in Sources */,
 				3D0E5C4C1FAAFA7E00CC8828 /* ChoosePhotoController.m in Sources */,
 				3D2C05281F99D41100AAE921 /* SettingTableViewController.m in Sources */,
 				3D1CFB631F9F19E500D88608 /* STBTopView.m in Sources */,
+				3D6F80482005C44B00C08E73 /* ZCZTipsView.m in Sources */,
 				3DB93C6E1F98836700AA90B2 /* HeaderCell.m in Sources */,
 				3DA722191FC3D4AE000DD9E3 /* FilterCollectionViewCell.m in Sources */,
 				3DF04BA61FCE7D3A009C5D2A /* ZCZSlider.m in Sources */,
 				3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */,
 				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,
-				3DAAD2FB1F7B76D200C91E5C /* AddressViewController.m in Sources */,
 				3D8B12C21FB035DD00473D79 /* SearchController.m in Sources */,
 				3DAAD2FC1F7B76D200C91E5C /* AlertStateView.m in Sources */,
 				3DAF61B71F909D9B00BFA888 /* LoadOnVC.m in Sources */,
@@ -998,7 +1000,6 @@
 				3D6F80442003193E00C08E73 /* ZCZPickView.m in Sources */,
 				3DAAD2FF1F7B76D200C91E5C /* CustomTextField.m in Sources */,
 				3DAA7BC21FBD76E6005FB4EE /* ProcessImageController.m in Sources */,
-				3DAAD3001F7B76D200C91E5C /* HJSTKToastView.m in Sources */,
 				3D7CCD131F9499CF002D59A7 /* SetDetailsController.m in Sources */,
 				3DAAD3011F7B76D200C91E5C /* LoadReturnModel.m in Sources */,
 				3DA722141FC3D0DA000DD9E3 /* FiltersController.m in Sources */,
@@ -1008,11 +1009,10 @@
 				3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */,
 				3DB93C711F98859000AA90B2 /* CommonTableViewCell.m in Sources */,
 				3DAAD3021F7B76D200C91E5C /* LYNetworkManager.m in Sources */,
-				3DAAD3031F7B76D200C91E5C /* PlayExceptionTip.m in Sources */,
 				3DAAD3041F7B76D200C91E5C /* ReturnModel.m in Sources */,
 				3DAAD3051F7B76D200C91E5C /* SingleColor.m in Sources */,
-				3DAAD3061F7B76D200C91E5C /* ZHPickView.m in Sources */,
 				3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */,
+				3DF9B659200CA03000C8587D /* NSString+calculate.m in Sources */,
 				3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */,
 				3DE2149D1F7B70B80076FCD6 /* LiveController.m in Sources */,
 				3DE214A01F7B70C60076FCD6 /* VODController.m in Sources */,

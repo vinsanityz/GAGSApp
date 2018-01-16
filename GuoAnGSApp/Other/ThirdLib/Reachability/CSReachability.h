@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Reachability.h"
-#import "HJSTKToastView.h"
 
+
+//未使用
 typedef void(^reachabilityBlock)(NetworkStatus status);
 
 @protocol CSReachabilityDelegate <NSObject>
 @optional
-/**监测到有网络的时候，重新进行网络请求**/
+/*网络状态发生变化 调用此代理方法*/
 -(void)netWorkChangedAction:(NetworkStatus)status;
 @end
 
@@ -23,10 +24,12 @@ typedef void(^reachabilityBlock)(NetworkStatus status);
 
 @property (nonatomic, strong) Reachability *reachability;
 @property (nonatomic, assign) NetworkStatus CSReachabilityStatus;
-@property (nonatomic,copy) reachabilityBlock networkChangedBlock;
 @property(nonatomic,weak) id <CSReachabilityDelegate> delegate ;
 
+/*网络状态发生变化 调用此block*/
+@property (nonatomic,copy) reachabilityBlock networkChangedBlock;
+
 + (instancetype)shareInstance;
--(void)notifyNetWorkChanged;
+//-(void)notifyNetWorkChanged;
 
 @end

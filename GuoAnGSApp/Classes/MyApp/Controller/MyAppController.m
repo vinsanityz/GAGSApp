@@ -11,7 +11,7 @@
 #import <GPUImage.h>
 #import "ProcessImageController.h"
 #import "ZCZPickView.h"
-
+#import "ZCZTipsView.h"
 @interface MyAppController ()<ZCZPickViewDelegate>
 
 @end
@@ -21,12 +21,28 @@
 {
     return  NO;
 }
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    ZCZTipsView * tip = [ZCZTipsView sharedZCZTipsView];
+    [tip showWithString:@"wocaledsjdfj"];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     ZCZPickView * zczpicker = [[ZCZPickView alloc]initForAreaPickView];
     zczpicker.frame = CGRectMake(0, 100, 376, 400);
     [self.view addSubview:zczpicker];
     zczpicker.delegate = self;
+    
+    
+//    ZCZPickView * datepicker = [[ZCZPickView alloc]initDatePickWithDate:[NSDate date] datePickerMode:(UIDatePickerModeDate)];
+//    datepicker.frame = CGRectMake(0, 100, 376, 600);
+//    datepicker.delegate = self;
+//    [self.view addSubview:datepicker];
+//
+    
+    
 //    [self.navigationController pushViewController:[[ProcessImageController alloc]init] animated:YES];
 //    UIImage *inputImage = [UIImage imageNamed:@"loginpic"];
 //
@@ -72,9 +88,9 @@
     // Pass the selected object to the new view controller.
 }
 */
--(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString *)dateStr
+-(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString *)resultString
 {
-    NSLog(@"%@",dateStr);
+    NSLog(@"%@",resultString);
     
 }
 

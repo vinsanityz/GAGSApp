@@ -14,6 +14,7 @@
 @property(nonatomic,assign) int fontSize;
 @property(nonatomic,strong) NSString *colorEdition;
 @property(nonatomic,strong) NSDictionary *fontDic;
+//字体大小:大 小 正常
 @property(nonatomic,strong) NSString *fontEdition;
 
 +(instancetype)sharedInstance;

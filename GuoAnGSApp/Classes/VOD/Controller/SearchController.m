@@ -10,7 +10,7 @@
 #import "SearchResultsTableViewCell.h"
 #import "HistoryCollectionViewCell.h"
 #import "HistoryCollectionReusableView.h"
-
+#import "ZCZTipsView.h"
 
 static NSString * const reuseIdentifierForSearch =@"searchResults";
 
@@ -284,7 +284,8 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
                 --nShowPage;
                 
             }
-            [HJSTKToastView addPopString:NoMoreMessage];
+            [[ZCZTipsView sharedZCZTipsView]showWithString:NoMoreMessage];
+            
         }
 //        for (NSDictionary *dict in array) {
 ////            self.model = [SearchModel itemSearchModelWithDictionary:dict];
