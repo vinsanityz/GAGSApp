@@ -651,8 +651,6 @@
 				3DDD18421F7B53DC00ADC124 /* area.plist */,
 				3DF9B654200CA00500C8587D /* SetVC.h */,
 				3DF9B655200CA00500C8587D /* SetVC.m */,
-				3DF9B657200CA02F00C8587D /* NSString+calculate.h */,
-				3DF9B658200CA03000C8587D /* NSString+calculate.m */,
 				3DF9B65B200CA07200C8587D /* My_ReuseCllTableViewCell.h */,
 				3DF9B65A200CA07200C8587D /* My_ReuseCllTableViewCell.m */,
 			);
@@ -766,6 +764,8 @@
 			children = (
 				3DF04BAB1FCFD594009C5D2A /* UIView+Frame.h */,
 				3DF04BAC1FCFD594009C5D2A /* UIView+Frame.m */,
+				3DF9B657200CA02F00C8587D /* NSString+calculate.h */,
+				3DF9B658200CA03000C8587D /* NSString+calculate.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";

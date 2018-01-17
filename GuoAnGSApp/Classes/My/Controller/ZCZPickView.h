@@ -8,24 +8,23 @@
 
 #import <UIKit/UIKit.h>
 @class ZCZPickView;
+@class SingleColor;
 
 @protocol ZCZPickViewDelegate <NSObject>
 @optional
-
 -(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString * )resultString;
 -(void)headerBarCancelBtnClick;
 @end
 
-
 @interface ZCZPickView : UIView
+
 @property(nonatomic,weak) id<ZCZPickViewDelegate> delegate;
-@property (nonatomic,strong) UIButton *leftBtn;
-@property (nonatomic,strong) UIButton *rightBtn;
-@property (nonatomic,strong) UIButton *btn;
-
+//颜色单例
+@property(nonatomic,strong)SingleColor * singleColor;
+//地区的pickView
 -(instancetype)initForAreaPickView;
-
+//日期的datepickView
 - (instancetype)initDatePickWithDate:(NSDate *)defaulDate datePickerMode:(UIDatePickerMode)datePickerMode;
-
+//单列的pickview
 -(instancetype)initSinglePickerWithArray:(NSArray * )array;
 @end

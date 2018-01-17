@@ -34,7 +34,6 @@
                     totalByteSize += [[mgr attributesOfItemAtPath:fullSubPath error:nil] [NSFileSize] integerValue];//获取指定文件名对应文件的属性
                 }
             }
-            
             return totalByteSize;
         }else{
 //            return [[mgr attributesOfItemAtPath:self error:nil] [NSFileSize]integerValue];

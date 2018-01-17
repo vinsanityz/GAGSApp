@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     ZCZPickView * zczpicker = [[ZCZPickView alloc]initForAreaPickView];
+    zczpicker.singleColor = single;
     zczpicker.frame = CGRectMake(0, 100, 376, 400);
     [self.view addSubview:zczpicker];
     zczpicker.delegate = self;

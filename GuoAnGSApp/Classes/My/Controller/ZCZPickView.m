@@ -8,10 +8,17 @@
 
 #import "ZCZPickView.h"
 #import <Masonry.h>
+#import "SingleColor.h"
+#import "ParamFile.h"
+
 @interface ZCZPickView()<UIPickerViewDelegate,UIPickerViewDataSource>
+//是否datepickView
+@property(nonatomic,assign)BOOL isDatePicker;
+//是否是单列pickView
 @property(nonatomic,assign)BOOL isSinglePicker;
+//单列pickView的数据数组
 @property(nonatomic,strong)NSArray *singlePickerArray;
-//最初的字典数组
+//最初的地区字典数组
 @property(nonatomic,strong)NSArray * areaArray;
 //省份数组
 @property(nonatomic,strong)NSMutableArray * provinceArray;
@@ -19,73 +26,42 @@
 @property(nonatomic,strong)NSMutableArray * citiesArray;
 //每个城市的区域数组
 @property(nonatomic,strong)NSMutableArray * citiesAreaArray;
+//当前选中省份所对应的城市数组
 @property(nonatomic,strong)NSMutableArray * cur_citiesArray;
+//当前选中城市所对应的地区数组
 @property(nonatomic,strong)NSMutableArray * cur_citiesAreaArray;
 //当前选中的省份序号
 @property(nonatomic,assign)NSInteger provinceIndex;
 //当前选中的城市序号
 @property(nonatomic,assign)NSInteger citiesIndex;
-@property(nonatomic,strong)UIPickerView * pickerView;
+//装着确定取消按钮的view
 @property(nonatomic,strong)UIView * headerBar;
+//传入的date
 @property(nonatomic,strong)NSDate * defaulDate;
+@property(nonatomic,strong)UIPickerView * pickerView;
 @property(nonatomic,strong)UIDatePicker * datePicker;
-@property(nonatomic,assign)BOOL isDatePicker;
+
 @end
 
-
 @implementation ZCZPickView
-
--(NSMutableArray *)provinceArray
-{
-    if (_provinceArray==nil) {
-        _provinceArray = [NSMutableArray array];
-    }
-    return _provinceArray;
-}
--(NSMutableArray *)citiesArray
-{
-    if (_citiesArray==nil) {
-        _citiesArray = [NSMutableArray array];
-    }
-    return _citiesArray;
-}
--(NSMutableArray *)citiesAreaArray
-{
-    if (_citiesAreaArray==nil) {
-        _citiesAreaArray = [NSMutableArray array];
-    }
-    return _citiesAreaArray;
-}
-
--(NSMutableArray *)cur_citiesAreaArray
-{
-    if (_cur_citiesAreaArray==nil) {
-        _cur_citiesAreaArray = [NSMutableArray array];
-    }
-    return _cur_citiesAreaArray;
-}
--(NSMutableArray *)cur_citiesArray
-{
-    if (_cur_citiesArray==nil) {
-        _cur_citiesArray = [NSMutableArray array];
-    }
-    return _cur_citiesArray;
-}
 
 -(instancetype)initForAreaPickView
 {
     if (self = [super init]) {
+        [self setupColorAndFont];
         [self setUpdataSource];
         [self setUpheaderBar];
         [self setUpPickView];
     }
     return self;
 }
+
 -(instancetype)initSinglePickerWithArray:(NSArray * )array
 {
     if (self = [super init]) {
         self.isSinglePicker = YES;
         self.singlePickerArray = array;
+        [self setupColorAndFont];
         [self setUpheaderBar];
         [self setUpPickView];
     }
@@ -96,6 +72,7 @@
     self=[super init];
     if (self) {
         self.isDatePicker = YES;
+        [self setupColorAndFont];
         [self setUpheaderBar];
         self.defaulDate = defaulDate;
         self.datePicker = [[UIDatePicker alloc] init];
@@ -113,11 +90,63 @@
         NSLog(@"dataPickerheight:%f",_datePicker.frame.size.height);
         _datePicker.frame=CGRectMake(0, 30  , 375, self.datePicker.frame.size.height);
         //更改datePicker字体颜色
-//        [_datePicker setValue:[colorData.colorDic objectForKey:FONT_MAIN_COLOR] forKey:@"textColor"];
+        [_datePicker setValue:[self.singleColor.colorDic objectForKey:FONT_MAIN_COLOR] forKey:@"textColor"];
         [self addSubview:_datePicker];
     }
     return self;
 }
+
+#pragma mark - <懒加载>
+-(NSMutableArray *)provinceArray
+{
+    if (_provinceArray==nil) {
+        _provinceArray = [NSMutableArray array];
+    }
+    return _provinceArray;
+}
+
+-(NSMutableArray *)citiesArray
+{
+    if (_citiesArray==nil) {
+        _citiesArray = [NSMutableArray array];
+    }
+    return _citiesArray;
+}
+
+-(NSMutableArray *)citiesAreaArray
+{
+    if (_citiesAreaArray==nil) {
+        _citiesAreaArray = [NSMutableArray array];
+    }
+    return _citiesAreaArray;
+}
+
+-(NSMutableArray *)cur_citiesAreaArray
+{
+    if (_cur_citiesAreaArray==nil) {
+        _cur_citiesAreaArray = [NSMutableArray array];
+    }
+    return _cur_citiesAreaArray;
+}
+
+-(NSMutableArray *)cur_citiesArray
+{
+    if (_cur_citiesArray==nil) {
+        _cur_citiesArray = [NSMutableArray array];
+    }
+    return _cur_citiesArray;
+}
+
+#pragma mark - <创建子控件>
+//设置singleColor与背景色
+-(void)setupColorAndFont
+{
+    self.singleColor = [SingleColor sharedInstance];
+    //背景颜色
+    self.backgroundColor = [self.singleColor.colorDic objectForKey:BACK_CONTROL_COLOR];
+}
+
+//解析地区的字典数组
 -(void)setUpdataSource
 {
     //地名的字典数组
@@ -145,11 +174,10 @@
     self.cur_citiesAreaArray = self.citiesAreaArray[0][0];
 }
 
-
--(void)setUpheaderBar{
-    
+-(void)setUpheaderBar
+{
     self.headerBar = [[UIView alloc] init];
-    self.headerBar.backgroundColor = [UIColor grayColor];
+    self.headerBar.backgroundColor = [UIColor clearColor];
     [self addSubview:self.headerBar];
     [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
@@ -157,21 +185,23 @@
         make.top.equalTo(self.mas_top);
         make.height.equalTo(@(30));
     }];
+
     //取消按钮
-    self.leftBtn = [self setButtonWithTitle:@"取消"];
-    [_leftBtn addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.headerBar addSubview:_leftBtn];
-    [_leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIButton * leftBtn = [self setButtonWithTitle:@"取消"];
+    [leftBtn addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.headerBar addSubview:leftBtn];
+    [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headerBar.mas_left).offset(10);
         make.top.equalTo(_headerBar.mas_top).offset(4);
         make.bottom.equalTo(_headerBar.mas_bottom).offset(-4);
         make.width.equalTo(@(60));
     }];
+  
     //确定按钮
-    self.rightBtn = [self setButtonWithTitle:@"确定"];
-    [_rightBtn addTarget:self action:@selector(doneClick)   forControlEvents:UIControlEventTouchUpInside];
-    [self.headerBar addSubview:_rightBtn];
-    [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIButton * rightBtn = [self setButtonWithTitle:@"确定"];
+    [rightBtn addTarget:self action:@selector(doneClick)   forControlEvents:UIControlEventTouchUpInside];
+    [self.headerBar addSubview:rightBtn];
+    [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_headerBar.mas_right).offset(-10);
         make.top.equalTo(_headerBar.mas_top).offset(4);
         make.bottom.equalTo(_headerBar.mas_bottom).offset(-4);
@@ -179,40 +209,41 @@
     }];
 }
 
-- (void)setUpPickView{
-    
+- (void)setUpPickView
+{
     UIPickerView *pickView=[[UIPickerView alloc] init];
     _pickerView=pickView;
     pickView.backgroundColor=[UIColor clearColor];
     pickView.delegate=self;
     pickView.dataSource=self;
     [self addSubview:pickView];
-    
-    NSLog(@"--pickView.frame.size.height--%f",pickView.frame.size.height);
-    
+//    NSLog(@"--pickView.frame.size.height--%f",pickView.frame.size.height);
     [pickView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
         make.right.equalTo(self.mas_right);
         make.top.equalTo(self.headerBar.mas_bottom);
         make.bottom.equalTo(self.mas_bottom);
     }];
-}
--(UIButton *)setButtonWithTitle:(NSString *)titleStr {
-    
-    self.btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn setTitle:titleStr forState:UIControlStateNormal];
-    //设置按钮的颜色
-//    UIColor *btnColor = [colorData.colorDic objectForKey:FONT_MAIN_COLOR];
-    UIColor *btnColor  = [UIColor redColor];
-    [_btn setTitleColor:btnColor forState:UIControlStateNormal];
-    [_btn setTitleColor:[UIColor orangeColor] forState:UIControlStateHighlighted];
-    _btn.titleLabel.font = [UIFont systemFontOfSize:10];
-    _btn.layer.cornerRadius = 7;
-    [_btn.titleLabel sizeToFit];
-    return _btn;
+    [_pickerView setValue:[self.singleColor.colorDic objectForKey:FONT_MAIN_COLOR] forKey:@"textColor"];
 }
 
-#pragma mark - 取消点击
+//根据title返回按钮
+-(UIButton *)setButtonWithTitle:(NSString *)titleStr
+{
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:titleStr forState:UIControlStateNormal];
+    
+    //设置按钮的颜色
+    UIColor *btnColor = [self.singleColor.colorDic objectForKey:FONT_MAIN_COLOR];
+    [btn setTitleColor:btnColor forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateHighlighted];
+    btn.titleLabel.font = [UIFont systemFontOfSize:[[self.singleColor.fontDic objectForKey:NAORMAL_SIZE] intValue]];
+    btn.layer.cornerRadius = 7;
+    [btn.titleLabel sizeToFit];
+    return btn;
+}
+
+#pragma mark - <取消按钮点击与确认按钮点击>
 - (void)cancelClick
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(headerBarCancelBtnClick)]) {
@@ -221,15 +252,8 @@
     [self removeFromSuperview];
 }
 
-- (void)show{
-    
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
-}
-
-#pragma mark - 确认点击
 - (void)doneClick
 {
-
     if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(headerBarDoneBtnCilck:WithFinalString:)]) {
         if (self.isSinglePicker==YES) {
           NSInteger i = [self.pickerView selectedRowInComponent:0];
@@ -339,18 +363,14 @@
     {
         if (singleLine.frame.size.height < 1)
         {
-//            singleLine.backgroundColor = [colorData.colorDic objectForKey:LINECOLOR];
-            singleLine.backgroundColor = [UIColor redColor];
+            singleLine.backgroundColor = [self.singleColor.colorDic objectForKey:LINECOLOR];
         }
     }
-    
     UILabel *label = [UILabel new];
     label.adjustsFontSizeToFitWidth = YES;
     label.textAlignment = NSTextAlignmentCenter;
-//    label.textColor = [colorData.colorDic objectForKey:FONT_MAIN_COLOR];
-    label.textColor =[UIColor blueColor];
-//    label.font = [UIFont systemFontOfSize:[[colorData.fontDic objectForKey:NAORMAL_SIZE] intValue]];
-    label.font = [UIFont systemFontOfSize:15];
+    label.textColor = [self.singleColor.colorDic objectForKey:FONT_MAIN_COLOR];
+    label.font = [UIFont systemFontOfSize:[[self.singleColor.fontDic objectForKey:NAORMAL_SIZE] intValue]];
     label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     return label;
 }

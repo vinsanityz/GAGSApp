@@ -2,8 +2,8 @@
 //  SetVC.m
 //  CS_WeiTV
 //
-//  Created by Nina on 15/8/19.
-//  Copyright (c) 2015年 wy. All rights reserved.
+//  Created by zhaochengzhu on 18/1/17.
+//  Copyright © 2018年 zcz. All rights reserved.
 //
 
 #define CellLeftLabelArray @[@"字体大小",@"背景颜色",@"网络提醒",@"清除缓存"]
@@ -11,47 +11,56 @@
 #define ColorArray @[@"简约白",@"酷爽黑",@"气质蓝"]
 
 #import "SetVC.h"
-
 #import "ZCZPickView.h"
 #import "NSString+calculate.h"
-
 #import "My_ReuseCllTableViewCell.h"
 
 @interface SetVC ()<UITableViewDataSource,UITableViewDelegate,ZCZPickViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSArray *colorArray;
-@property (nonatomic,strong) NSArray *fontArray;
-
-//方法二
 @property (nonatomic,strong) ZCZPickView *fontPickView;
 @property (nonatomic,strong) ZCZPickView *colorPickView;
-
+//nav的title
 @property(nonatomic,strong) UILabel *headerLabel;
-
+//选中cell的indexPath
 @property(nonatomic,strong) NSIndexPath *indexPathSet;
 
 @end
 
 @implementation SetVC
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.showLeft = YES;
-
-//    self.fontArray = [NSMutableArray arrayWithObjects:@"小",@"正常",@"大", nil];
-//    self.colorArray = [NSMutableArray arrayWithObjects:@"简约白",@"酷爽黑",@"气质蓝", nil];
     [self setUpSubviewsAndGesture];
-
     
+    //监听通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorSetChange) name:ColorNoti object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChangeTextFontAction:) name:FontNoti object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self removePickViewAction];
+}
+
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//添加子控件与手势
+- (void)setUpSubviewsAndGesture
+{
+    UITapGestureRecognizer *setTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePickViewAction)];
+    setTap.delegate = self;
+    [self.view addGestureRecognizer:setTap];
+    self.navigationItem.titleView = self.headerLabel;
+    [self.view addSubview:self.tableView];
+}
+
+#pragma mark - <懒加载>
 -(UILabel *)headerLabel
 {
     if (_headerLabel==nil) {
@@ -75,29 +84,29 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
         [_tableView registerClass:[My_ReuseCllTableViewCell class] forCellReuseIdentifier:NSStringFromClass([My_ReuseCllTableViewCell class])];
-
     }
     return _tableView;
 }
-
-- (void)setUpSubviewsAndGesture
+-(ZCZPickView *)fontPickView
 {
-    UITapGestureRecognizer *setTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePickViewAction)];
-    setTap.delegate = self;
-    //    setTap.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:setTap];
-    self.navigationItem.titleView = self.headerLabel;
-    [self.view addSubview:self.tableView];
-   
-  
+    if (_fontPickView==nil) {
+        _fontPickView = [[ZCZPickView alloc]initSinglePickerWithArray:FontArray];
+        _fontPickView.frame = CGRectMake(0, ScreenSizeHeigh - 200, ScreenSizeWidth, 200);
+        _fontPickView.delegate = self;
+    }
+    return _fontPickView;
+}
+-(ZCZPickView *)colorPickView
+{
+    if (_colorPickView==nil) {
+        _colorPickView = [[ZCZPickView alloc] initSinglePickerWithArray:ColorArray];
+        _colorPickView.frame = CGRectMake(0, ScreenSizeHeigh - 200, ScreenSizeWidth, 200);
+        _colorPickView.delegate = self;
+    }
+    return _colorPickView;
 }
 
-
-- (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
+//手势相应的方法
 - (void)removePickViewAction {
     if (_colorPickView != nil) {
         [_colorPickView removeFromSuperview];
@@ -107,31 +116,17 @@
     }
 }
 
-
+#pragma mark - <接收到颜色字体改变的通知响应的方法>
 - (void)colorSetChange {
     [self.tableView reloadData];
     self.tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
     _headerLabel.textColor = [single.colorDic objectForKey:FONT_NAV_MAIN_COLOR];
-
-    
 }
-
 
 - (void)handleChangeTextFontAction:(NSNotificationCenter *)notification {
     [self.tableView reloadData];
     _headerLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE]intValue]];
 }
-
-
-
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self removePickViewAction];
-
-}
-
-
 
 
 #pragma mark - <UITableViewDataSource>
@@ -188,41 +183,28 @@
     return cell;
 }
 
--(ZCZPickView *)fontPickView
-{
-    if (_fontPickView==nil) {
-        _fontPickView = [[ZCZPickView alloc]initSinglePickerWithArray:FontArray];
-        _fontPickView.frame = CGRectMake(0, ScreenSizeHeigh - 200, ScreenSizeWidth, 200);
-        _fontPickView.delegate = self;
-    }
-    return _fontPickView;
+#pragma mark - <UITableViewDelegate>
+//tableview每行的高度
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return mlrHeight;
 }
--(ZCZPickView *)colorPickView
-{
-    if (_colorPickView==nil) {
-        _colorPickView = [[ZCZPickView alloc] initSinglePickerWithArray:ColorArray];
-        _colorPickView.frame = CGRectMake(0, ScreenSizeHeigh - 200, ScreenSizeWidth, 200);
-        _colorPickView.delegate = self;
-    }
-    return _colorPickView;
-}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.indexPathSet = indexPath;
     switch (indexPath.row) {
         case 0:
         {
             [self.view addSubview:self.fontPickView];
-            if ([self.colorPickView superview]!=nil) {
-                [self.colorPickView removeFromSuperview];
-            }
+            
+            [self.colorPickView removeFromSuperview];
+            self.colorPickView = nil;
         }
             break;
          case 1:
         {
             [self.view addSubview:self.colorPickView];
-            if ([self.fontPickView superview]!=nil) {
-                [self.fontPickView removeFromSuperview];
-            }
+            [self.fontPickView removeFromSuperview];
+            self.fontPickView = nil;
         }
             break;
         case 2:
@@ -247,7 +229,7 @@
     }
 }
 
-//清除缓存
+#pragma mark - <清除缓存>
 -(void)cleanCacheAction
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"您确定要清除缓存吗？" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -266,6 +248,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+#pragma mark - <开关的点击事件>
 //开关的点击事件
 -(void)switchAction:(UISwitch *)switchButton {
     if ([self.fontPickView superview]!=nil) {
@@ -297,12 +280,6 @@
     }
 }
 
-#pragma mark - <UITableViewDelegate>
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return mlrHeight;
-}
-
 
 #pragma mark - <ZCZpickVIewDelegate>
 -(void)headerBarDoneBtnCilck:(ZCZPickView *)pickView WithFinalString:(NSString * )resultString
@@ -328,6 +305,7 @@
             }
         }
        [[NSNotificationCenter defaultCenter]postNotificationName:FontNoti object:nil];
+        self.fontPickView = nil;
     }else if (self.indexPathSet.row == 1){
        cell.rightLabel.text = resultString;
         
@@ -348,9 +326,11 @@
         }
         //发送通知
         [[NSNotificationCenter defaultCenter]postNotificationName:ColorNoti object:nil];
+        self.colorPickView = nil;
     }
 }
 
+#pragma mark - <手势的代理>
 //防止点按手势与tableview pickerView的点击事件出现冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
