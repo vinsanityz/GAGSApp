@@ -13,7 +13,7 @@
 @interface MyTabbarViewController : UITabBarController
 
 {
-    SingleColor *single;
+    SingleColor * _single;
 }
 
 @end

@@ -5,21 +5,42 @@
 //  Created by zhaochengzhu on 2017/9/27.
 //  Copyright © 2017年 zcz. All rights reserved.
 //
-#define HeaderArray @[@"精选",@"免费",@"电影",@"电视剧",@"纪录片",@"综艺",@"动漫"]
+#define HeaderArray @[@"精选",@"免费",@"电影",@"电视剧",@"纪录片",@"综艺"]
 
 #import "VODController.h"
 #import <SDCycleScrollView.h>
-
+#import "CommonCollectionController.h"
+#import "UIView+Frame.h"
+#import "FirstMovieIdModel.h"
+#import <MJExtension.h>
 
 #import "SearchController.h"
 
-@interface VODController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface VODController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 @property(nonatomic,strong)SDCycleScrollView * cycleScrollView;
 @property(nonatomic,strong)UICollectionView * collectionView;
 @property(nonatomic,strong)UIScrollView * backScrollView;
+@property(nonatomic,strong)NSMutableArray * headerBtnArray;
+@property(nonatomic,strong)UIButton * previousSelectedBtn;
+@property(nonatomic,weak)UIView * headerLineView;
+@property(nonatomic,strong)NSMutableArray *dataSource;
 @end
 
 @implementation VODController
+-(NSMutableArray *)dataSource
+{
+    if (_dataSource==nil) {
+        _dataSource = [NSMutableArray array];
+    }
+    return _dataSource;
+}
+-(NSMutableArray *)headerBtnArray
+{
+    if (_headerBtnArray==nil) {
+        _headerBtnArray = [NSMutableArray array];
+    }
+    return _headerBtnArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,8 +49,27 @@
 
     [self setTitle:@"movie"];
     [self setNavRightWithStr:@"search"];
+//    CommonCollectionController * vc = [[CommonCollectionController alloc]init];
+//    [self addChildViewController:vc];
+//    vc.view.frame = self.backScrollView.bounds;
+//    [self.backScrollView addSubview:vc.view];
+    [self AddCommonCollectionController];
+    [self scrollViewDidEndScrollingAnimation:_backScrollView];
+    [self requestFirstViedoTypeNetWorking];
+}
+-(void)AddCommonCollectionController
+{
+    for (int i =0; i<HeaderArray.count; i++) {
+        CommonCollectionController * vc = [[CommonCollectionController alloc]init];
+        [self addChildViewController:vc];
+        
+    }
     
- 
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
 }
 
 -(BOOL)shouldAutorotate
@@ -43,15 +83,24 @@
     vc.hidesBottomBarWhenPushed =YES;
     
 }
-
+-(void)headerViewbtnClick:(UIButton *)btn
+{
+  NSUInteger i =  [self.headerBtnArray indexOfObject:btn];
+    [self.backScrollView setContentOffset:CGPointMake(i*self.backScrollView.zcz_width, self.backScrollView.contentOffset.y) animated:YES];
+    [self exchangeSelectedButton:btn];
+    
+    
+}
 -(void)setUpBackGroundScrollVIew
 {
-    UIScrollView * bgScroll  = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+50,  [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-114-46)];
+    UIScrollView * bgScroll  = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+50,  [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-50-46)];
     [self.view addSubview:bgScroll];
-    bgScroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 1200);
+    bgScroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * HeaderArray.count, 0);
     _backScrollView = bgScroll;
-    [self setUpCycleScrollView];
-    [self setUpCollectionView];
+    _backScrollView.delegate = self;
+    _backScrollView.pagingEnabled = YES;
+//    [self setUpCycleScrollView];
+//    [self setUpCollectionView];
     
 }
 
@@ -60,16 +109,22 @@
     UIView * headerV = [[UIView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 50)];
     headerV.backgroundColor = [UIColor grayColor];
     NSArray * arr =  HeaderArray;
+    UIView * lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 49,[UIScreen mainScreen].bounds.size.width/arr.count , 1)];
+    lineView.backgroundColor = [UIColor blackColor];
+    [headerV addSubview:lineView];
+    self.headerLineView = lineView;
     for (int i =0; i<arr.count; i++) {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:arr[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+         [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         
         btn.titleLabel.font = [UIFont systemFontOfSize:15];
         btn.frame = CGRectMake(i*[UIScreen mainScreen].bounds.size.width/arr.count,0, [UIScreen mainScreen].bounds.size.width/arr.count, 50);
         [headerV addSubview:btn];
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(headerViewbtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headerBtnArray addObject:btn];
     }
     [self.view addSubview:headerV];
 }
@@ -154,6 +209,106 @@
 //- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 
 
-
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    NSInteger i = self.backScrollView.contentOffset.x/self.view.zcz_width;
+    CommonCollectionController * vc = self.childViewControllers[i];
+    if ([vc.view superview]==nil) {
+        vc.view.frame = self.backScrollView.bounds;
+        [self.backScrollView addSubview:vc.view];
+        if (i>0&&i<self.dataSource.count) {
+            vc.model = self.dataSource[i];
+        }
+        
+    }
     
+    
+    
+    UIButton * selBtn =self.headerBtnArray[i];
+    [self exchangeSelectedButton:selBtn];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.headerLineView.center =CGPointMake( selBtn.center.x,self.headerLineView.center.y);
+    }];
+    
+    
+}
+
+-(void)exchangeSelectedButton:(UIButton * )btn
+{
+    self.previousSelectedBtn.selected = NO;
+    btn.selected = YES;
+    self.previousSelectedBtn = btn;
+    
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (decelerate==NO) {
+            [self scrollViewDidEndScrollingAnimation:scrollView];
+    }
+}
+/** 滚动结束（手势导致） */
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+    [self scrollViewDidEndScrollingAnimation:scrollView];
+}
+
+-(void)requestFirstViedoTypeNetWorking
+{
+    [self showMBProgressHud];
+    [LYNetworkManager GET:GetFirstVideoAction parameters:nil successBlock:^(NSURLSessionDataTask *task, id responseObject){
+        if (self.dataSource.count > 0) {
+            [self.dataSource removeAllObjects];
+        }
+        NSArray *listArray = responseObject;
+        for (NSDictionary *dict in listArray) {
+            FirstMovieIdModel * model = [FirstMovieIdModel mj_objectWithKeyValues:dict];
+            [self.dataSource addObject:model];
+//            self.model = [firstIdModel firstIdWithtDictionary:dict];
+//            [self.dataSource addObject:_model];
+        }
+        NSLog(@"firstVideoID:%@,%ld",self.dataSource,(unsigned long)self.dataSource.count);
+
+        
+        if (self.dataSource.count > 0) {
+            [self removeAlertStateView];
+                    // 缓存写入文件：
+
+                    if(![NSKeyedArchiver archiveRootObject:self.dataSource toFile:[self returnDocumentPath:FKGetVideoFirst]])
+                    {
+                        NSLog(@"first id缓存写入失败！");
+                    }else{
+                        NSLog(@"--%@",self.dataSource);
+                        NSLog(@"first id缓存写入成功！");
+                    }
+
+        }else{
+            [self createAlertStateViewHeight:0 msg:@"暂无数据"];
+        }
+        
+        
+        CommonCollectionController * vc = self.childViewControllers[0];
+            vc.model = self.dataSource[0];
+        
+        
+        
+//        self.cacheArray = [[NSMutableArray alloc]initWithArray:self.dataSource];
+//        // 缓存写入文件：
+//        self.cachePath = [self returnDocumentPath:FKGetVideoFirst];
+//        if(![NSKeyedArchiver archiveRootObject:self.cacheArray toFile:self.cachePath])
+//        {
+//            NSLog(@"first id缓存写入失败！");
+//        }else{
+//            NSLog(@"--%@",self.dataSource);
+//            NSLog(@"first id缓存写入成功！");
+//        }
+        [self hideMBProgressHud];
+    } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
+        //网络连接失败，加载警示框
+        if (self.dataSource.count == 0) {
+            [self createAlertStateViewHeight:0 msg:error.localizedDescription];
+        }
+        [self hideMBProgressHud];
+    }];
+}
 @end

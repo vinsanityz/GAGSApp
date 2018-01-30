@@ -68,8 +68,8 @@
         _headerLabel.frame = CGRectMake((ScreenSizeWidth - 120) / 2, 2, 120, 40);
         _headerLabel.text = @"常规设置";
         _headerLabel.textAlignment = NSTextAlignmentCenter;
-        _headerLabel.textColor = [single.colorDic objectForKey:FONT_NAV_MAIN_COLOR];
-        _headerLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
+        _headerLabel.textColor = [_single.colorDic objectForKey:FONT_NAV_MAIN_COLOR];
+        _headerLabel.font = [UIFont systemFontOfSize:[[_single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
     }
     return _headerLabel;
 }
@@ -82,7 +82,7 @@
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
+        _tableView.separatorColor = [_single.colorDic objectForKey:LINECOLOR];
         [_tableView registerClass:[My_ReuseCllTableViewCell class] forCellReuseIdentifier:NSStringFromClass([My_ReuseCllTableViewCell class])];
     }
     return _tableView;
@@ -119,13 +119,13 @@
 #pragma mark - <接收到颜色字体改变的通知响应的方法>
 - (void)colorSetChange {
     [self.tableView reloadData];
-    self.tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
-    _headerLabel.textColor = [single.colorDic objectForKey:FONT_NAV_MAIN_COLOR];
+    self.tableView.separatorColor = [_single.colorDic objectForKey:LINECOLOR];
+    _headerLabel.textColor = [_single.colorDic objectForKey:FONT_NAV_MAIN_COLOR];
 }
 
 - (void)handleChangeTextFontAction:(NSNotificationCenter *)notification {
     [self.tableView reloadData];
-    _headerLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE]intValue]];
+    _headerLabel.font = [UIFont systemFontOfSize:[[_single.fontDic objectForKey:NAORMAL_SIZE]intValue]];
 }
 
 
@@ -138,23 +138,23 @@
 {    
     My_ReuseCllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([My_ReuseCllTableViewCell class]) forIndexPath:indexPath];
     //---------------设置字体颜色及大小---------------
-    cell.leftLabel.textColor = [single.colorDic objectForKey:FONT_MAIN_COLOR];
-    cell.leftLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
-    cell.rightLabel.textColor = [single.colorDic objectForKey:FONT_SEC_COLOR];
-    cell.rightLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:SMALL_SIZE] intValue]];
-    cell.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
+    cell.leftLabel.textColor = [_single.colorDic objectForKey:FONT_MAIN_COLOR];
+    cell.leftLabel.font = [UIFont systemFontOfSize:[[_single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
+    cell.rightLabel.textColor = [_single.colorDic objectForKey:FONT_SEC_COLOR];
+    cell.rightLabel.font = [UIFont systemFontOfSize:[[_single.fontDic objectForKey:SMALL_SIZE] intValue]];
+    cell.backgroundColor = [_single.colorDic objectForKey:BACK_CONTROL_COLOR];
     //------------------------------------------------------
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.leftLabel.text = CellLeftLabelArray[indexPath.row];
     //设置右侧label中的内容
     if (indexPath.row == 0) {
         
-        cell.rightLabel.text = single.fontEdition;
+        cell.rightLabel.text = _single.fontEdition;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else if (indexPath.row == 1) {
         
         //设置右侧label中的内容
-        cell.rightLabel.text = single.colorEdition;
+        cell.rightLabel.text = _single.colorEdition;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 2){
         
@@ -289,40 +289,43 @@
     //字体大小cell
     if (self.indexPathSet.row == 0) {
         cell.rightLabel.text = resultString;
-        if (![cell.rightLabel.text isEqualToString:single.fontEdition] ) {
+        //判断是否与当前保存的一致
+        if (![resultString isEqualToString:_single.fontEdition] ) {
             if ([resultString isEqualToString:SMALL_EDITION]) {
-                single.fontDic = SMALLDic;
-                single.fontEdition = SMALL_EDITION;
-                [CommonCtr saveColor:single];
+                _single.fontDic = SMALLDic;
+                _single.fontEdition = SMALL_EDITION;
+//                [CommonCtr saveColor:_single];
             }else if ([resultString isEqualToString:NORMAL_EDITION]){
-                single.fontDic = NORMALDic;
-                single.fontEdition = NORMAL_EDITION;
-                [CommonCtr saveColor:single];
+                _single.fontDic = NORMALDic;
+                _single.fontEdition = NORMAL_EDITION;
+//                [CommonCtr saveColor:_single];
             }else if ([resultString isEqualToString:BIG_EDITION]){
-                single.fontDic  = BIGDic;
-                single.fontEdition = BIG_EDITION;
-                [CommonCtr saveColor:single];
+                _single.fontDic  = BIGDic;
+                _single.fontEdition = BIG_EDITION;
+//                [CommonCtr saveColor:_single];
             }
+            [_single saveColor];
         }
        [[NSNotificationCenter defaultCenter]postNotificationName:FontNoti object:nil];
         self.fontPickView = nil;
     }else if (self.indexPathSet.row == 1){
        cell.rightLabel.text = resultString;
         
-        if (![resultString isEqualToString:single.colorEdition]) {
+        if (![resultString isEqualToString:_single.colorEdition]) {
             if ([resultString isEqualToString:WHITE_EDITION]) {
-                single.colorDic = WhiteDic;
-                single.colorEdition = WHITE_EDITION;
-                [CommonCtr saveColor:single];
+                _single.colorDic = WhiteDic;
+                _single.colorEdition = WHITE_EDITION;
+//                [CommonCtr saveColor:_single];
             }else if ([resultString isEqualToString:BLACK_EDITION]){
-                single.colorDic = BLACKDic;
-                single.colorEdition = BLACK_EDITION;
-                [CommonCtr saveColor:single];
+                _single.colorDic = BLACKDic;
+                _single.colorEdition = BLACK_EDITION;
+//                [CommonCtr saveColor:_single];
             }else if ([resultString isEqualToString:BLUE_EDITION]){
-                single.colorDic = BLUEDic;
-                single.colorEdition = BLUE_EDITION;
-                [CommonCtr saveColor:single];
+                _single.colorDic = BLUEDic;
+                _single.colorEdition = BLUE_EDITION;
+//                [CommonCtr saveColor:_single];
             }
+            [_single saveColor];
         }
         //发送通知
         [[NSNotificationCenter defaultCenter]postNotificationName:ColorNoti object:nil];

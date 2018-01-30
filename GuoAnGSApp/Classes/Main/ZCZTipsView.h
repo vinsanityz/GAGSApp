@@ -21,4 +21,5 @@
 @interface ZCZTipsView : UIView
 +(instancetype)sharedZCZTipsView;
 -(void)showWithString:(NSString *)str;
++(void)showWithString:(NSString *)str;
 @end

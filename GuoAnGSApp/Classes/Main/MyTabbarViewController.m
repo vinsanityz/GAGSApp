@@ -10,7 +10,7 @@
 #import <AutoCoding.h>
 #import "ParamFile.h"
 #import "SingleColor.h"
-#import "CommonCtr.h"
+
 #import "ZCZNavigationController.h"
 
 @implementation MyTabbarViewController
@@ -55,7 +55,7 @@
         nav.tabBarItem = [self createTabBarItem:[obj objectForKey:@"title"] image:[NSString stringWithFormat:@"tab_%ld",(unsigned long)idx] selectedImage:[NSString stringWithFormat:@"tab_%ld_select",(unsigned long)idx]];
     }];
     //设置颜色
-    single = [SingleColor sharedInstance];
+    _single = [SingleColor sharedInstance];
     [self SetTabbarColor];
     self.viewControllers = viewControllersArr;
     
@@ -70,21 +70,22 @@
 
 -(void)SetTabbarColor
 {
-    if ([CommonCtr restore] == NULL) {
-        single.colorDic = WhiteDic;
-        single.fontDic = NORMALDic;
-        single.fontSize = FONTSIZE_MIDDLE;
-        single.colorEdition = WHITE_EDITION;
-        single.fontEdition = NORMAL_EDITION;
-        [CommonCtr saveColor:single];
+    if ([_single restore] == NULL) {
+        _single.colorDic = WhiteDic;
+        _single.fontDic = NORMALDic;
+        _single.fontSize = FONTSIZE_MIDDLE;
+        _single.colorEdition = WHITE_EDITION;
+        _single.fontEdition = NORMAL_EDITION;
+//        [CommonCtr saveColor:_single];
+        [_single saveColor];
     }else
     {
-        single = [CommonCtr restore];
+        _single = [_single restore];
     }
 
-    UIColor *TextColor = [single.colorDic objectForKey:FONT_TABBAR_COLOR];
-//    NSLog(@"color is %@ ",[single.colorDic objectForKey:TABBARCOLOR]);
-    self.tabBar.barTintColor = [single.colorDic objectForKey:TABBARCOLOR];
+    UIColor *TextColor = [_single.colorDic objectForKey:FONT_TABBAR_COLOR];
+//    NSLog(@"color is %@ ",[_single.colorDic objectForKey:TABBARCOLOR]);
+    self.tabBar.barTintColor = [_single.colorDic objectForKey:TABBARCOLOR];
      UIColor *selTextColor = HIGHLIGHTED_COLOR ;
     [[UITabBarItem appearance] setTitleTextAttributes:
      @{NSForegroundColorAttributeName : selTextColor}

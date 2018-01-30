@@ -9,13 +9,18 @@
 #ifndef CS_WeiTV_ParamFile_h
 #define CS_WeiTV_ParamFile_h
 
-#import "MyTabbarViewController.h"
+#import "SingleColor.h"             //颜色单例
+#import "ZCZTipsView.h"             //弹出的提示窗
+#import "CSReachability.h"          //网络监测封装
+#import "AlertStateView.h"          //警视窗
+#import "LYNetworkManager.h"        //封装的网络请求基类
 #import <Masonry.h>
-#import "SingleColor.h"
-#import "UIImageView+WebCache.h"
+#import <MJRefresh.h>
+#import <MJExtension.h>
+#import <MBProgressHUD.h>
+#import <UIImageView+WebCache.h>
 
-
-#pragma mark - Method(宏定义方法) -
+#pragma mark - <宏定义方法>
 //^^^^^^^^以下为宏定义方法^^^^^^^^^^^^^^^
 /*显示图片名称方法*/
 #define ImageNamed(_pointer) [UIImage imageNamed:_pointer]
@@ -29,15 +34,10 @@
 /*字符串拼接*/
 #define JoinTwoParamFormatStr(firstParam,secondParam) [NSString stringWithFormat:@"%@%@",firstParam,secondParam];
 
-
-/**
- *  颜色转码
- */
+/*颜色转码*/
 #define HEXCOLOR(rgbValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0])
 
-/**
- *判断服务器返回的数值是否为空
- */
+/*判断服务器返回的数值是否为空*/
 #define vertifyNumber(value)\
 ({\
 id tmp;\
@@ -48,10 +48,8 @@ tmp = value;\
 tmp;\
 })\
 
-
 /**
- *  永久存储对象
- *
+ *  永久存储对象 NSUserDefaults
  *  @param object 需要存储的对象
  *  @param key    对应的key
  */
@@ -79,30 +77,22 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 #define kPermanent_GET_BOOL(key) [[NSUserDefaults standardUserDefaults] boolForKey:key]
 
 
-
-
 #pragma mark - 友盟分享标识 -
 //^^^^^^友盟分享^^^^^^^^^^^^^^^^^^^^
-#warning todo
+#warning todo  不必写在这里
 #define UMAppKey @"5836495d07fe65019e0024af"
 
 #define UMQQAppID @"1105219519"
 #define UMQQAppKey @"r2hskYHiYsiAPwB0"
-
 #define UMWXAppId @"wx49fc02e152178554"
 #define UMWXAppSecert @"6093d6eff09f07c76a48c2075bdd63ce"
-
 #define UMWBAppKey @"246862663"
-
 #define UMWBAppSecret @"f5937e74b93537185f0d9843f4aa7f63"
 
-
-
-#pragma mark - 标识符 -
+#pragma mark - <标识符>
 //^^^^^^^标识^^^^^^^^^^^^^^^^^^^^^^
-/**
- *  用户个人信息存储key
- */
+/*用户个人信息存储key*/
+
 /*用户名*/
 #define KGetUserName @"userName"
 /*用户ID*/
@@ -121,12 +111,10 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 #define KGetArea @"area"
 /*头像路径*/
 #define KGetHeadImageUrl @"headPortraitUrl"
-
+/*开关的状态*/
 #define KGetSWitch @"switchOn"
 
-/**
- *记录是否登录过；yes登录成功， no退出登录
- */
+/*记录是否登录过: yes登录成功, no退出登录 */
 #define KGLaunchLoad @"launchLoad"
 
 /*城市定位*/
@@ -135,35 +123,27 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 /*警示图片名称*/
 #define AlertImageName @"no_data"
 
-
-
 #define LOGINMESSAGE @"loginAndreg"
 /*登录标识*/
 #define LOGIN @"login"
 /*退出登录标识*/
 #define EXITLOGIN @"exitLog"
 
-
-
-/**注册前的信息列表页以及登录返回的url**/
+/**注册前的信息列表页以及登录返回的url 因地而异**/
 /*ip地址*/
 #define KGetIP @"ip"
 /*端口号*/
 #define KGetPort @"port"
 
 
-/**
- * 归档信息存储key
- */
+#pragma mark - <归档信息存储key>
 /*直播主界面键值*/
 #define KGetLive @"LiveVC"
 /*直播详情界面键值*/
 #define KGetTimeOfLive @"LiveTime"
 
+/*归档信息文件名*/
 
-/**
- *归档信息文件名
- */
 /*点播主界面滑动条缓存*/
 #define FKGetVideoFirst @"FrontPageFirst"
 /*直播主界面缓存*/
@@ -172,7 +152,6 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 #define FKGetTimeOfLive @"LiveTimeCache"
 
 #define TieUp_Btn @"绑定按钮"
-
 
 
 #pragma mark -颜色-
@@ -249,12 +228,9 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 //#define OTHER_COLOR @"otherColor"//备注及加载文字颜色
 
 
-
 #pragma mark - 字号 -
 //^^^^^^^^^^^^^字号^^^^^^^^^^^^^^^^^^^^
-/**
- *  字体大小
- */
+/*字体大小*/
 #define SetFontSize(size)
 //字号
 #define FONTSIZE_MAX 21
@@ -302,7 +278,6 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 #define MORE_SIZE @"more"
 
 
-
 #define Horizontal_Offset 146
 
 #define ColorNoti @"colorNoti"
@@ -323,8 +298,6 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 
 //字体大小版本数组
 #define SIZE_ARR @[BIG_SIZE,NORMAL_SIZE,SMALL_SIZE];
-
-
 
 
 #pragma mark -高度宏定义-
@@ -418,14 +391,8 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
  */
 #define VideoCellHigh (ScreenSizeWidth - 15 *4) /3 *13 /10 +5+20+20
 
-
 #define commonCellHigh 50
 #define otherCellHigh 60
-
-
-
-
-
 
 
 
@@ -470,55 +437,39 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 
 
 
-
-
-
-
-
-
 #pragma mark - 提示框中内容 -
 //^^^^^^提示框中内容^^^^^^^^^^^^^^^^^^^
-#define Tip_PhoneUnWrite @"尚未输入手机号"
-
-#define Tip_UserNameUnWrite @"尚未输入用户名"
-
-#define Tip_PasswordOriginUnWrite @"尚未输入初始密码"
-
-#define Tip_PasswordConfirmUnWrite @"尚未再次输入密码"
-
+//手机号码相关
 #define Tip_PhoneWrite @"请输入手机号"
-
+#define Tip_PhoneWrong @"手机号输入有误"
+#define Tip_PhoneUnWrite @"尚未输入手机号"
+//用户名相关
+#define Tip_UserNameWrong @"用户名输入有误"
+#define Tip_UserNameOcupy @"用户名已被使用"
+#define Tip_UserNameUnWrite @"尚未输入用户名"
+#define Tip_ResetUserNameWrite @"请输入用户名"
 #define Tip_UserNameWrite @"请输入用户名(由4-18位的数字、字母或下划线组成)"
-
+//密码相关
+#define Tip_ResetNewPwdWrong @"新密码输入有误"
+#define Tip_PasswordLoadWrite @"请输入登录密码"
+#define Tip_PasswordLoadWrong @"登录密码输入有误"
+#define Tip_ResetNewPwdUnWrite @"尚未输入新密码"
+#define Tip_ResetNewPassWordWrite @"请输入新密码"
+#define Tip_PassWordWriteConfirm @"请再次输入密码"
+#define Tip_PasswordLoadUnWrite @"尚未输入登录密码"
+#define Tip_PassWordOriginWrong @"初始密码输入有误"
+#define Tip_PassWordConfirWrong @"再次输入密码有误"
+#define Tip_ResetConfirmPwdWrite @"请再次输入新密码"
+#define Tip_PasswordOriginUnWrite @"尚未输入初始密码"
+#define Tip_PasswordConfirmUnWrite @"尚未再次输入密码"
+#define Tip_AgreeMentOfPassword @"两次输入的密码不一致"
 #define Tip_PassWordWriteOrigin @"请输入初始密码（由6-18位不包含空格的字符组成)"
-
+//昵称相关
+#define Tip_NickNameWrong @"昵称输入有误"
 #define Tip_NickNameWrite @"请输入昵称(由1-18位的任意字符组成)"
 
-#define Tip_PassWordWriteConfirm @"请再次输入密码"
 
-#define Tip_ResetNewPassWordWrite @"请输入新密码"
-#define Tip_ResetConfirmPwdWrite @"请再次输入新密码"
-
-#define Tip_ResetNewPwdUnWrite @"尚未输入新密码"
-#define Tip_ResetNewPwdWrong @"新密码输入有误"
-#define Tip_ResetUserNameWrite @"请输入用户名"
-
-
-//提示手机号输入有误
-#define Tip_PhoneWrong @"手机号输入有误"
-
-//提示用户名输入有误
 #define Tip_VideoPlayFailed @"无法在当前网络下播放，请切换到对应局域网播放"
-
-#define Tip_UserNameWrong @"用户名输入有误"
-
-#define Tip_NickNameWrong @"昵称输入有误"
-
-#define Tip_PassWordOriginWrong @"初始密码输入有误"
-
-#define Tip_PassWordConfirWrong @"再次输入密码有误"
-
-#define Tip_AgreeMentOfPassword @"两次输入的密码不一致"
 
 #define Tip_AccountUnWrite @"尚未输入用户名或手机号"
 
@@ -526,17 +477,12 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 
 #define Tip_AccountWrite @"请输入用户名或手机号"
 
-#define Tip_PasswordLoadWrite @"请输入登录密码"
-#define Tip_PasswordLoadUnWrite @"尚未输入登录密码"
-#define Tip_PasswordLoadWrong @"登录密码输入有误"
+
+
 
 #define Tip_VertifyWrite @"请输入验证码"
 
 #define Tip_VsertyfyClick @"点击获取验证码"
-
-
-#define Tip_UserNameOcupy @"用户名已被使用"
-
 #define Tip_AreaUnSelect @"请先选择区域"
 
 #define Tip_AreaText @"请先选择区域(必选项)"
@@ -563,13 +509,10 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];;\
 //长沙测试平台
 //#define GetLoadPreUrl @"http://30.110.109.123:8080/center/"
 
-
 //正式发布!!!
 #define GetLoadPreUrl @"http://cen.phone.citicguoanbn.com:8080/center/"
 
-
 //#define GetLoadPreUrl @"http://182.18.26.5:8087/center/"
-
 
 //https ip测试
 //#define GetLoadPreUrl @"https://182.18.26.5:21580/center/"

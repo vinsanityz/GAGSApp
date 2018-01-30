@@ -60,7 +60,7 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _tableView.allowsSelection = NO;
-        _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
+        _tableView.separatorColor = [_single.colorDic objectForKey:LINECOLOR];
             [self.tableView registerNib:[UINib nibWithNibName:@"SearchResultsTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierForSearch];
         self.tableView.hidden=YES;
     }
@@ -85,14 +85,14 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
 {
     UIView *moreView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenSizeWidth, 45)];
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenSizeWidth, 1)];
-    lineView.backgroundColor = [single.colorDic objectForKey:LINECOLOR];
+    lineView.backgroundColor = [_single.colorDic objectForKey:LINECOLOR];
     [moreView addSubview:lineView];
     moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     moreBtn.frame = CGRectMake(0,1,self.view.frame.size.width, 44);
     [moreBtn addTarget:self action:@selector(handleMoreSearchBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [moreBtn setTitle:@"加载更多" forState:UIControlStateNormal];
-    [moreBtn setTitleColor:[single.colorDic objectForKey:FONT_MAIN_COLOR] forState:UIControlStateNormal];
-    moreBtn.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
+    [moreBtn setTitleColor:[_single.colorDic objectForKey:FONT_MAIN_COLOR] forState:UIControlStateNormal];
+    moreBtn.backgroundColor = [_single.colorDic objectForKey:BACK_CONTROL_COLOR];
     [moreView addSubview:moreBtn];
     self.tableView.tableFooterView = moreView;
     self.tableView.tableFooterView.hidden = YES;
@@ -209,7 +209,7 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
         SearchResultsTableViewCell *srtvc=(SearchResultsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifierForSearch forIndexPath:indexPath];
     
     srtvc.selectionStyle = UITableViewCellSelectionStyleNone;
-    srtvc.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
+    srtvc.backgroundColor = [_single.colorDic objectForKey:BACK_CONTROL_COLOR];
     return srtvc;
 }
 
@@ -284,7 +284,7 @@ static NSString * const reuseIdentifierForSearch =@"searchResults";
                 --nShowPage;
                 
             }
-            [[ZCZTipsView sharedZCZTipsView]showWithString:NoMoreMessage];
+            [ZCZTipsView showWithString:NoMoreMessage];
             
         }
 //        for (NSDictionary *dict in array) {

@@ -82,12 +82,19 @@
     self.window.rootViewController = basicVC;
     
     
-    self.basicViewController = basicVC;
+    
+//    self.basicViewController = basicVC;
     
     
     
     [self.window makeKeyAndVisible];
-    NSLog(@"123");
+    
+    kPermanent_SET_OBJECT(@"21580", KGetPort);
+    kPermanent_SET_OBJECT(@"120.202.127.36", KGetIP);
+//    NSLog(@"%@",kPermanent_GET_OBJECT(KGetPort));
+//    21580
+//    NSLog(@"%@",kPermanent_GET_OBJECT(KGetIP));
+//    xt.phone.citicguoanbn.com
 //    EMError *error = [[EMClient sharedClient] registerWithUsername:@"zh123123aoc123ddaahengzhu" password:@"1"];
 //    if (error==nil) {
 //        NSLog(@"注册成功");

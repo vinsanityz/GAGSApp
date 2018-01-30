@@ -10,6 +10,7 @@ pod 'JPush'
 
 pod 'SDCycleScrollView', '~> 1.75'
 pod 'MJRefresh'
+pod 'MJExtension’
 
 pod 'TZImagePickerController'
 

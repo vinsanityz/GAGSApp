@@ -23,15 +23,15 @@
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    ZCZTipsView * tip = [ZCZTipsView sharedZCZTipsView];
-    [tip showWithString:@"wocaledsjdfj"];
+    
+    [ZCZTipsView showWithString:@"wocaledsjdfj"];
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     ZCZPickView * zczpicker = [[ZCZPickView alloc]initForAreaPickView];
-    zczpicker.singleColor = single;
+    zczpicker.singleColor = _single;
     zczpicker.frame = CGRectMake(0, 100, 376, 400);
     [self.view addSubview:zczpicker];
     zczpicker.delegate = self;

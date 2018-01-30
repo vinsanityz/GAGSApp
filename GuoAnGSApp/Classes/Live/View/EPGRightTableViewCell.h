@@ -11,6 +11,7 @@
 #import "ZCZLabel.h"
 @interface EPGRightTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *zcz_imageView;
 
 @property (weak, nonatomic) IBOutlet ZCZLabel *LabelView;
 

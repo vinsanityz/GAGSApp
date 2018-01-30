@@ -11,6 +11,7 @@
 #import "MyTabbarViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "QRScanViewController.h" //二维码
+#import "NSString+RegularExpression.h"
 
 @interface LoadOnVC ()<UITextFieldDelegate>
 
@@ -132,7 +133,7 @@
 -(void)requestLoadOnNetWorkingPhoneNoOrUserName:(NSString *)phoneNoOrUserName password:(NSString *)password {
     [self showMBProgressHud];
     NSDictionary *param;
-    if ([self isPureInt:self.userAccountTextField.text]) {
+    if ([self.userAccountTextField.text isPhoneNumber]) {
         param = [NSDictionary dictionaryWithObjectsAndKeys:phoneNoOrUserName,@"phoneNo",password,@"passwd",nil];
     }else{
         param =  [NSDictionary dictionaryWithObjectsAndKeys:phoneNoOrUserName,@"appUserName",password,@"passwd", nil];
@@ -146,7 +147,7 @@
       NSLog(@"%@",responseObject);
       self.loadModel = [LoadReturnModel itemLoadReturnModelWithDictionary:responseObject];
          NSLog(@"登录返回信息：%@",self.loadModel.returnMsg);
-         [[ZCZTipsView sharedZCZTipsView]showWithString: self.loadModel.returnMsg];
+         [ZCZTipsView showWithString: self.loadModel.returnMsg];
          
       
          /**
@@ -202,7 +203,7 @@
       [self hideMBProgressHud];
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
       [self hideMBProgressHud];
-         [[ZCZTipsView sharedZCZTipsView]showWithString: error.localizedDescription];
+         [ZCZTipsView showWithString: error.localizedDescription];
 
   }];
 }

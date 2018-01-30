@@ -18,5 +18,9 @@
 @property(nonatomic,strong) NSString *fontEdition;
 
 +(instancetype)sharedInstance;
+-(void)saveColor;
+-(SingleColor *)restore;
+
+
 
 @end

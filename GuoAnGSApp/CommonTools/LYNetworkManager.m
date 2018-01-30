@@ -156,7 +156,7 @@ failureBlock:(requestFailureBlock _Nonnull)failure {
         if (failure) {
             failure(task, error);
         }
-        [[ZCZTipsView sharedZCZTipsView] showWithString: error.localizedDescription];//错误提醒
+        [ZCZTipsView showWithString: error.localizedDescription];//错误提醒
     }];
     [taskArray addObject:dataTask];
 }
@@ -186,7 +186,7 @@ failureBlock:(requestFailureBlock _Nonnull)failure {
 //        if (error.code == NSURLErrorTimedOut) {
 //            [ZCZTipsView addPopString:NETWRONG];
 //        }
-        [[ZCZTipsView sharedZCZTipsView] showWithString: error.localizedDescription];
+        [ZCZTipsView  showWithString: error.localizedDescription];
     }];
     [taskArray addObject:dataTask];//添加任务
 

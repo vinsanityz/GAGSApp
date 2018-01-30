@@ -84,8 +84,22 @@
 		3DB93C741F99964C00AA90B2 /* FamilyMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C731F99964C00AA90B2 /* FamilyMembersController.m */; };
 		3DB93C781F999D1200AA90B2 /* MembersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB93C761F999D1200AA90B2 /* MembersTableViewCell.m */; };
 		3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB93C771F999D1200AA90B2 /* MembersTableViewCell.xib */; };
+		3DBA1E132010737100BF987B /* ca.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3DBA1E122010737000BF987B /* ca.cer */; };
+		3DBA1E1620107B6F00BF987B /* LiveChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA1E1520107B6F00BF987B /* LiveChannelModel.m */; };
+		3DBA1E192017081C00BF987B /* NSString+RegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA1E182017081B00BF987B /* NSString+RegularExpression.m */; };
+		3DBA1E1C20182D6700BF987B /* NSString+AppendFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA1E1B20182D6700BF987B /* NSString+AppendFilePath.m */; };
+		3DBA1E1F20185C3A00BF987B /* CommonCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA1E1E20185C3A00BF987B /* CommonCollectionController.m */; };
 		3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18411F7B53DC00ADC124 /* AlertStateView.xib */; };
 		3DBB21261F8F53DB008B1B87 /* LoadOnVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB20FC1F8F4B99008B1B87 /* LoadOnVC.xib */; };
+		3DCB01572019CFCF00C2711A /* FirstMovieIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB01562019CFCF00C2711A /* FirstMovieIdModel.m */; };
+		3DCB015A201AFB7B00C2711A /* SecondMovieIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB0159201AFB7B00C2711A /* SecondMovieIdModel.m */; };
+		3DCB015D201AFD0600C2711A /* SecondMovieIdDataArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB015C201AFD0600C2711A /* SecondMovieIdDataArrayModel.m */; };
+		3DCB0161201B058300C2711A /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB015F201B058300C2711A /* MovieCollectionViewCell.m */; };
+		3DCB0162201B058300C2711A /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCB0160201B058300C2711A /* MovieCollectionViewCell.xib */; };
+		3DCB0166201EC01400C2711A /* CommonCollectionReusableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB0164201EC01400C2711A /* CommonCollectionReusableHeaderView.m */; };
+		3DCB0167201EC01400C2711A /* CommonCollectionReusableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCB0165201EC01400C2711A /* CommonCollectionReusableHeaderView.xib */; };
+		3DCB016A201EC9FB00C2711A /* MoreMovieCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB0169201EC9FB00C2711A /* MoreMovieCollectionController.m */; };
+		3DCB016D201EF14000C2711A /* MoreVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB016C201EF14000C2711A /* MoreVideoModel.m */; };
 		3DDD18231F7B53A400ADC124 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD18221F7B53A400ADC124 /* AppDelegate.m */; };
 		3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD182A1F7B53A400ADC124 /* Assets.xcassets */; };
 		3DDD182E1F7B53A400ADC124 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD182C1F7B53A400ADC124 /* LaunchScreen.storyboard */; };
@@ -208,9 +222,34 @@
 		3DB93C751F999D1200AA90B2 /* MembersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersTableViewCell.h; sourceTree = "<group>"; };
 		3DB93C761F999D1200AA90B2 /* MembersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersTableViewCell.m; sourceTree = "<group>"; };
 		3DB93C771F999D1200AA90B2 /* MembersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembersTableViewCell.xib; sourceTree = "<group>"; };
+		3DBA1E122010737000BF987B /* ca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ca.cer; sourceTree = "<group>"; };
+		3DBA1E1420107B6F00BF987B /* LiveChannelModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveChannelModel.h; sourceTree = "<group>"; };
+		3DBA1E1520107B6F00BF987B /* LiveChannelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveChannelModel.m; sourceTree = "<group>"; };
+		3DBA1E172017081B00BF987B /* NSString+RegularExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+RegularExpression.h"; sourceTree = "<group>"; };
+		3DBA1E182017081B00BF987B /* NSString+RegularExpression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegularExpression.m"; sourceTree = "<group>"; };
+		3DBA1E1A20182D6700BF987B /* NSString+AppendFilePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AppendFilePath.h"; sourceTree = "<group>"; };
+		3DBA1E1B20182D6700BF987B /* NSString+AppendFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AppendFilePath.m"; sourceTree = "<group>"; };
+		3DBA1E1D20185C3A00BF987B /* CommonCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonCollectionController.h; sourceTree = "<group>"; };
+		3DBA1E1E20185C3A00BF987B /* CommonCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonCollectionController.m; sourceTree = "<group>"; };
 		3DBB20FC1F8F4B99008B1B87 /* LoadOnVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadOnVC.xib; sourceTree = "<group>"; };
 		3DBB20FD1F8F4B9A008B1B87 /* LoadOnVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadOnVC.m; sourceTree = "<group>"; };
 		3DBB20FE1F8F4B9A008B1B87 /* LoadOnVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadOnVC.h; sourceTree = "<group>"; };
+		3DCB01552019CFCF00C2711A /* FirstMovieIdModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstMovieIdModel.h; sourceTree = "<group>"; };
+		3DCB01562019CFCF00C2711A /* FirstMovieIdModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstMovieIdModel.m; sourceTree = "<group>"; };
+		3DCB0158201AFB7A00C2711A /* SecondMovieIdModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondMovieIdModel.h; sourceTree = "<group>"; };
+		3DCB0159201AFB7B00C2711A /* SecondMovieIdModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondMovieIdModel.m; sourceTree = "<group>"; };
+		3DCB015B201AFD0600C2711A /* SecondMovieIdDataArrayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondMovieIdDataArrayModel.h; sourceTree = "<group>"; };
+		3DCB015C201AFD0600C2711A /* SecondMovieIdDataArrayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondMovieIdDataArrayModel.m; sourceTree = "<group>"; };
+		3DCB015E201B058300C2711A /* MovieCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewCell.h; sourceTree = "<group>"; };
+		3DCB015F201B058300C2711A /* MovieCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionViewCell.m; sourceTree = "<group>"; };
+		3DCB0160201B058300C2711A /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		3DCB0163201EC01400C2711A /* CommonCollectionReusableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonCollectionReusableHeaderView.h; sourceTree = "<group>"; };
+		3DCB0164201EC01400C2711A /* CommonCollectionReusableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonCollectionReusableHeaderView.m; sourceTree = "<group>"; };
+		3DCB0165201EC01400C2711A /* CommonCollectionReusableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCollectionReusableHeaderView.xib; sourceTree = "<group>"; };
+		3DCB0168201EC9FB00C2711A /* MoreMovieCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreMovieCollectionController.h; sourceTree = "<group>"; };
+		3DCB0169201EC9FB00C2711A /* MoreMovieCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreMovieCollectionController.m; sourceTree = "<group>"; };
+		3DCB016B201EF14000C2711A /* MoreVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreVideoModel.h; sourceTree = "<group>"; };
+		3DCB016C201EF14000C2711A /* MoreVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreVideoModel.m; sourceTree = "<group>"; };
 		3DDD181E1F7B53A400ADC124 /* GuoAnGSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuoAnGSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DDD18211F7B53A400ADC124 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3DDD18221F7B53A400ADC124 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -398,6 +437,7 @@
 		3DDD18371F7B53D200ADC124 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3DBA1E122010737000BF987B /* ca.cer */,
 				3DDD18211F7B53A400ADC124 /* AppDelegate.h */,
 				3DDD18221F7B53A400ADC124 /* AppDelegate.m */,
 				3DAB4A901FE35E9E0038741C /* ZCZNavigationController.h */,
@@ -411,6 +451,10 @@
 				3D6F80472005C44B00C08E73 /* ZCZTipsView.m */,
 				3DDD18451F7B53DC00ADC124 /* CommonCtr.h */,
 				3DDD18461F7B53DC00ADC124 /* CommonCtr.m */,
+				3DBA1E1A20182D6700BF987B /* NSString+AppendFilePath.h */,
+				3DBA1E1B20182D6700BF987B /* NSString+AppendFilePath.m */,
+				3DBA1E172017081B00BF987B /* NSString+RegularExpression.h */,
+				3DBA1E182017081B00BF987B /* NSString+RegularExpression.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -554,6 +598,8 @@
 		3DE214851F7B60D60076FCD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3DBA1E1420107B6F00BF987B /* LiveChannelModel.h */,
+				3DBA1E1520107B6F00BF987B /* LiveChannelModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,6 +642,10 @@
 			children = (
 				3DE2149E1F7B70C60076FCD6 /* VODController.h */,
 				3DE2149F1F7B70C60076FCD6 /* VODController.m */,
+				3DBA1E1D20185C3A00BF987B /* CommonCollectionController.h */,
+				3DBA1E1E20185C3A00BF987B /* CommonCollectionController.m */,
+				3DCB0168201EC9FB00C2711A /* MoreMovieCollectionController.h */,
+				3DCB0169201EC9FB00C2711A /* MoreMovieCollectionController.m */,
 				3D8B12C01FB035DD00473D79 /* SearchController.h */,
 				3D8B12C11FB035DD00473D79 /* SearchController.m */,
 			);
@@ -605,6 +655,14 @@
 		3DE214891F7B60D60076FCD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3DCB01552019CFCF00C2711A /* FirstMovieIdModel.h */,
+				3DCB01562019CFCF00C2711A /* FirstMovieIdModel.m */,
+				3DCB0158201AFB7A00C2711A /* SecondMovieIdModel.h */,
+				3DCB0159201AFB7B00C2711A /* SecondMovieIdModel.m */,
+				3DCB015B201AFD0600C2711A /* SecondMovieIdDataArrayModel.h */,
+				3DCB015C201AFD0600C2711A /* SecondMovieIdDataArrayModel.m */,
+				3DCB016B201EF14000C2711A /* MoreVideoModel.h */,
+				3DCB016C201EF14000C2711A /* MoreVideoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -621,6 +679,12 @@
 				3DA2E52B1FB4340A00BF51B3 /* HistoryCollectionReusableView.h */,
 				3DA2E52C1FB4340A00BF51B3 /* HistoryCollectionReusableView.m */,
 				3DA2E52D1FB4340A00BF51B3 /* HistoryCollectionReusableView.xib */,
+				3DCB015E201B058300C2711A /* MovieCollectionViewCell.h */,
+				3DCB015F201B058300C2711A /* MovieCollectionViewCell.m */,
+				3DCB0160201B058300C2711A /* MovieCollectionViewCell.xib */,
+				3DCB0163201EC01400C2711A /* CommonCollectionReusableHeaderView.h */,
+				3DCB0164201EC01400C2711A /* CommonCollectionReusableHeaderView.m */,
+				3DCB0165201EC01400C2711A /* CommonCollectionReusableHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -875,13 +939,16 @@
 				3DF04BA31FCE5DB8009C5D2A /* ZCZProgressBar.xib in Resources */,
 				3D7CCD0F1F949895002D59A7 /* SetPasswordController.xib in Resources */,
 				3DDD182B1F7B53A400ADC124 /* Assets.xcassets in Resources */,
+				3DCB0162201B058300C2711A /* MovieCollectionViewCell.xib in Resources */,
 				3D1CFB651F9F19FE00D88608 /* STBTopView.xib in Resources */,
 				3DA7221A1FC3D4AE000DD9E3 /* FilterCollectionViewCell.xib in Resources */,
 				3D7CCD0A1F9496CA002D59A7 /* BindPhoneNumberController.xib in Resources */,
 				3D7CCD051F94931C002D59A7 /* ManualInputViewController.xib in Resources */,
 				3DA35CF71FF4941000C64620 /* tableViewHeaderView.xib in Resources */,
 				3DA2E52A1FB3F38100BF51B3 /* HistoryCollectionViewCell.xib in Resources */,
+				3DBA1E132010737100BF987B /* ca.cer in Resources */,
 				3DB93C791F999D1200AA90B2 /* MembersTableViewCell.xib in Resources */,
+				3DCB0167201EC01400C2711A /* CommonCollectionReusableHeaderView.xib in Resources */,
 				3DF409BC1FE8F618003BACE0 /* ZCZHeaderBar.xib in Resources */,
 				3D2C70B71FAC108B00C662F5 /* ScreenShotController.xib in Resources */,
 			);
@@ -964,10 +1031,12 @@
 				3D6F8045200354FD00C08E73 /* area.plist in Sources */,
 				3D8B12C71FB1A6C800473D79 /* SearchResultsTableViewCell.xib in Sources */,
 				3D8B12C61FB160FE00473D79 /* SearchResultsTableViewCell.m in Sources */,
+				3DBA1E1F20185C3A00BF987B /* CommonCollectionController.m in Sources */,
 				3DF04B9C1FCE4F11009C5D2A /* ZCZMoviePlayerController.m in Sources */,
 				3DAB4A921FE35E9F0038741C /* ZCZNavigationController.m in Sources */,
 				3DBB21261F8F53DB008B1B87 /* LoadOnVC.xib in Sources */,
 				3D1CFB601F9EEA1600D88608 /* GroupDetailsTableViewController.m in Sources */,
+				3DBA1E1620107B6F00BF987B /* LiveChannelModel.m in Sources */,
 				3DBB21251F8F536A008B1B87 /* AlertStateView.xib in Sources */,
 				3DAAD30A1F7B8C7E00C91E5C /* TabbarConfig.plist in Sources */,
 				3DA7221D1FC665B2000DD9E3 /* BasicViewController.m in Sources */,
@@ -979,6 +1048,7 @@
 				3DB8D9F91F94583A0076B7D3 /* QRScanViewController.m in Sources */,
 				3DF409BA1FE8F5F7003BACE0 /* ZCZHeaderBar.m in Sources */,
 				3DA35CF51FF493EE00C64620 /* tableViewHeaderView.m in Sources */,
+				3DBA1E192017081C00BF987B /* NSString+RegularExpression.m in Sources */,
 				3D1CFB681F9F1F4900D88608 /* STBButtonView.m in Sources */,
 				3D6CB2F81F959ABB00B326FC /* EPGRightTableViewCell.m in Sources */,
 				3DF9B65C200CA07300C8587D /* My_ReuseCllTableViewCell.m in Sources */,
@@ -986,9 +1056,12 @@
 				3D2C05281F99D41100AAE921 /* SettingTableViewController.m in Sources */,
 				3D1CFB631F9F19E500D88608 /* STBTopView.m in Sources */,
 				3D6F80482005C44B00C08E73 /* ZCZTipsView.m in Sources */,
+				3DCB01572019CFCF00C2711A /* FirstMovieIdModel.m in Sources */,
 				3DB93C6E1F98836700AA90B2 /* HeaderCell.m in Sources */,
 				3DA722191FC3D4AE000DD9E3 /* FilterCollectionViewCell.m in Sources */,
+				3DCB0166201EC01400C2711A /* CommonCollectionReusableHeaderView.m in Sources */,
 				3DF04BA61FCE7D3A009C5D2A /* ZCZSlider.m in Sources */,
+				3DBA1E1C20182D6700BF987B /* NSString+AppendFilePath.m in Sources */,
 				3DB8D9FA1F94583A0076B7D3 /* UIView+QREasyFrame.m in Sources */,
 				3D7CCD081F9496B1002D59A7 /* BindPhoneNumberController.m in Sources */,
 				3DAAD2FA1F7B76D200C91E5C /* AddressCell.m in Sources */,
@@ -1002,15 +1075,19 @@
 				3DAA7BC21FBD76E6005FB4EE /* ProcessImageController.m in Sources */,
 				3D7CCD131F9499CF002D59A7 /* SetDetailsController.m in Sources */,
 				3DAAD3011F7B76D200C91E5C /* LoadReturnModel.m in Sources */,
+				3DCB016A201EC9FB00C2711A /* MoreMovieCollectionController.m in Sources */,
 				3DA722141FC3D0DA000DD9E3 /* FiltersController.m in Sources */,
 				3D7CCD0E1F949895002D59A7 /* SetPasswordController.m in Sources */,
 				3DF04BA11FCE5DA5009C5D2A /* ZCZProgressBar.m in Sources */,
 				3DF04BAD1FCFD594009C5D2A /* UIView+Frame.m in Sources */,
+				3DCB016D201EF14000C2711A /* MoreVideoModel.m in Sources */,
 				3D7CCCFE1F948BB0002D59A7 /* HelpViewController.m in Sources */,
 				3DB93C711F98859000AA90B2 /* CommonTableViewCell.m in Sources */,
 				3DAAD3021F7B76D200C91E5C /* LYNetworkManager.m in Sources */,
 				3DAAD3041F7B76D200C91E5C /* ReturnModel.m in Sources */,
 				3DAAD3051F7B76D200C91E5C /* SingleColor.m in Sources */,
+				3DCB015D201AFD0600C2711A /* SecondMovieIdDataArrayModel.m in Sources */,
+				3DCB0161201B058300C2711A /* MovieCollectionViewCell.m in Sources */,
 				3DAAD2F91F7B75FF00C91E5C /* CommonCtr.m in Sources */,
 				3DF9B659200CA03000C8587D /* NSString+calculate.m in Sources */,
 				3DAAD2F81F7B75F100C91E5C /* MyTabbarViewController.m in Sources */,
@@ -1027,6 +1104,7 @@
 				3D353DD01FB56AC500B33A0B /* ZCZLabel.m in Sources */,
 				3DE214971F7B70850076FCD6 /* CenterViewController.m in Sources */,
 				3DE214A61F7B70DE0076FCD6 /* MyBoxController.m in Sources */,
+				3DCB015A201AFB7B00C2711A /* SecondMovieIdModel.m in Sources */,
 				3DE214A31F7B70D10076FCD6 /* MyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

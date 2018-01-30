@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class BasicViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property(nonatomic,strong)BasicViewController * basicViewController;
 @end
 

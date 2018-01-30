@@ -48,7 +48,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        _tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
+        _tableView.separatorColor = [_single.colorDic objectForKey:LINECOLOR];
         //隐藏竖直方向的滑动条
         _tableView.showsVerticalScrollIndicator = NO;
         [self.tableView registerClass:[HeaderCell class] forCellReuseIdentifier:@"cellHeader"];
@@ -64,7 +64,7 @@
 
 -(void)colorPersonChange{
     [self.tableView reloadData];
-    self.tableView.separatorColor = [single.colorDic objectForKey:LINECOLOR];
+    self.tableView.separatorColor = [_single.colorDic objectForKey:LINECOLOR];
 }
 
 
@@ -93,7 +93,7 @@
             cellHeader.titleLabel.text = kPermanent_GET_OBJECT(kGetName);
         }
         cellHeader.titleLabel.textColor = [UIColor blackColor];
-        cellHeader.titleLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
+        cellHeader.titleLabel.font = [UIFont systemFontOfSize:[[_single.fontDic objectForKey:NAORMAL_SIZE] intValue]];
 //        NSString *mergeStr =  [NSString stringWithFormat:PreHttpImage,kPermanent_GET_OBJECT(KGetIP),kPermanent_GET_OBJECT(KGetPort),kPermanent_GET_OBJECT(KGetHeadImageUrl)];
 //        NSLog(@"mergeStr:%@",mergeStr);
 //        [cellHeader.images sd_setImageWithURL:[NSURL URLWithString:mergeStr] placeholderImage:[UIImage imageNamed:MAX_IMAGE]];
@@ -111,9 +111,9 @@
             cell.subtitleLabel.text = nil;
         }
         
-        cell.backgroundColor = [single.colorDic objectForKey:BACK_CONTROL_COLOR];
-        cell.titleLabel.textColor = [single.colorDic objectForKey:FONT_MAIN_COLOR];
-        cell.titleLabel.font = [UIFont systemFontOfSize:[[single.fontDic objectForKey:NAORMAL_SIZE]intValue]];
+        cell.backgroundColor = [_single.colorDic objectForKey:BACK_CONTROL_COLOR];
+        cell.titleLabel.textColor = [_single.colorDic objectForKey:FONT_MAIN_COLOR];
+        cell.titleLabel.font = [UIFont systemFontOfSize:[[_single.fontDic objectForKey:NAORMAL_SIZE]intValue]];
         NSArray * arr = PersonalCenterTableViewSectionArray[indexPath.section];
         cell.titleLabel.text = arr[indexPath.row];
 //        cell.titleLabel.text = MY_SectionArraySecond[indexPath.section-1];

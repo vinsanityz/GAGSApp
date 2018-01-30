@@ -58,6 +58,11 @@ make.top.left.right.bottom.equalTo(self.tipsLabelBackgroundView);
     return self;
 }
 
++(void)showWithString:(NSString *)str
+{
+    [[ZCZTipsView sharedZCZTipsView] showWithString:str];
+}
+
 -(void)showWithString:(NSString *)str
 {
     [self.condition lock];

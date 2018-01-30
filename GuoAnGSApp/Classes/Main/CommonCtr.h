@@ -7,31 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ParamFile.h" //宏定义
-#import "ZCZTipsView.h"
-#import <MBProgressHUD.h>
-#import "LYNetworkManager.h" //网络请求基类
-
-
-#import "CSReachability.h" //网络监测封装
-#import "ReturnModel.h"    //错误数据返回
+#import "ParamFile.h"       //宏定义与头文件
+#import "ReturnModel.h"     //错误数据返回
 #import "LoadReturnModel.h" //登录数据返回
-#import "AlertStateView.h"
-#import<CommonCrypto/CommonDigest.h> 
 
-
-
-
-@interface CommonCtr : UIViewController<CSReachabilityDelegate,RequestMoreDelegate,NSCoding>
+@interface CommonCtr : UIViewController<RequestMoreDelegate,NSCoding>
 {   //显示判断
-    BOOL _showLeft;
-    
+//    BOOL _showLeft;
+    //背景View
     UIView *_backSuperView;
     
        
-    SingleColor *single;//颜色、字体大小
-    CSReachability *_netWorkReachability;//网络监测
-    MBProgressHUD *_tvHub;//加载框
+    SingleColor * _single;//颜色、字体大小
+    CSReachability * _netWorkReachability;//网络监测
+    MBProgressHUD * _tvHub;//加载框
     
     UIColor *mainColor; //一级字体颜色
     UIColor *secColor; //二级字体颜色
@@ -42,8 +31,8 @@
     CGFloat big; //大 字体
 
 }
-@property (nonatomic, assign) id object;
-@property (nonatomic, assign) SEL btnSelector;
+//@property (nonatomic, assign) id object;
+//@property (nonatomic, assign) SEL btnSelector;
 
 @property (nonatomic, assign) BOOL showLeft;
 @property (nonatomic, copy) NSString *titleMessage;//导航栏的标题
@@ -59,7 +48,7 @@
 
 
 /**判断手机号码是否正确**/
-- (BOOL)isPureInt:(NSString*)string;
+//- (BOOL)isPureInt:(NSString*)string;
 
 /**
  *  设置字体大小
@@ -73,8 +62,8 @@
 -(void)setNavRightArr:(NSArray *)btnArr;
 
 
-+(id)restore;
-+(void)saveColor:(id)singleInfo;
+//+(id)restore;
+//+(void)saveColor:(id)singleInfo;
 
 
 -(void)setNavLeftWithStr:(NSString *)str;
@@ -93,30 +82,20 @@
 -(NSString *)returnDocumentPath:(NSString *)fileName;
 
 
-/**
- *保存在caches文件夹中
- */
+//保存在caches文件夹中
 -(NSString *)returnLibraryCachesfilePath:(NSString *)path;
 
-/**
- *删除文件
- */
+//删除文件
 -(void)deleateFile:(NSString *)fileName;
 
 -(void)writeEasyToFile:(NSString *)filePath object:(id)object;
 
-
 -(NSMutableArray *)readFileFromEay:(NSString *)filePath;
-
-
-
-
 //设置导航条上的保存按钮
 -(void)setNavRight_title;
 
 /**设置导航条取消按钮*/
 -(void)setNavLeft_title;
-
 
 /**个人信息修改网络请求,昵称，生日，性别，地址**/
 -(void)requestDevisePersonInfoForPersonUserName:(NSString *)userName nickName:(NSString *)nickName birthday:(NSString *)birthday gender:(NSString *)gender address:(NSString *)address ;
@@ -124,7 +103,6 @@
 /**显示加载进度框**/
 -(void)showMBProgressHud;
 -(void)showMBProgressHud:(NSString *)str;
-
 /**隐藏加载进度框**/
 -(void)hideMBProgressHud;
 
@@ -135,13 +113,6 @@
 
 /*md5加密*/
 - (NSString *)md5:(NSString *)str;
-
-/*判断密码位数是否为6-18位*/
-- (BOOL)isPassword:(NSString*)string;
-
-/*判断用户名*/
-- (BOOL)isUserName:(NSString*)string;
-
 
 - (AFSecurityPolicy*)customSecurityPolicy;
 
