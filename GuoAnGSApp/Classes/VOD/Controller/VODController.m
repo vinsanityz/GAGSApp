@@ -8,25 +8,113 @@
 #define HeaderArray @[@"精选",@"免费",@"电影",@"电视剧",@"纪录片",@"综艺"]
 
 #import "VODController.h"
-#import <SDCycleScrollView.h>
-#import "CommonCollectionController.h"
-#import "UIView+Frame.h"
-#import "FirstMovieIdModel.h"
-#import <MJExtension.h>
-
-#import "SearchController.h"
+#import <SDCycleScrollView.h>           //轮播图
+#import "FirstMovieIdModel.h"           //模型
+#import "SearchController.h"            //搜索界面
+#import "CommonCollectionController.h"  //collectionView
 
 @interface VODController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
+//轮播图
 @property(nonatomic,strong)SDCycleScrollView * cycleScrollView;
 @property(nonatomic,strong)UICollectionView * collectionView;
 @property(nonatomic,strong)UIScrollView * backScrollView;
+//存放头部按钮的数组
 @property(nonatomic,strong)NSMutableArray * headerBtnArray;
+//上一个选中的按钮
 @property(nonatomic,strong)UIButton * previousSelectedBtn;
+//按钮下部的线条
 @property(nonatomic,weak)UIView * headerLineView;
 @property(nonatomic,strong)NSMutableArray *dataSource;
 @end
 
 @implementation VODController
+
+-(BOOL)shouldAutorotate
+{
+    return  NO;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setUpHeaderView];
+    [self setUpBackGroundScrollVIew];
+
+    [self setTitle:@"movie"];
+    [self setNavRightWithStr:@"search"];
+//    CommonCollectionController * vc = [[CommonCollectionController alloc]init];
+//    [self addChildViewController:vc];
+//    vc.view.frame = self.backScrollView.bounds;
+//    [self.backScrollView addSubview:vc.view];
+    //添加子控制器
+    [self AddCommonCollectionController];
+    [self scrollViewDidEndScrollingAnimation:_backScrollView];
+    [self requestFirstViedoTypeNetWorking];
+}
+
+//滚动栏创建
+-(void)setUpBackGroundScrollVIew
+{
+    UIScrollView * bgScroll  = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+50,  SCREEN_WIDTH, SCREEN_HEIGHT-64-50-49)];
+    [self.view addSubview:bgScroll];
+    bgScroll.contentSize = CGSizeMake(SCREEN_WIDTH * HeaderArray.count, 0);
+    _backScrollView = bgScroll;
+    _backScrollView.delegate = self;
+    _backScrollView.pagingEnabled = YES;
+}
+
+
+#pragma mark - <按钮栏相关代码>
+//创建按钮栏
+-(void)setUpHeaderView
+{
+    UIView * headerV = [[UIView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 50)];
+    headerV.backgroundColor = [UIColor grayColor];
+    NSArray * arr =  HeaderArray;
+    
+    UIView * lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 47,[UIScreen mainScreen].bounds.size.width/arr.count , 3)];
+    lineView.backgroundColor = [UIColor blackColor];
+    [headerV addSubview:lineView];
+    self.headerLineView = lineView;
+    
+    for (int i =0; i<arr.count; i++) {
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setTitle:arr[i] forState:UIControlStateNormal];
+        
+        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        CGFloat btnWidth = [UIScreen mainScreen].bounds.size.width/arr.count;
+        btn.frame = CGRectMake(i*btnWidth,0, btnWidth, 50);
+        [headerV addSubview:btn];
+        [btn addTarget:self action:@selector(headerViewbtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headerBtnArray addObject:btn];
+    }
+    [self.view addSubview:headerV];
+}
+
+//按钮栏按钮被点击调用
+-(void)headerViewbtnClick:(UIButton *)btn
+{
+    //找到点击按钮在按钮数组中的位置
+    NSUInteger i =  [self.headerBtnArray indexOfObject:btn];
+    //根据位置确定scrollView的offset
+    [self.backScrollView setContentOffset:CGPointMake(i*self.backScrollView.zcz_width, self.backScrollView.contentOffset.y) animated:YES];
+    //更改选中的按钮
+    [self exchangeSelectedButton:btn];
+}
+
+//更换被选中的按钮
+-(void)exchangeSelectedButton:(UIButton * )btn
+{
+    self.previousSelectedBtn.selected = NO;
+    btn.selected = YES;
+    self.previousSelectedBtn = btn;
+}
+
+
+#pragma mark - <懒加载>
 -(NSMutableArray *)dataSource
 {
     if (_dataSource==nil) {
@@ -42,40 +130,16 @@
     return _headerBtnArray;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setUpHeaderView];
-    [self setUpBackGroundScrollVIew];
-
-    [self setTitle:@"movie"];
-    [self setNavRightWithStr:@"search"];
-//    CommonCollectionController * vc = [[CommonCollectionController alloc]init];
-//    [self addChildViewController:vc];
-//    vc.view.frame = self.backScrollView.bounds;
-//    [self.backScrollView addSubview:vc.view];
-    [self AddCommonCollectionController];
-    [self scrollViewDidEndScrollingAnimation:_backScrollView];
-    [self requestFirstViedoTypeNetWorking];
-}
+//每个按钮对应一个controller 并使其成为self的子控制器
 -(void)AddCommonCollectionController
 {
     for (int i =0; i<HeaderArray.count; i++) {
         CommonCollectionController * vc = [[CommonCollectionController alloc]init];
         [self addChildViewController:vc];
-        
     }
-    
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
 }
 
--(BOOL)shouldAutorotate
-{
-    return  NO;
-}
+
 -(void)btnClick:(UIButton *)btn
 {
     SearchController * vc = [[SearchController alloc]init];
@@ -83,51 +147,9 @@
     vc.hidesBottomBarWhenPushed =YES;
     
 }
--(void)headerViewbtnClick:(UIButton *)btn
-{
-  NSUInteger i =  [self.headerBtnArray indexOfObject:btn];
-    [self.backScrollView setContentOffset:CGPointMake(i*self.backScrollView.zcz_width, self.backScrollView.contentOffset.y) animated:YES];
-    [self exchangeSelectedButton:btn];
-    
-    
-}
--(void)setUpBackGroundScrollVIew
-{
-    UIScrollView * bgScroll  = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+50,  [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-50-46)];
-    [self.view addSubview:bgScroll];
-    bgScroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * HeaderArray.count, 0);
-    _backScrollView = bgScroll;
-    _backScrollView.delegate = self;
-    _backScrollView.pagingEnabled = YES;
-//    [self setUpCycleScrollView];
-//    [self setUpCollectionView];
-    
-}
 
--(void)setUpHeaderView
-{
-    UIView * headerV = [[UIView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 50)];
-    headerV.backgroundColor = [UIColor grayColor];
-    NSArray * arr =  HeaderArray;
-    UIView * lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 49,[UIScreen mainScreen].bounds.size.width/arr.count , 1)];
-    lineView.backgroundColor = [UIColor blackColor];
-    [headerV addSubview:lineView];
-    self.headerLineView = lineView;
-    for (int i =0; i<arr.count; i++) {
-        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:arr[i] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-         [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        
-        btn.titleLabel.font = [UIFont systemFontOfSize:15];
-        btn.frame = CGRectMake(i*[UIScreen mainScreen].bounds.size.width/arr.count,0, [UIScreen mainScreen].bounds.size.width/arr.count, 50);
-        [headerV addSubview:btn];
-        [btn addTarget:self action:@selector(headerViewbtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headerBtnArray addObject:btn];
-    }
-    [self.view addSubview:headerV];
-}
+
+
 
 -(void)setUpCycleScrollView
 {
@@ -234,13 +256,8 @@
     
 }
 
--(void)exchangeSelectedButton:(UIButton * )btn
-{
-    self.previousSelectedBtn.selected = NO;
-    btn.selected = YES;
-    self.previousSelectedBtn = btn;
-    
-}
+
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (decelerate==NO) {
             [self scrollViewDidEndScrollingAnimation:scrollView];

@@ -14,6 +14,7 @@
 #import "CSReachability.h"          //网络监测封装
 #import "AlertStateView.h"          //警视窗
 #import "LYNetworkManager.h"        //封装的网络请求基类
+#import "UIView+Frame.h"            //frame的类扩展
 #import <Masonry.h>
 #import <MJRefresh.h>
 #import <MJExtension.h>

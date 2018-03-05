@@ -51,13 +51,10 @@
 //{
 //    NSLog(@"%d",[super pointInside:point withEvent:event]);
 //    return [super pointInside:point withEvent:event];
-//
 //}
 //根据backgroundView的frame来调整其他子控件的位置
 -(void)useBackgroundViewWidthFixOtherViewFrame
 {
-    
-    
      self.progressBarSlider.center =CGPointMake(self.progressBarSlider.center.x, self.backgroundView.center.y);
 if(self.progressBarSlider.center.x>self.backgroundView.zcz_width) {
          self.progressBarSlider.center =CGPointMake(self.backgroundView.zcz_width, self.backgroundView.center.y);
@@ -85,7 +82,6 @@ if(self.progressBarSlider.center.x>self.backgroundView.zcz_width) {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapZCZProgressBar:)];
     [self addGestureRecognizer:tap];
     self.progressBarTap = tap;
-    
 }
 
 -(void)tapZCZProgressBar:(UITapGestureRecognizer *)tap
@@ -190,7 +186,7 @@ if(self.progressBarSlider.center.x>self.backgroundView.zcz_width) {
     NSInteger hour =timeValue/3600;
     NSInteger minute = (timeValue-3600*hour)/60;
     NSInteger second = timeValue-3600*hour-60*minute;
-    NSString * timeStr  = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",hour,minute,second];
+    NSString * timeStr  = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)hour,(long)minute,(long)second];
     return timeStr;
 }
 

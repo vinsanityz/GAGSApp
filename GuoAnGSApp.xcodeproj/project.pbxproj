@@ -52,7 +52,7 @@
 		3DA35CEC1FF0CE9D00C64620 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CEB1FF0CE9400C64620 /* UIKit.framework */; };
 		3DA35CEE1FF0CEB400C64620 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CED1FF0CEA500C64620 /* Foundation.framework */; };
 		3DA35CF01FF0CECB00C64620 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CEF1FF0CEC100C64620 /* CFNetwork.framework */; };
-		3DA35CF21FF0CEEA00C64620 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CF11FF0CEE100C64620 /* CoreMotion.framework */; };
+		3DA35CF21FF0CEEA00C64620 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA35CF11FF0CEE100C64620 /* CoreMotion.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3DA35CF51FF493EE00C64620 /* tableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA35CF41FF493ED00C64620 /* tableViewHeaderView.m */; };
 		3DA35CF71FF4941000C64620 /* tableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA35CF61FF4941000C64620 /* tableViewHeaderView.xib */; };
 		3DA722141FC3D0DA000DD9E3 /* FiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA722121FC3D0DA000DD9E3 /* FiltersController.m */; };
